@@ -50,6 +50,7 @@ if (scaffoldLite) {
                 },
                 moduleToStartApp = '<%= pathStatic %>/<%= vocab_dir %>/js/all-'+browserType+'.js';
 
+
             if (debug) {
                 var jqueryVersion   = (browserType === 'html5') ? 'jquery-2.0.3' : 'jquery-1.9.1';
                 config.paths        = <%= amdModulePaths %>;
@@ -57,6 +58,12 @@ if (scaffoldLite) {
                 config.paths.app    = './app';
                 moduleToStartApp    = '<%= pathStatic %>/<%= vocab_dir %>/js/app.js';
             }
+
+            /* Remove from production */
+            config.paths = config.paths || {};
+            config.paths['backbone'] = 'backbone';
+            config.paths['underscore'] = 'underscore';
+            
             return {
                 requireConfig: config,
                 moduleToStartApp: moduleToStartApp

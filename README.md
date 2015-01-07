@@ -2,6 +2,10 @@
 
 Global data project- footballers wages
 
+#BEFORE MAKING LIVE
+ * Add backbone and underscore into the RequireJs task, currently excluded using empty:. **This is to save on build time whilst devleoping**
+ * Build custom backbone and underscore to reduce file size.
+
 ## Getting started
 
 Set up the project
