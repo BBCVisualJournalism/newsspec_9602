@@ -1,7 +1,9 @@
-define(['lib/news_special/bootstrap'],  function (news) {
+define(['calculator'],  function (Calculator) {
+
+    //var calculator = new Calculator();
 
     beforeEach(function () {
-        news.$('body').append('<div class="main">some fixture data <div id="main">test em!</div></div>');
+        //news.$('body').append('<div class="main">some fixture data <div id="main">test em!</div></div>');
     });
 
     afterEach(function () {

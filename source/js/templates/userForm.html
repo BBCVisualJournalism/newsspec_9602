@@ -1,9 +1,9 @@
 <form class="user-form">
 	<label for="country">Your country:</label><br/>
-	<select name="country" class="user-form--country"></select><br/>
+	<select name="country" class="user-form--country" data-selected-country="GBR"></select><br/><br/>
 
-	<label for="income">Your annual income: <em>(Pre-tax and in your local currency)</em></label><br/>
-	<input name="income" class="user-form--income" /><br/><br/>
+	<label for="income">Your annual income:</label><br/>
+	<span class="user-form--currency-symbol"></span> <input name="income" class="user-form--income" /><br/><br/>
 
 	<input type="submit" value="Submit" />
 </form>

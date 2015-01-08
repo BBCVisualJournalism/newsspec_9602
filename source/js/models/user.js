@@ -1,7 +1,6 @@
 define([
-    'lib/news_special/bootstrap',
     'backbone'
-], function (news, Backbone) {
+], function (Backbone) {
     return Backbone.Model.extend({
         defaults: {
             country: null,
@@ -9,14 +8,13 @@ define([
         },
 
         validate: function (attrs) {
-            console.log(attrs);
             var errors = [];
 
             if (!attrs.country) {
-                errors.push({name: 'country', message: 'Please enter a valid country'});
+                errors.push({name: 'country'});
             }
-            if (!attrs.income) {
-                errors.push({name: 'income', message: 'Please enter a valid income'});
+            if (!attrs.income || !$.isNumeric(attrs.income) || attrs.income <= 0) {
+                errors.push({name: 'income'});
             }
 
             return errors.length > 0 ? errors : false;
