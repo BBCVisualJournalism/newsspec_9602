@@ -1,8 +1,9 @@
 define([
     'lib/news_special/bootstrap',
     'backbone',
-    'text!templates/userForm.html'
-], function (news, Backbone, htmlTemplate) {
+    'text!templates/userForm.html',
+    'views/widgetsView'
+], function (news, Backbone, htmlTemplate, WidgetsView) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -10,7 +11,8 @@ define([
             this.options = options;
 
             this.model = options.model;
-            this.countries = options.countries;
+            this.countries = this.model.countries;
+            this.players = this.model.players;
 
             _.bindAll(this, 'submit');
         },
@@ -19,10 +21,12 @@ define([
 
             /* INIT VARS */
             this.countryEl = this.$el.find('.user-form--country');
+            this.playerEl = this.$el.find('.user-form--player');
             this.incomeEl = this.$el.find('.user-form--income');
             this.currencySymbolEl = this.$el.find('.user-form--currency-symbol');
 
             this.populateCountries();
+            this.populatePlayers();
             this.options.container.html(this.$el);
         },
         populateCountries: function () {
@@ -39,6 +43,21 @@ define([
             });
 
             this.updateCurrencySymbol();
+        },
+        populatePlayers: function () {
+            var self = this;
+
+            var premierGroup = self.playerEl.find('.user-form--player__premier'),
+                intGroup = self.playerEl.find('.user-form--player__int');
+
+            premierGroup.empty();
+            intGroup.empty();
+
+
+            this.players.each(function (player) {
+                var groupEl = (player.get('league') === 'Premier League') ? premierGroup : intGroup;
+                groupEl.append($('<option>' + player.get('name') + '</option>'));
+            });
         },
         events: {
             'change .user-form--country': 'updateCurrencySymbol',
@@ -60,14 +79,19 @@ define([
 
             var userInput = {
                 'country': this.countryEl.val(),
-                'income': this.incomeEl.val()
+                'income': this.incomeEl.val(),
+                'player': this.playerEl.val()
             };
 
             this.model.set(userInput, {validate : true});
             if (this.model.validationError) {
                 this.showValidationErrors(this.model.validationError);
             } else {
-                console.log(this.model.incomePPP());
+                var widgetsView = new WidgetsView({
+                    userModel: this.model,
+                    container: $('.results-widgets')
+                });
+                widgetsView.render();
             }
         },
         showValidationErrors: function (errors) {
