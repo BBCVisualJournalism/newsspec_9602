@@ -41,7 +41,7 @@
 					'code': region[1],
 					'currency_symbol': region[2],
 					'ppp': region[3],
-					'annual_wage_ppp': region[9]
+					'annual_wage': region[9]
 				});
 
 			}
@@ -72,7 +72,8 @@
 					'club': player[1],
 					'nationality': player[2],
 					'league': player[3],
-					'annual_wage_ppp': player[9]
+					'annual_wage': player[9],
+					'shirt_price': player[14]
 				});
 
 			}

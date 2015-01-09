@@ -67,9 +67,8 @@ define([
             if (this.model.validationError) {
                 this.showValidationErrors(this.model.validationError);
             } else {
-                console.log('Pass');
+                console.log(this.model.incomePPP());
             }
-            console.log(this.model);
         },
         showValidationErrors: function (errors) {
             var self = this;

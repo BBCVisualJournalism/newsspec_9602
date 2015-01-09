@@ -5,7 +5,9 @@ define([
         defaults: {
             'name': null,
             'code': null,
-            'currency_symbol': '£'
+            'currency_symbol': '£',
+            'ppp': 0,
+            'annual_wage': 0
         }
     });
 });
