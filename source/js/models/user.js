@@ -3,8 +3,8 @@ define([
 ], function (Backbone) {
     return Backbone.Model.extend({
         defaults: {
-            country: null,
-            income: 0
+            'country': null,
+            'income': 0
         },
 
         validate: function (attrs) {
@@ -17,7 +17,7 @@ define([
                 errors.push({name: 'income'});
             }
 
-            return errors.length > 0 ? errors : false;
+            return (errors.length > 0) ? errors : false;
         }
     });
 });

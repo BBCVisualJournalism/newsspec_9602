@@ -30,7 +30,7 @@ define([
         },
         results: function (player) {
             // Ensure the user hasn't arrived at route, without completing form
-            if(mainEl.find('.user-form').length === 0){
+            if (mainEl.find('.user-form').length === 0) {
                 this.navigate('', {trigger: true, replace: true});
             } else {
                 console.log('Showing results for player ID: ' + player);

@@ -1,18 +1,8 @@
-define(['calculator'],  function (Calculator) {
+define(['models/calculator'],  function (Calculator) {
 
-    //var calculator = new Calculator();
-
-    beforeEach(function () {
-        //news.$('body').append('<div class="main">some fixture data <div id="main">test em!</div></div>');
-    });
-
-    afterEach(function () {
-        //news.$('.main').remove();
-    });
-
-    describe('app', function () {
-        it('', function () {
-            expect(true).toBeTruthy();
+    describe('Calculator', function () {
+        it('should throw an error if initilized', function () {
+            expect(function () { new Calculator(); }).toThrow();
         });
     });
 

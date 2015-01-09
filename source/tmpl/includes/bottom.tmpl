@@ -58,11 +58,6 @@ if (scaffoldLite) {
                 config.paths.app    = './app';
                 moduleToStartApp    = '<%= pathStatic %>/<%= vocab_dir %>/js/app.js';
             }
-
-            /* Remove from production */
-            config.paths = config.paths || {};
-            config.paths['backbone'] = 'backbone';
-            config.paths['underscore'] = 'underscore';
             
             return {
                 requireConfig: config,

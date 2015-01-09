@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
 
-    grunt.registerTask('copy_js_minimum', ['copy:requirejs', 'copy:backbone']);
+    grunt.registerTask('copy_js_minimum', ['copy:requirejs']);
 
     grunt.config(['copy', 'requirejs'], {
         files: [{
@@ -8,14 +8,6 @@ module.exports = function (grunt) {
             cwd:    'source/js/lib/vendors/require/',
             src:    ['*.js'],
             dest:   'content/<%= config.services.default %>/js/lib/vendors/require/'
-        }]
-    });
-    grunt.config(['copy', 'backbone'], {
-        files: [{
-            expand: true,
-            cwd:    'source/js/lib/vendors/backbone/',
-            src:    ['*.js', '*.map'],
-            dest:   'content/<%= config.services.default %>/js/'
         }]
     });
     

@@ -1,8 +1,8 @@
 define([
-    'lib/news_special/bootstrap', 
-    'backbone', 
+    'lib/news_special/bootstrap',
+    'backbone',
     'text!templates/userForm.html'
-], function (news, Backbone, htmlTemplate){
+], function (news, Backbone, htmlTemplate) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -25,7 +25,7 @@ define([
             this.populateCountries();
             this.options.container.html(this.$el);
         },
-        populateCountries: function() {
+        populateCountries: function () {
             var self = this;
 
             var defaultCountry = this.countryEl.data('selectedCountry') || 'UK';
@@ -42,7 +42,7 @@ define([
         },
         events: {
             'change .user-form--country': 'updateCurrencySymbol',
-            'submit .user-form': 'submit',
+            'submit .user-form': 'submit'
         },
         updateCurrencySymbol: function () {
             var country = this.countries.findWhere({code: this.countryEl.val()}),
@@ -66,7 +66,7 @@ define([
             this.model.set(userInput, {validate : true});
             if (this.model.validationError) {
                 this.showValidationErrors(this.model.validationError);
-            }else{
+            } else {
                 console.log('Pass');
             }
             console.log(this.model);

@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'models/country',
+    'models/country'
 ], function (Backbone, Country) {
 
     return Backbone.Collection.extend({

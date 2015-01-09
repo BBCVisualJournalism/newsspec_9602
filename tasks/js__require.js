@@ -8,8 +8,9 @@ module.exports = function (grunt) {
     var amdModulePaths = {
         'pubsub': './lib/vendors/jquery/pubsub',
         'text': './lib/vendors/require/text',
-        'backbone': 'empty:',
-        'underscore': 'empty:'
+        'backbone': './lib/vendors/backbone/backbone',
+        'underscore': './lib/vendors/backbone/underscore',
+        'templates': '../tmpl/templates'
     };
 
     // *************************************************************************
