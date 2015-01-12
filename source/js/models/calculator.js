@@ -8,7 +8,7 @@ define(['backbone'], function (Backbone) {
 			return userYearIncomePPP / playerYearIncomePPP * 10080;
 		},
 		userYearsToEarn: function (userYearIncomePPP, playerYearIncomePPP) {
-			return playerYearIncomePPP / userYearIncomePPP;
+			return Math.round(playerYearIncomePPP / userYearIncomePPP);
 		},
 		startYearWith: function (yearsAgo) {
 			var currentYear = new Date().getFullYear(),

@@ -1,0 +1,35 @@
+.yearly-salary{
+	color: #404040;
+	margin: 20px;
+	border-top: 1px solid #d5d6d7;
+	text-align: center;
+
+
+	.timeline{
+		background-color: #B4C1BE;
+		padding: 20px;
+		.timeline--graphic{
+			margin: 0 auto;
+			position: relative;
+			height: 193px;
+			width: 193px;
+
+			.timeline--image{
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+
+	.yearly-salary--text{
+		font-weight: normal;
+		font-family: Arial;
+		font-size: 1.6em;
+		line-height: 1.2em;
+		padding: 0 15px;
+	}
+
+}
