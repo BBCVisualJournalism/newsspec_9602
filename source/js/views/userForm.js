@@ -56,7 +56,7 @@ define([
 
             this.players.each(function (player) {
                 var groupEl = (player.get('league') === 'Premier League') ? premierGroup : intGroup;
-                groupEl.append($('<option>' + player.get('name') + '</option>'));
+                groupEl.append($('<option value="' + player.get('id') + '">' + player.get('name') + '</option>'));
             });
         },
         events: {
@@ -78,9 +78,9 @@ define([
             this.resetValidationErrors();
 
             var userInput = {
-                'country': this.countryEl.val(),
+                'countryCode': this.countryEl.val(),
                 'income': this.incomeEl.val(),
-                'player': this.playerEl.val()
+                'playerId': this.playerEl.val()
             };
 
             this.model.set(userInput, {validate : true});

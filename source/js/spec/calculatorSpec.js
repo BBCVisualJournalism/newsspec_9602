@@ -35,6 +35,10 @@ define(['models/calculator'],  function (Calculator) {
             /* 5 minute time difference */
             expect(Calculator.amountEarned(40000, 1420817173750, 1420817473750)).toEqual('0.38');
         });
+        it('should convert PPP into a user local currency', function () {
+            expect(Calculator.pppToLocal(1.2, 5)).toEqual(6);
+            expect(Calculator.pppToLocal(0.8, 10)).toEqual(8);
+        });
     });
 
 });

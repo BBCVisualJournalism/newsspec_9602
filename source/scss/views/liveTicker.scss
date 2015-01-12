@@ -1,0 +1,102 @@
+.live-ticker{
+	color: #404040;
+	margin: 20px 20px;
+	overflow: hidden;
+	border-top: 1px solid #d5d6d7;
+	text-align: center;
+
+	.live-ticker--title{
+		font-weight: normal;
+		font-family: Arial;
+		font-size: 1.6em;
+		line-height: 2em;
+	}
+
+	.live-ticker--section{
+		float: left;
+		font-weight: normal;
+		font-family: Arial;
+		font-size: 1.6em;
+		line-height: 1.25em;
+
+		.earned{
+			font-weight: normal;
+			font-family: Arial;
+			font-size: 1.5em;
+			line-height: 1.5em;
+		}
+	}
+
+	.live-ticker--section__yourself, .live-ticker--section__national-avg {
+		width: 50%;
+		height: 125px;
+		padding: 0 20px;
+	}
+
+	.live-ticker--section__yourself{
+		border-right: 2px dotted #cedbdc;
+
+		.icon__yourself{
+			background: url(../img/sprite.png) 0 0;
+			width: 25px;
+			height: 25px;
+			margin: 13px auto;
+		}
+	}
+
+	.live-ticker--section__national-avg{
+		.icon__national-avg{
+			background: url(../img/sprite.png) 25px 0;
+			width: 25px;
+			height: 25px;
+			margin: 13px auto;
+		}
+	}
+
+	.live-ticker--section__player{
+		clear: both;
+		width: 100%;
+		margin-top: 20px;
+		border-top: 2px dotted #cedbdc;
+
+		.icon__player{
+			width: 75px;
+			height: 75px;
+			margin: 13px auto;
+			svg {
+				width: 75px;
+				height: 75px;
+				clip-path: url(#circle-clip);
+
+				.player-bg{
+					fill: #f2f2f2;
+				}	
+			}
+		}
+	}
+
+	@include respondMinMax(550px, false){
+		.live-ticker--section__yourself, .live-ticker--section__national-avg, .live-ticker--section__player{
+			clear: none;
+			width: 33%;
+			height: 150px;
+			border-right: 2px dotted #cedbdc;
+		}
+		.live-ticker--section__player{
+			border: 0;
+			margin-top: 0;
+
+			.icon__player{
+				margin: 0 auto;
+			}
+
+		}
+		.live-ticker--section__yourself .icon__yourself{
+			margin: 24px auto;
+		}
+		.live-ticker--section__national-avg .icon__national-avg{
+			margin: 24px auto;
+		}
+	}
+
+}

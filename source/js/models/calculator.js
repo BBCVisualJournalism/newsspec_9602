@@ -41,6 +41,9 @@ define(['backbone'], function (Backbone) {
 			var runtime = endTime - startTime;
 			var amountEarnedPerMS = annualWage / 31557600000;
 			return (runtime * amountEarnedPerMS).toFixed(2);
+		},
+		pppToLocal: function (pppConv, pppValue) {
+			return pppConv * pppValue;
 		}
 	});
 });

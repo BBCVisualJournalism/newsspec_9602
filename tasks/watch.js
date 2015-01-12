@@ -1,7 +1,7 @@
 module.exports = function (grunt) {
     grunt.config('watch', {
         js: {
-            files: ['Gruntfile.js', './source/js/**/*', '!./source/js/lib/news_special/iframemanager__host.js'],
+            files: ['Gruntfile.js', './source/js/**/*', '!./source/js/lib/news_special/iframemanager__host.js', './source/tmpl/templates/**/*'],
             tasks: ['js'],
             options: {
                 spawn: false

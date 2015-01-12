@@ -68,12 +68,13 @@
 			for (var i = 1; i < players.length; i++) {
 				var player = players[i];
 				playersArray.push({
-					'name': player[0],
-					'club': player[1],
-					'nationality': player[2],
-					'league': player[3],
-					'annual_wage': player[9],
-					'shirt_price': player[14]
+					'id': parseInt(player[0], 10),
+					'name': player[1],
+					'club': player[2],
+					'nationality': player[3],
+					'league': player[4],
+					'annual_wage': player[10],
+					'shirt_price': player[15]
 				});
 
 			}

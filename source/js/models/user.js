@@ -7,8 +7,8 @@ define([
 ], function (Backbone, CountriesCollection, PlayersCollection, countriesData, playersData) {
     return Backbone.Model.extend({
         defaults: {
-            'country': null,
-            'player': null,
+            'countryCode': null,
+            'playerId': null,
             'income': 0
         },
         initialize: function () {
@@ -16,10 +16,11 @@ define([
             this.players = new PlayersCollection(playersData);
         },
         country: function () {
-            return this.countries.findWhere({code: this.get('country')});
+            return this.countries.findWhere({code: this.get('countryCode')});
         },
         player: function () {
-            return this.players.findWhere({name: this.get('player')});
+            var playerId = parseInt(this.get('playerId'), 10);
+            return this.players.findWhere({id: playerId});
         },
         incomePPP: function () {
             return this.get('income') * this.country().get('ppp');
@@ -27,10 +28,10 @@ define([
         validate: function (attrs) {
             var errors = [];
 
-            if (!attrs.country) {
+            if (!attrs.countryCode) {
                 errors.push({name: 'country'});
             }
-            if (!attrs.player) {
+            if (!attrs.playerId) {
                 errors.push({name: 'player'});
             }
             if (!attrs.income || !$.isNumeric(attrs.income) || attrs.income <= 0) {
