@@ -2,8 +2,9 @@ define([
     'lib/news_special/bootstrap',
     'backbone',
     'text!templates/userForm.html',
+    'views/playerStand',
     'views/widgetsView'
-], function (news, Backbone, htmlTemplate, WidgetsView) {
+], function (news, Backbone, htmlTemplate, PlayerStandView, WidgetsView) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -14,20 +15,29 @@ define([
             this.countries = this.model.countries;
             this.players = this.model.players;
 
-            _.bindAll(this, 'submit');
+            _.bindAll(this, 'submit', 'changePlayer');
         },
         render: function () {
             this.$el.html(this.template());
 
             /* INIT VARS */
-            this.countryEl = this.$el.find('.user-form--country');
-            this.playerEl = this.$el.find('.user-form--player');
-            this.incomeEl = this.$el.find('.user-form--income');
+            this.countryEl = this.$el.find('.user-form--input__country');
+            this.playerEl = this.$el.find('.user-form--input__player');
+            this.incomeEl = this.$el.find('.user-form--input__income');
             this.currencySymbolEl = this.$el.find('.user-form--currency-symbol');
 
             this.populateCountries();
             this.populatePlayers();
+
+            this.playerStandView = new PlayerStandView({selectedPlayer: this.playerEl.val()});
+            this.$el.find('.player-stand').html(this.playerStandView.render());
+
             this.options.container.html(this.$el);
+        },
+        events: {
+            'change .user-form--input__country': 'updateCurrencySymbol',
+            'change .user-form--input__player': 'changePlayer',
+            'submit .user-form': 'submit'
         },
         populateCountries: function () {
             var self = this;
@@ -53,15 +63,12 @@ define([
             premierGroup.empty();
             intGroup.empty();
 
-
             this.players.each(function (player) {
-                var groupEl = (player.get('league') === 'Premier League') ? premierGroup : intGroup;
-                groupEl.append($('<option value="' + player.get('id') + '">' + player.get('name') + '</option>'));
+                if (player.get('id') !== null) {
+                    var groupEl = (player.get('league') === 'Premier League') ? premierGroup : intGroup;
+                    groupEl.append($('<option value="' + player.get('id') + '">' + player.get('name') + '</option>'));
+                }
             });
-        },
-        events: {
-            'change .user-form--country': 'updateCurrencySymbol',
-            'submit .user-form': 'submit'
         },
         updateCurrencySymbol: function () {
             var country = this.countries.findWhere({code: this.countryEl.val()}),
@@ -72,6 +79,9 @@ define([
             } else {
                 this.currencySymbolEl.text('');
             }
+        },
+        changePlayer: function () {
+            this.playerStandView.updatePlayer(this.playerEl.val());
         },
         submit: function (e) {
             e.preventDefault();
@@ -98,7 +108,7 @@ define([
             var self = this;
 
             _.each(errors, function (error) {
-                self.$el.find('.user-form--' + error.name).addClass('user-form--input__error');
+                self.$el.find('.user-form--input__' + error.name).addClass('user-form--input__error');
             });
         },
         resetValidationErrors: function () {

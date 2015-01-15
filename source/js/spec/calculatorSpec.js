@@ -5,8 +5,8 @@ define(['models/calculator'],  function (Calculator) {
             expect(function () { new Calculator(); }).toThrow();
         });
         it('should calculate the time it would take for a footballer to earn a user salary', function () {
-            expect(Calculator.playerMinutesToEarn(20000, 20000000)).toEqual(10.08);
-            expect(Calculator.playerMinutesToEarn(5000, 5200000)).toEqual(9.692307692307693);
+            expect(Calculator.playerMinutesToEarn(20000, 20000000)).toEqual(10);
+            expect(Calculator.playerMinutesToEarn(5000, 5200000)).toEqual(10);
         });
         it('should calculate the years it would take for a user to earn a players salary', function () {
             expect(Calculator.userYearsToEarn(20000, 20000000)).toEqual(1000);

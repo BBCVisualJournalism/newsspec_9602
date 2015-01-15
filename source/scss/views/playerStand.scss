@@ -1,0 +1,230 @@
+.player-stand{
+	height:195px;
+	width:100%;
+	position:relative;
+	overflow:hidden;
+
+	.players-wrapper{
+		margin-top:-15px;
+		height:180px;
+		position:relative;
+
+	}
+
+
+
+	.footballer{
+		background-size:100% 100%;
+		height:125px;
+		width:125px;
+		position:absolute;
+		.player-bg{
+			fill: rgba(0,0,0,0);
+		}
+	}
+
+	.footballer-1{
+		background-image:url(../img/svg/footballers-1.svg);
+	}
+
+	.footballer-2{
+		background-image:url(../img/svg/footballers-2.svg);
+	}
+
+	.footballer-3{
+		background-image:url(../img/svg/footballers-3.svg);
+	}
+
+	.footballer-4{
+		background-image:url(../img/svg/footballers-4.svg);
+	}
+
+	.footballer-5{
+		background-image:url(../img/svg/footballers-5.svg);
+	}
+
+	.footballer-6{
+		background-image:url(../img/svg/footballers-6.svg);
+	}
+
+	.footballer-7{
+		background-image:url(../img/svg/footballers-7.svg);
+	}
+
+	.footballer-8{
+		background-image:url(../img/svg/footballers-8.svg);
+	}
+
+	.footballer-9{
+		background-image:url(../img/svg/footballers-9.svg);
+	}
+
+	.footballer-10{
+		background-image:url(../img/svg/footballers-10.svg);
+	}
+
+	.footballer-11{
+		background-image:url(../img/svg/footballers-11.svg);
+	}
+
+	.footballer-12{
+		background-image:url(../img/svg/footballers-12.svg);
+	}
+
+	.footballer-13{
+		background-image:url(../img/svg/footballers-13.svg);
+	}
+
+	.footballer-14{
+		background-image:url(../img/svg/footballers-14.svg);
+	}
+
+	.footballer-15{
+		background-image:url(../img/svg/footballers-15.svg);
+	}
+
+	.footballer-16{
+		background-image:url(../img/svg/footballers-16.svg);
+	}
+
+	.footballer-17{
+		background-image:url(../img/svg/footballers-17.svg);
+	}
+
+	.footballer-18{
+		background-image:url(../img/svg/footballers-18.svg);
+	}
+
+	.footballer-19{
+		background-image:url(../img/svg/footballers-19.svg);
+	}
+
+	.footballer-20{
+		background-image:url(../img/svg/footballers-20.svg);
+	}
+
+	.footballer-21{
+		background-image:url(../img/svg/footballers-21.svg);
+	}
+
+	.footballer-22{
+		background-image:url(../img/svg/footballers-22.svg);
+	}
+
+	.footballer-23{
+		background-image:url(../img/svg/footballers-23.svg);
+	}
+
+	.footballer-24{
+		background-image:url(../img/svg/footballers-24.svg);
+	}
+
+	.preload{
+		visibility:hidden;
+	}	
+
+	.front-row {
+		.footballer{
+			top:68px;
+			z-index:90;
+		}
+
+		.footballer-pos-1{
+			left:-12px;
+		}
+
+		.footballer-pos-2{
+			left:82px;
+			visibility:hidden;
+		}
+
+		.footballer-pos-3{
+			right:82px;
+			visibility:hidden;
+		}
+
+		.footballer-pos-4{
+			right:-12px;
+		}
+	}
+	.back-row{
+		.footballer{
+			top:100px;
+			height:80px;
+			width:80px;
+			z-index:80;
+			opacity:0.8;
+
+		}
+
+		.footballer-pos-1{
+			left:60px;
+			visibility:hidden;
+		}
+
+		.footballer-pos-2{
+			left:150px;
+			visibility:hidden;
+		}
+
+		.footballer-pos-3{
+			right:150px;
+			visibility:hidden;
+		}
+
+		.footballer-pos-4{
+			right:60px;
+			visibility:hidden;
+		}
+	}
+
+	.the-special-one{
+		height:200px;
+		width:200px;
+		margin:auto;
+		position:relative;
+		.footballer{
+			height:200px;
+			width:200px;
+			position:relative;
+			z-index:100;
+			top:0;
+		}
+	}
+
+	@include respondMinMax(315px, false){
+		.back-row {
+			.footballer-pos-1{
+				visibility: visible;
+			}
+
+			.footballer-pos-4{
+				visibility: visible;
+			}
+		}
+	}
+
+	@include respondMinMax(420px, false){
+		.front-row {
+			.footballer-pos-2{
+				visibility: visible;
+			}
+
+			.footballer-pos-3{
+				visibility: visible;
+			}
+		}
+	}
+	
+	@include respondMinMax(500px, false){
+		.back-row {
+			.footballer-pos-2{
+				visibility: visible;
+			}
+
+			.footballer-pos-3{
+				visibility: visible;
+			}
+		}
+	}
+}

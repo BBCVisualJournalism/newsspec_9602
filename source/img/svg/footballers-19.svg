@@ -10,7 +10,7 @@
 	    </clipPath>
 	</defs>
 <g>
-	<rect width="400" height="400" class="player-bg"/>
+	<rect width="400" height="400" class="player-bg" fill="rgba(0,0,0,0)"/>
 	<g>
 		<rect x="146.656" y="205.813" fill="#E0C1A6" width="104.16" height="148.469"/>
 	</g>

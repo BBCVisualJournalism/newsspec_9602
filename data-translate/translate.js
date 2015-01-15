@@ -71,7 +71,7 @@
 					'id': parseInt(player[0], 10),
 					'name': player[1],
 					'club': player[2],
-					'nationality': player[3],
+					'country': player[5],
 					'league': player[4],
 					'annual_wage': player[10],
 					'shirt_price': player[15]

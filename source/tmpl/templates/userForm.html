@@ -1,17 +1,32 @@
 <form class="user-form">
-	<label for="country">Your country:</label><br/>
-	<select name="country" class="user-form--country" data-selected-country="GBR"></select><br/><br/>
+    <h2 class="user-form--header">How does your income compare to a top footballer?</h2>
 
-	<label for="income">Your annual income:</label><br/>
-	<span class="user-form--currency-symbol"></span> <input name="income" class="user-form--income" /><br/><br/>
 
-	<label for="player">Compare yourself to:</label><br/>
-	<select name="player" class="user-form--player">
-		<optgroup class="user-form--player__premier" label="Premier League players">
-		</optgroup>
-		<optgroup class="user-form--player__int" label="International players">
-		</optgroup>
-	</select><br/><br/>
+    <div class="input-section">
+        <label for="country" class="your-country">Your country:</label>
+        <select name="country" class="user-form--input user-form--input__dropdown user-form--input__country" data-selected-country="GBR"></select>
+    </div>
+    
+    <label for="income" class="user-form__income-label">Your pre-tax annual salary in local currency:</label>
+    <div class="input-section input-section__income">
+        <span class="user-form--currency-symbol"></span>
+        <input name="income" class="user-form--input user-form--input__income" />
+    </div>
+    
+    <div class="input-section">
+        <label for="player" class="player">Compare yourself to:</label>
+         <select name="player" class="user-form--input user-form--input__dropdown user-form--input__player">
+            <optgroup class="user-form--player__premier" label="Premier League players">
+            </optgroup>
+            <optgroup class="user-form--player__int" label="International players">
+            </optgroup>
+        </select>   
+    </div>
+    
+    <div class="player-stand">
+        <!-- PLAYER STAND WILL BE LOADED HERE-->
+    </div>
 
-	<input type="submit" value="Submit" />
+    <input class="user-form--button" type="submit" value="See how you compare" />
+
 </form>

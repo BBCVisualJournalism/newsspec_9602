@@ -11,11 +11,15 @@ define([
             this.userModel = options.userModel;
             this.player = this.userModel.player();
 
+            this.setElement(this.template());
         },
         render: function () {
-            this.$el.html(this.template());
+            this.topTextEl = this.$el.find('.yearly-salary--text__top');
+            this.bottomTextEl = this.$el.find('.yearly-salary--text__bottom');
+            this.graphicStartDateEl = this.$el.find('.timeline--date__start');
+            this.graphicEndDateEl = this.$el.find('.timeline--date__end');
 
-            this.textEl = this.$el.find('.yearly-salary--text');
+            this.graphicStartDateEl.text(new Date().getFullYear());
             this.updateText();
 
             return this.$el;
@@ -24,13 +28,29 @@ define([
             var years = Calculator.userYearsToEarn(this.userModel.incomePPP(), this.player.get('annual_wage')),
                 startYear = Calculator.startYearWith(years);
 
-            var dynText = 'On your current salary, it would take you <strong>{YEARS} years</strong> to earn {PLAYER_NAME}\'s annual wage (if you started in {START_YEAR}, you\'d be almost finished).';
+            var topText = 'On your current salary, it would take you <strong>{YEARS} years</strong> to earn {PLAYER_NAME}\'s annual wage.',
+                bottomText = 'If you started in the year <strong>{START_YEAR}</strong>, you\'d be almost finished.';
             
-            var processText = dynText.replace('{PLAYER_NAME}', this.player.get('name'));
-            processText = processText.replace('{YEARS}', years);
-            processText = processText.replace('{START_YEAR}', startYear);
+            var replacements = {
+                '{PLAYER_NAME}': this.player.get('name'),
+                '{YEARS}': years,
+                '{START_YEAR}': startYear
+            };
 
-            this.textEl.html(processText);
+            this.topTextEl.html(this.processText(topText, replacements));
+            this.bottomTextEl.html(this.processText(bottomText, replacements));
+            this.updateGraphicText(startYear);
+        },
+        updateGraphicText: function (startYear) {
+            this.graphicEndDateEl.text(startYear);
+        },
+        processText: function (text, replacements) {
+            var returnText = text;
+            for (var replacement in replacements) {
+                console.log(replacement);
+                returnText = returnText.replace(replacement, replacements[replacement]);
+            }
+            return returnText;
         }
     });
 });

@@ -1,8 +1,91 @@
 .user-form{
-	font-size: 1.6em;
+	display: block;
 	margin-left: 10px;
-	
+	padding:12px 0 12px 0;
+	background:#f2f2f2;
+	max-width: 488px;
+	margin: auto;
+
+	.user-form--header{
+		color:#007f7f;
+		font-size:1.8em;
+		padding:0 0 12px 0;
+		border-bottom:2px solid #d9d9d9;
+		text-align:center;
+		margin: 0 12px 14px 12px
+	}
+
 	.user-form--input__error{
 		border: 1px solid red;
 	}
+
+	.user-form--input{
+		display:block;
+		padding:8px;
+		font-size:1.4em;
+		border:1px solid grey;
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+		-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+		box-sizing: border-box;
+		margin-top:4px;
+		background:#fff;
+		width: 100%;
+		overflow: hidden;
+	}
+	.user-form--input__dropdown{
+		border-radius:0;
+		-webkit-appearance: none;
+		-webkit-border-radius: 0;	
+		background:#fff url(../img/dropdown.png) center right no-repeat;
+	}
+
+	.input-section__income{
+		width: 100%;
+		display:table;
+
+		.user-form--currency-symbol{
+			display:table-cell;
+			font-size: 1.6em;
+			text-align: center;
+			width: 30px;
+		}
+		.user-form--input__income{
+			display:table-cell;
+			width:100%
+		}
+	}
+
+	.input-section {
+		max-width:300px;
+		margin:auto;
+		padding:0 0 12px 0;
+	}
+
+	label{
+		font-size: 1.4em;
+		font-weight:bold;
+		line-height:1em;
+		display:block;
+		color:#404040;
+	}
+
+	.user-form--button {
+		display: block;
+		max-width:300px;
+		margin:auto;
+		width: 100%;
+		color:#fff;
+		font-weight:bold;
+		font-size:1.6em;
+		padding:12px;
+		border:0;
+		background:#007f7f;
+	}
+
+	.user-form__income-label{
+		max-width:300px;
+		display: block;
+		margin:auto;
+	}
+
 }

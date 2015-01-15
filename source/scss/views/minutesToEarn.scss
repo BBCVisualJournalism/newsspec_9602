@@ -1,0 +1,33 @@
+.minutes-to-earn{
+	color: #404040;
+	margin: 20px;
+	text-align: center;
+	padding-top: 10px;
+
+	.minutes-to-earn--text{
+		font-weight: normal;
+		font-family: Arial;
+		font-size: 1.6em;
+		line-height: 1.2em;
+		padding: 0 15px;
+		max-width: 600px;
+		margin: 0 auto 18px;
+	}
+
+	.minutes-to-earn--football-pitch{
+		width: 298px;
+		height: 205px;
+		margin: auto;
+		position: relative;
+		background: url(../img/football_pitch.png);
+
+		.minutes-to-earn--football-pitch-text{
+			text-align: center;
+			font-size: 2.8em;
+			font-weight: bold;
+			color: #262C7E;
+			padding-top: 86px;
+		}
+	}
+
+}

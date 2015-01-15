@@ -12,10 +12,10 @@ define([
             this.player = this.userModel.player();
             this.startTime = Date.now();
             _.bindAll(this, 'updateTicker');
+
+            this.setElement(this.template());
         },
         render: function () {
-            this.$el.html(this.template());
-
             this.yourselfEl = this.$el.find('.earned__yourself');
             this.nationalAvgEl = this.$el.find('.earned__national-avg');
             this.playerAvgEl = this.$el.find('.earned__player');
@@ -42,12 +42,13 @@ define([
             self.playerIconEl.load('img/svg/footballers-' + playerId + '.svg', null);
         },
         updateTicker: function () {
-            this.updateValue(this.yourselfEl, this.userModel.incomePPP());
-            this.updateValue(this.nationalAvgEl, this.userModel.country().get('annual_wage'));
-            this.updateValue(this.playerAvgEl, this.player.get('annual_wage'));
+            var now = Date.now();
+            this.updateValue(this.yourselfEl, this.userModel.incomePPP(), now);
+            this.updateValue(this.nationalAvgEl, this.userModel.country().get('annual_wage'), now);
+            this.updateValue(this.playerAvgEl, this.player.get('annual_wage'), now);
         },
-        updateValue: function (element, annualSalary) {
-            var pppEarned = Calculator.amountEarned(annualSalary, this.startTime, Date.now()),
+        updateValue: function (element, annualSalary, nowTime) {
+            var pppEarned = Calculator.amountEarned(annualSalary, this.startTime, nowTime),
                 localEarned = Calculator.pppToLocal(this.userModel.country().get('ppp'), pppEarned),
                 currencySymbol = this.userModel.country().get('currency_symbol');
             element.text(currencySymbol + '' + localEarned.toFixed(2));

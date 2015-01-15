@@ -10,7 +10,7 @@
 	    </clipPath>
 	</defs>
 <g>
-	<rect width="400" height="400" class="player-bg"/>
+	<rect width="400" height="400" class="player-bg" fill="rgba(0,0,0,0)"/>
 	<g>
 		<defs>
 			<path id="SVGID_3_" d="M-217.891-90.889c52.613,0,52.119-49.037,52.119-49.037l105.406,44.142c0,0,36.928,16.228,36.928,75.697

@@ -23,7 +23,7 @@ define([
             return this.players.findWhere({id: playerId});
         },
         incomePPP: function () {
-            return this.get('income') * this.country().get('ppp');
+            return this.get('income') / this.country().get('ppp');
         },
         validate: function (attrs) {
             var errors = [];

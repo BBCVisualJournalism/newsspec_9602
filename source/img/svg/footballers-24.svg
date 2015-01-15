@@ -9,7 +9,7 @@
 	        <circle stroke="#000000" stroke-miterlimit="10" cx="200" cy="200" r="175" />
 	    </clipPath>
 	</defs>
-<rect width="400" height="400" class="player-bg"/>
+<rect width="400" height="400" class="player-bg" fill="rgba(0,0,0,0)"/>
 <rect x="147.357" y="211.951" fill="#D4B69C" width="104.25" height="112.675"/>
 <path fill="#A8E6F8" d="M198.834,324.979c52.613,0,52.119-49.037,52.119-49.037l105.406,44.142c0,0,36.928,16.228,36.928,75.697
 	H4.559c0-59.47,36.928-75.697,36.928-75.697l105.406-44.142c0,0-0.494,49.037,52.119,49.037"/>
