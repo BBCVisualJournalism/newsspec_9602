@@ -20,15 +20,11 @@ define([
                 if (barValue > maxValue) {
                     maxValue = barValue;
                 }
-                console.log(maxValue);
-
             }
 
-            console.log(this.data);
-
             /* Calcualte bar width percentages from max value */
-            for (var i = 0; i < this.data.length; i++) {
-                this.data[i].barWidth = Math.ceil(this.data[i].value / maxValue * 100);
+            for (var x = 0; x < this.data.length; x++) {
+                this.data[x].barWidth = Math.ceil(this.data[x].value / maxValue * 100);
             }
         },
         render: function () {

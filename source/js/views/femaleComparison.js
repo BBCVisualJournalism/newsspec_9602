@@ -18,8 +18,8 @@ define([
             this.setElement(this.template());
         },
         render: function () {
-            this.textEl = this.$el.find('.avg-comparisons--text');
-            this.barChartEl = this.$el.find('.avg-comparisons--chart');
+            this.textEl = this.$el.find('.female-comparison--text');
+            this.barChartEl = this.$el.find('.female-comparison--chart');
 
             this.updateText();
             this.addBarChart();
@@ -35,10 +35,6 @@ define([
             this.barChartEl.append(barChart.render());
         },
         updateText: function () {
-
-            console.log(this.femalePlayer.get('annual_wage'));
-            console.log(this.userPlayer.get('annual_wage'));
-
             var text = '{PLAYER_NAME} earns <strong>{AMOUNT}</strong> than the former England ladies captain Casey Stone, who is on a reported £25,000 a year.';
             
             var amount = Calculator.compareWage(this.userPlayer.get('annual_wage'), this.femalePlayer.get('annual_wage'));

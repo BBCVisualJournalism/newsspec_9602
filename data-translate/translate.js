@@ -74,7 +74,8 @@
 					'country': player[5],
 					'league': player[4],
 					'annual_wage': player[10],
-					'shirt_price': player[15]
+					'shirt_price': player[15],
+					'surname': player[17]
 				});
 
 			}

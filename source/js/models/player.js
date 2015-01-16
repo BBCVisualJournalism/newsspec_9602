@@ -13,7 +13,8 @@ define([
             'country': '',
             'league': '',
             'annual_wage': 0,
-            'shirt_price': 0
+            'shirt_price': 0,
+            'surname': ''
         },
         loadCountries: function () {
             if (!this.countries) {

@@ -1,11 +1,11 @@
-.female-comparison{
-	color: #404040;
-	margin: 20px 2px;
-	text-align: center;
+.shirts{
 	border-top: 1px solid #d5d6d7;
-	padding-top: 25px;
+	color: #404040;
+	margin: 20px;
+	text-align: center;
+	padding-top: 34px;
 
-	.female-comparison--text{
+	.shirts--text{
 		font-weight: normal;
 		font-family: Arial;
 		font-size: 1.6em;
@@ -14,10 +14,9 @@
 		max-width: 600px;
 		margin: 0 auto 18px;
 	}
-
-	.female-comparison--chart{
-		max-width: 350px;
-		margin: auto;
+	.shirts--graphic{
+		max-width: 306px;
+		max-height: 216px;
+		margin: 20px auto;
 	}
-
 }

@@ -29,7 +29,9 @@ define([
             this.populateCountries();
             this.populatePlayers();
 
-            this.playerStandView = new PlayerStandView({selectedPlayer: this.playerEl.val()});
+            var playerOrder = [this.playerEl.val(), 12, 13, 6, 2, 17, 15, 20, 23];
+
+            this.playerStandView = new PlayerStandView({order: playerOrder});
             this.$el.find('.player-stand').html(this.playerStandView.render());
 
             this.options.container.html(this.$el);

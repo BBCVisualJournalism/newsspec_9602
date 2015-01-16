@@ -8,41 +8,61 @@ define([
         template: _.template(htmlTemplate),
 
         initialize: function (options) {
-            this.setElement(this.template());
 
-            this.selectedPlayer = options.selectedPlayer;
+            this.order = options.order;
         },
         render: function () {
+            this.$el.html(this.template());
             this.preloadedPlayers = this.$el.find('.preload .footballer');
-            this.updatePlayer(this.selectedPlayer);
+            this.selectedPlayerEl = this.$el.find('.the-special-one .footballer');
+            this.frontRowPlayers = this.$el.find('.front-row .footballer');
+            this.backRowPlayers = this.$el.find('.back-row .footballer');
+            this.orderPlayers();
 
             return this.$el;
         },
-        updatePlayer: function (selectedPlayer) {
-            var newClass = 'footballer footballer-' + selectedPlayer;
-        
-            if ((this.preloadedPlayers.length) > 1) {
-                var i = this.preloadedPlayers.length;
-                while (i--) {
-                    var thisPlayer = i;
-                    if (this.$el.find('.footballer-' + thisPlayer).length === 1) {
-                        console.log(this.$el.find('.players-wrapper .footballer-' + selectedPlayer));
-                        var subClass = this.$el.find('.players-wrapper .footballer-' + selectedPlayer).attr('class');
-                        subClass = subClass.replace('footballer-' + selectedPlayer, 'footballer-' + thisPlayer);
-                        this.$el.find('.players-wrapper .footballer-' + selectedPlayer).attr('class', subClass);
+        orderPlayers: function () {
+            var playerOrder = _.clone(this.order);
 
-                        break;
+            var playerNumber = playerOrder.shift();
+            this.selectedPlayerEl.addClass('footballer-' + playerNumber);
+
+            this.frontRowPlayers.each(function () {
+                playerNumber = playerOrder.shift();
+                $(this).addClass('footballer-' + playerNumber);
+            });
+            this.backRowPlayers.each(function () {
+                playerNumber = playerOrder.shift();
+                $(this).addClass('footballer-' + playerNumber);
+            });
+
+        },
+        updatePlayer: function (selectedPlayer) {
+            var self = this;
+
+            var special = this.$el.find('.the-special-one .footballer');
+            var newClass = 'footballer-' + selectedPlayer;
+
+            var playerWrapper = this.$el.find('.players-wrapper');
+
+            var playerAlreadyInStand = playerWrapper.find('.' + newClass);
+            /* Check player isnt already in the stand */
+            if (playerAlreadyInStand.length > 0) {
+                this.preloadedPlayers.each(function () {
+                    var replacementFootballer = $(this).attr('class').split(' ').pop();
+                    /* Find a player thats not in the stand */
+                    //console.log(playerWrapper.find('.' + replacementFootballer));
+                    if (playerWrapper.find('.' + replacementFootballer).length === 0) {
+                        playerAlreadyInStand.removeClass(newClass);
+                        playerAlreadyInStand.addClass(replacementFootballer);
+                        return false;
                     }
-                }
-            
+                });
             }
-        
-            var special = this.$el.find('.the-special-one div');
+
             special
                 .css('opacity', 0)
-                .attr('class', '')
-                .attr('class', newClass);
-
+                .attr('class', 'footballer ' + newClass);
 
             special.animate({
                 opacity: 1

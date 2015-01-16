@@ -4,9 +4,10 @@ define([
     'views/minutesToEarn',
     'views/yearlySalary',
     'views/avgComparisons',
+    'views/shirts',
     'views/femaleComparison',
     'views/liveTicker'
-], function (news, Backbone, MinutesToEarn, YearlySalaryView, AvgComparisons, FemaleComparison, LiveTickerView) {
+], function (news, Backbone, MinutesToEarn, YearlySalaryView, AvgComparisons, Shirts, FemaleComparison, LiveTickerView) {
     return Backbone.View.extend({
         initialize: function (options) {
             this.container = options.container;
@@ -18,6 +19,7 @@ define([
             this.addMinutesToEarn();
             this.addYearlySalary();
             this.addAvgComparisons();
+            this.addShirts();
             this.addFemaleComparison();
             this.addLiveTicker();
 
@@ -34,6 +36,10 @@ define([
         addAvgComparisons: function () {
             var avgComparisonsView = new AvgComparisons({userModel: this.userModel});
             this.$el.append(avgComparisonsView.render());
+        },
+        addShirts: function () {
+            var shirtsView = new Shirts({userModel: this.userModel});
+            this.$el.append(shirtsView.render());
         },
         addFemaleComparison: function () {
             var femaleComparisonView = new FemaleComparison({userModel: this.userModel});
