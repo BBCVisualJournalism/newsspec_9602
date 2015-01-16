@@ -3,8 +3,9 @@ define([
     'backbone',
     'views/minutesToEarn',
     'views/yearlySalary',
+    'views/avgComparisons',
     'views/liveTicker'
-], function (news, Backbone, MinutesToEarn, YearlySalaryView, LiveTickerView) {
+], function (news, Backbone, MinutesToEarn, YearlySalaryView, AvgComparisons, LiveTickerView) {
     return Backbone.View.extend({
         initialize: function (options) {
             this.container = options.container;
@@ -15,6 +16,7 @@ define([
 
             this.addMinutesToEarn();
             this.addYearlySalary();
+            this.addAvgComparisons();
             this.addLiveTicker();
 
             this.container.html(this.$el);
@@ -26,6 +28,10 @@ define([
         addYearlySalary: function () {
             var yearlySalaryView = new YearlySalaryView({userModel: this.userModel});
             this.$el.append(yearlySalaryView.render());
+        },
+        addAvgComparisons: function () {
+            var avgComparisonsView = new AvgComparisons({userModel: this.userModel});
+            this.$el.append(avgComparisonsView.render());
         },
         addLiveTicker: function () {
             var liveTickerView = new LiveTickerView({userModel: this.userModel});

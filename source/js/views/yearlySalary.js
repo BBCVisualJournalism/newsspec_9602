@@ -2,8 +2,9 @@ define([
     'lib/news_special/bootstrap',
     'backbone',
     'text!templates/yearlySalary.html',
-    'models/calculator'
-], function (news, Backbone, htmlTemplate, Calculator) {
+    'models/calculator',
+    'models/textFormat'
+], function (news, Backbone, htmlTemplate, Calculator, TextFormat) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -37,20 +38,12 @@ define([
                 '{START_YEAR}': startYear
             };
 
-            this.topTextEl.html(this.processText(topText, replacements));
-            this.bottomTextEl.html(this.processText(bottomText, replacements));
+            this.topTextEl.html(TextFormat.processText(topText, replacements));
+            this.bottomTextEl.html(TextFormat.processText(bottomText, replacements));
             this.updateGraphicText(startYear);
         },
         updateGraphicText: function (startYear) {
             this.graphicEndDateEl.text(startYear);
-        },
-        processText: function (text, replacements) {
-            var returnText = text;
-            for (var replacement in replacements) {
-                console.log(replacement);
-                returnText = returnText.replace(replacement, replacements[replacement]);
-            }
-            return returnText;
         }
     });
 });

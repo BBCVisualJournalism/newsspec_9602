@@ -1,0 +1,13 @@
+<div class="bar-chart">
+	<ul class="bar-chart--labels">
+	<% _.each(data, function(dataItem){ %>
+		<li class="bar-chart--label"><%= dataItem.label %></li>
+	<% }); %>
+	</ul>
+	<div class="bar-chart--axis"></div>
+	<div class="bar-chart--bars">
+	<% _.each(data, function(dataItem){ %>
+		<div class="bar-chart--bar" style="width: <%= dataItem.barWidth %>%;background-color: <%= dataItem.color %>;"></div>
+	<% }); %>
+	</div>
+</div>

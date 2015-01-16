@@ -44,13 +44,6 @@ define(['backbone'], function (Backbone) {
         },
         pppToLocal: function (pppConv, pppValue) {
             return pppConv * pppValue;
-        },
-        formatNumber: function (num) {
-            if (true) {
-                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-            } else {
-                return num;
-            }
         }
     });
 });

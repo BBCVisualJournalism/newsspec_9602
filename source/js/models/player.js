@@ -2,8 +2,9 @@ define([
     'backbone',
     'data/countries',
     'collections/countries',
-    'models/calculator'
-], function (Backbone, countriesData, CountriesCollection, Calculator) {
+    'models/calculator',
+    'models/textFormat'
+], function (Backbone, countriesData, CountriesCollection, Calculator, TextFormat) {
     return Backbone.Model.extend({
         defaults: {
             'id': null,
@@ -21,8 +22,6 @@ define([
         },
         country: function () {
             this.loadCountries();
-            console.log({code: this.get('country')});
-            console.log(this.countries.findWhere({code: this.get('country')}));
             return this.countries.findWhere({code: this.get('country')});
         },
         getRoundedWage: function () {
@@ -30,7 +29,7 @@ define([
                 localWage = Calculator.pppToLocal(country.get('ppp'), this.get('annual_wage')),
                 roundedWage = Math.round(localWage / 100000) * 100000;
 
-            return country.get('currency_symbol') + '' + Calculator.formatNumber(roundedWage);
+            return country.get('currency_symbol') + '' + TextFormat.formatNumber(roundedWage);
         }
     });
 });

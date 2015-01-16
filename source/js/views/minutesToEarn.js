@@ -2,8 +2,9 @@ define([
     'lib/news_special/bootstrap',
     'backbone',
     'text!templates/minutesToEarn.html',
-    'models/calculator'
-], function (news, Backbone, htmlTemplate, Calculator) {
+    'models/calculator',
+    'models/textFormat'
+], function (news, Backbone, htmlTemplate, Calculator, TextFormat) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -28,26 +29,17 @@ define([
             var replacements = {
                 '{PLAYER_NAME}': this.player.get('name'),
                 '{PLAYER_WAGE}': this.player.getRoundedWage(),
-                '{MINUTES_TO_EARN}': minutesToEarn
+                '{MINUTES_TO_EARN}': TextFormat.formatNumber(minutesToEarn)
             };
 
-            this.textEl.html(this.processText(topText, replacements));
+            this.textEl.html(TextFormat.processText(topText, replacements));
 
             this.animateMinutes(minutesToEarn);
         },
-
-        processText: function (text, replacements) {
-            var returnText = text;
-            for (var replacement in replacements) {
-                returnText = returnText.replace(replacement, replacements[replacement]);
-            }
-            return returnText;
-        },
-
         animateMinutes: function (minutes) {
             var self = this;
 
-            this.pitchTextEl.hide()
+            this.pitchTextEl.hide();
             this.pitchTextEl.fadeIn(1000, function () {
 
                 /* Speedbar determines how often the number increases */
@@ -64,9 +56,9 @@ define([
                     count++;
                     var numberValue = Math.floor(incrementValue * count);
                     if (numberValue - incrementValue < minutes) {
-                        self.pitchTextEl.text(Calculator.formatNumber(numberValue) + ' MINUTES');
+                        self.pitchTextEl.text(TextFormat.formatNumber(numberValue) + ' MINUTES');
                     } else {
-                        self.pitchTextEl.text(Calculator.formatNumber(minutes) + ' MINUTES');
+                        self.pitchTextEl.text(TextFormat.formatNumber(minutes) + ' MINUTES');
                         clearInterval(timeInterval);
                     }
                 }, refreshTime);

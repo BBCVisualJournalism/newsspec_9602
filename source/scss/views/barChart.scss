@@ -1,0 +1,35 @@
+.bar-chart{
+	position: relative;
+	overflow: hidden;
+
+	.bar-chart--labels{
+		display: block;
+		float: left;
+		list-style: none;
+		font-size: 1.6em;
+		font-weight: normal;
+		padding: 0;
+		margin: -10px 0 0 0;
+
+		.bar-chart--label{
+			margin: 41px 0;
+			text-align: right;
+			padding-right: 10px;
+		}
+	}
+
+	.bar-chart--axis{
+		position: absolute;
+		width: 3px;
+		top: 10px;
+		bottom: 20px;
+		background-color: #a8e6f8;
+	}
+	.bar-chart--bars{
+		.bar-chart--bar{
+			margin: 19px 0;
+			height: 40px;
+		}
+
+	}
+}
