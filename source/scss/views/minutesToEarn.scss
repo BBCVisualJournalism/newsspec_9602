@@ -15,18 +15,19 @@
 	}
 
 	.minutes-to-earn--football-pitch{
-		width: 298px;
+		max-width: 298px;
 		height: 205px;
 		margin: auto;
 		position: relative;
-		background: url(../img/football_pitch.png);
+		background: url(../img/football_pitch.png) no-repeat;
+		background-size: contain;
 
 		.minutes-to-earn--football-pitch-text{
 			text-align: center;
 			font-size: 2.8em;
 			font-weight: bold;
 			color: #262C7E;
-			padding-top: 86px;
+			padding-top: 30%;
 		}
 	}
 

@@ -21,11 +21,11 @@ define(['models/calculator'],  function (Calculator) {
             expect(Calculator.startYearWith(3000)).toEqual('985 BC');
         });
         it('should compare a the users wage with a given wage', function () {
-            expect(Calculator.compareWage(20000, 10000)).toEqual('2 times');
-            expect(Calculator.compareWage(25000, 10000)).toEqual('2.5 times');
+            expect(Calculator.compareWage(20000, 10000)).toEqual('2 times more');
+            expect(Calculator.compareWage(25000, 10000)).toEqual('2.5 times more');
             expect(Calculator.compareWage(10000, 20000)).toEqual('50% of');
             expect(Calculator.compareWage(15001, 15000)).toEqual('about the same as');
-            expect(Calculator.compareWage(5200000, 50000)).toEqual('104 times');
+            expect(Calculator.compareWage(5200000, 50000)).toEqual('104 times more');
         });
         it('should calculate the number of shirts needed to be sold, to pay the footballers wages', function () {
             expect(Calculator.numberOfShirts(20000000, 50)).toEqual(400000);

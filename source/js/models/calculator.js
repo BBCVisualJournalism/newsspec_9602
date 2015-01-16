@@ -25,7 +25,7 @@ define(['backbone'], function (Backbone) {
                 /* If number after decimal point is 0, show the whole number instead */
                 var wholeNumber = Math.round(roundedComparison);
                 roundedComparison = (wholeNumber === roundedComparison || roundedComparison > 30) ? wholeNumber : roundedComparison;
-                return roundedComparison + ' times';
+                return roundedComparison + ' times more';
             } else {
                 return Math.round(comparison * 100) + '% of';
             }

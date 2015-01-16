@@ -15,16 +15,20 @@ define([
         addBarWidths: function () {
             /* Find max value */
             var maxValue = 0;
-            for (var dataItem in this.data) {
-                var bar = this.data[dataItem];
-                if (bar.value > maxValue) {
-                    maxValue = bar.value;
+            for (var i = 0; i < this.data.length; i++) {
+                var barValue = parseFloat(this.data[i].value, 10);
+                if (barValue > maxValue) {
+                    maxValue = barValue;
                 }
+                console.log(maxValue);
+
             }
 
+            console.log(this.data);
+
             /* Calcualte bar width percentages from max value */
-            for (var item in this.data) {
-                this.data[item].barWidth = Math.round(this.data[item].value / maxValue * 100);
+            for (var i = 0; i < this.data.length; i++) {
+                this.data[i].barWidth = Math.ceil(this.data[i].value / maxValue * 100);
             }
         },
         render: function () {
@@ -47,7 +51,7 @@ define([
                 }
             });
 
-            var labelsWidth = maxElWidth + 30;
+            var labelsWidth = maxElWidth + 20;
             this.chartLabelsEl.css('width', (labelsWidth)  + 'px');
             this.chartAxisEl.css('left', (labelsWidth - 3) + 'px');
             this.chartBarsEl.css('margin-left', (labelsWidth) + 'px');
