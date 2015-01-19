@@ -133,6 +133,13 @@
                     this.getObjectNotationFromDataString(data)
                 );
                 this.processIStatsInstructions(this.data);
+                if (this.scrollInTheData()) {
+                    if (this.data.scrollDuration <= 0) {
+                        this.scrollToInstant(this.data.scrollPosition);
+                    } else {
+                        this.scrollToAnimated(this.data.scrollPosition, this.data.scrollDuration);
+                    }
+                }
             }
         },
 
@@ -190,7 +197,37 @@
                 return window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
             }
         },
+        getScrollY: function () {
+            return window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop || 0;
+        },
+        scrollToInstant: function (iframeScrollPosition) {
+            var scrollPosition = this.elm.getBoundingClientRect().top + this.getScrollY() + iframeScrollPosition;
+            window.scrollTo(0, scrollPosition);
+        },
+        scrollToAnimated: function (iframeScrollPosition, scrollDuration) {
+            var self = this;
 
+            var scrollY = this.getScrollY(),
+                scrollPosition = this.elm.getBoundingClientRect().top + scrollY + iframeScrollPosition;
+
+            var scrollStep = (scrollPosition - scrollY) / (scrollDuration / 15);
+
+            /* Timeout to cancel if something wierd happens  - prevent infinite loops */
+            var timeout = false;
+            setTimeout(function () { timeout = true; }, scrollDuration * 2);
+
+            var scrollInterval = setInterval(function () {
+                scrollY = self.getScrollY();
+                if ((
+                    (scrollStep >= 0 && scrollY <= scrollPosition) || 
+                    (scrollStep < 0 && scrollY > scrollPosition)
+                ) && !timeout) {
+                    window.scrollBy(0, scrollStep);
+                } else {
+                    clearInterval(scrollInterval);
+                }
+            }, 15);
+        },
         removeAppWebViewLinksFromHostPage: function () {
             this.removeElementFromHostPage('a', 'href', window.location.pathname);
         },
@@ -225,6 +262,10 @@
                     }
                 }
             }
+        },
+
+        scrollInTheData: function () {
+            return (typeof(this.data.scrollPosition) !== 'undefined');
         },
 
         // ###########################################

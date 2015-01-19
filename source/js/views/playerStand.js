@@ -1,9 +1,8 @@
 define([
     'lib/news_special/bootstrap',
     'backbone',
-    'text!templates/playerStand.html',
-    'views/widgetsView'
-], function (news, Backbone, htmlTemplate, WidgetsView) {
+    'text!templates/playerStand.html'
+], function (news, Backbone, htmlTemplate) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 

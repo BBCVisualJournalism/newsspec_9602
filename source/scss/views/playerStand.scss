@@ -15,8 +15,8 @@
 
 	.footballer{
 		background-size:100% 100%;
-		height:125px;
-		width:125px;
+		height:130px;
+		width:130px;
 		position:absolute;
 		.player-bg{
 			fill: rgba(0,0,0,0);
@@ -134,12 +134,12 @@
 		}
 
 		.footballer-pos-2{
-			left:82px;
+			left:108px;
 			visibility:hidden;
 		}
 
 		.footballer-pos-3{
-			right:82px;
+			right:108px;
 			visibility:hidden;
 		}
 
@@ -149,50 +149,50 @@
 	}
 	.back-row{
 		.footballer{
-			top:100px;
-			height:80px;
-			width:80px;
+			top:80px;
+			height:100px;
+			width:100px;
 			z-index:80;
 			opacity:0.8;
 
 		}
 
 		.footballer-pos-1{
-			left:60px;
+			left:51px;
 			visibility:hidden;
 		}
 
 		.footballer-pos-2{
-			left:150px;
+			left:186px;
 			visibility:hidden;
 		}
 
 		.footballer-pos-3{
-			right:150px;
+			right:186px;
 			visibility:hidden;
 		}
 
 		.footballer-pos-4{
-			right:60px;
+			right:51px;
 			visibility:hidden;
 		}
 	}
 
 	.the-special-one{
 		height:200px;
-		width:200px;
+		width:225px;
 		margin:auto;
 		position:relative;
 		.footballer{
 			height:200px;
-			width:200px;
+			width:225px;
 			position:relative;
 			z-index:100;
 			top:0;
 		}
 	}
 
-	@include respondMinMax(315px, false){
+	@include respondMinMax(300px, false){
 		.back-row {
 			.footballer-pos-1{
 				visibility: visible;
@@ -204,7 +204,7 @@
 		}
 	}
 
-	@include respondMinMax(420px, false){
+	@include respondMinMax(490px, false){
 		.front-row {
 			.footballer-pos-2{
 				visibility: visible;
@@ -217,7 +217,7 @@
 		}
 	}
 	
-	@include respondMinMax(500px, false){
+	@include respondMinMax(590px, false){
 		.back-row {
 			.footballer-pos-2{
 				visibility: visible;

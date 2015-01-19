@@ -15,12 +15,15 @@ define([
             this.countries = this.model.countries;
             this.players = this.model.players;
 
-            _.bindAll(this, 'submit', 'changePlayer');
+            _.bindAll(this, 'submit', 'changePlayer', 'compareAgain');
+
+            news.pubsub.on('compareAgain', this.compareAgain);
         },
         render: function () {
             this.$el.html(this.template());
 
             /* INIT VARS */
+            this.formEl = this.$el.find('.user-form');
             this.countryEl = this.$el.find('.user-form--input__country');
             this.playerEl = this.$el.find('.user-form--input__player');
             this.incomeEl = this.$el.find('.user-form--input__income');
@@ -104,6 +107,8 @@ define([
                     container: $('.results-widgets')
                 });
                 widgetsView.render();
+
+                news.pubsub.emit('window:scrollTo', [$('.results-widgets').offset().top - 20, 600]);
             }
         },
         showValidationErrors: function (errors) {
@@ -116,6 +121,10 @@ define([
         resetValidationErrors: function () {
             this.countryEl.removeClass('user-form--input__error');
             this.incomeEl.removeClass('user-form--input__error');
+        },
+        compareAgain: function (player) {
+            this.playerEl.val(player).change();
+            this.formEl.submit();
         }
     });
 });

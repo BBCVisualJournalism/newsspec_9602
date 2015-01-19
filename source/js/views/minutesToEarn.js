@@ -40,7 +40,7 @@ define([
             var self = this;
 
             this.pitchTextEl.hide();
-            this.pitchTextEl.fadeIn(1000, function () {
+            this.pitchTextEl.fadeIn(1500, function () {
 
                 /* Speedbar determines how often the number increases */
                 var speedVar = (minutes < 50) ? minutes : 50;
