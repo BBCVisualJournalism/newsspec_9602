@@ -54,6 +54,11 @@ define([
         addCompareAgain: function () {
             var compareAgainView = new CompareAgainView({userModel: this.userModel});
             this.$el.append(compareAgainView.render());
+        },
+        destroyAll: function () {
+            news.pubsub.emit('sharetools:unbind');
+            this.unbind();
+            this.remove();
         }
 
     });

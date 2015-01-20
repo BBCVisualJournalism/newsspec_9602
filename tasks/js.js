@@ -18,7 +18,7 @@ module.exports = function (grunt) {
             src:    ['**'],
             dest:   'content/<%= config.services.default %>/js/'
         }]
-    });
+    });    
     
     grunt.config('uglify', {
         options: {

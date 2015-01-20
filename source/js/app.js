@@ -1,9 +1,10 @@
 define([
     'lib/news_special/bootstrap',
     'backbone',
+    'lib/vendors/bind.polyfill.js',
     'models/user',
     'views/userForm'
-], function (news, Backbone, UserModel, UserForm) {
+], function (news, Backbone, BindPolyfill, UserModel, UserForm) {
 
     var mainEl = news.$('.main');
 

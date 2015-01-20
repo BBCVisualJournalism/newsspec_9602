@@ -46,6 +46,7 @@ define([
                 hashtag: 'BBCNewsGraphics',
                 template: 'dropdown'
             }, 'minutes-to-earn');
+
         },
         animateMinutes: function (minutes) {
             var self = this;

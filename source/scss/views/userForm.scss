@@ -15,10 +15,6 @@
 		margin: 0 12px 14px 12px
 	}
 
-	.user-form--input__error{
-		border: 1px solid red;
-	}
-
 	.user-form--input{
 		display:block;
 		padding:8px;
@@ -34,6 +30,11 @@
 	}
 	.user-form--input__dropdown{
 		border-radius:0;
+		-moz-appearance: none;
+		-ms-appearance: none;
+		outline : none;
+		-o-appearance: none;
+		appearance: none;
 		-webkit-appearance: none;
 		-webkit-border-radius: 0;	
 		background:#fff url(../img/dropdown.png) center right no-repeat;
@@ -86,6 +87,10 @@
 		max-width:300px;
 		display: block;
 		margin:auto;
+	}
+
+	.user-form--input__error{
+		border: 1px solid red;
 	}
 
 }

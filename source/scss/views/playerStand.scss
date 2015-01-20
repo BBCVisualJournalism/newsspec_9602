@@ -11,7 +11,9 @@
 
 	}
 
-
+	.footballer-image{
+		display: none;
+	}
 
 	.footballer{
 		background-size:100% 100%;
@@ -21,7 +23,12 @@
 		.player-bg{
 			fill: rgba(0,0,0,0);
 		}
-	}
+
+		.footballer-image{
+			height:130px;
+			width:130px;
+		}
+	}/*
 
 	.footballer-1{
 		background-image:url(../img/svg/footballers-1.svg);
@@ -121,7 +128,7 @@
 
 	.preload{
 		visibility:hidden;
-	}	
+	}*/	
 
 	.front-row {
 		.footballer{
@@ -155,6 +162,11 @@
 			z-index:80;
 			opacity:0.8;
 
+			.footballer-image{
+				height:100px;
+				width:100px;
+			}
+
 		}
 
 		.footballer-pos-1{
@@ -183,12 +195,19 @@
 		width:225px;
 		margin:auto;
 		position:relative;
+		overflow: hidden;
+
 		.footballer{
 			height:200px;
 			width:225px;
 			position:relative;
 			z-index:100;
-			top:0;
+			top:-5px;
+
+			.footballer-image{
+				height:225px;
+				width:225px;
+			}
 		}
 	}
 

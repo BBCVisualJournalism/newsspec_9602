@@ -15,6 +15,8 @@ define([
             this.countries = this.model.countries;
             this.players = this.model.players;
 
+            this.widgetsView = null;
+
             _.bindAll(this, 'submit', 'changePlayer', 'compareAgain');
 
             news.pubsub.on('compareAgain', this.compareAgain);
@@ -89,6 +91,7 @@ define([
             this.playerStandView.updatePlayer(this.playerEl.val());
         },
         submit: function (e) {
+            
             e.preventDefault();
             this.resetValidationErrors();
 
@@ -102,14 +105,19 @@ define([
             if (this.model.validationError) {
                 this.showValidationErrors(this.model.validationError);
             } else {
-                var widgetsView = new WidgetsView({
+                if (this.widgetsView !== null)  {
+                    this.widgetsView.destroyAll();
+                } 
+
+                this.widgetsView = new WidgetsView({
                     userModel: this.model,
                     container: $('.results-widgets')
                 });
-                widgetsView.render();
+                this.widgetsView.render();
 
                 news.pubsub.emit('window:scrollTo', [$('.results-widgets').offset().top - 20, 600]);
             }
+            return false;
         },
         showValidationErrors: function (errors) {
             var self = this;

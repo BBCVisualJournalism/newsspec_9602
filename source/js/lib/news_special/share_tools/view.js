@@ -144,7 +144,6 @@ define(['lib/news_special/bootstrap', 'lib/news_special/template_engine', 'lib/n
     * @method
     */
     NSShareView.prototype.toggleOverlay = function (element) {
-        console.log(element);
         $(element).closest('.share-tools-holder').find('.share__overlay').toggle();
     };
     /**
@@ -174,6 +173,14 @@ define(['lib/news_special/bootstrap', 'lib/news_special/template_engine', 'lib/n
         } else if (news.$(ev.currentTarget).hasClass('share__tool--twitter')) {
             news.pubsub.emit('ns:' + this.namespace + ':share:call:twitter');
         } else { throw new Error('ValueError: Share application not of know type i.e facebook'); }
+    };
+
+    NSShareView.prototype.destroy = function (ev) {
+        news.pubsub.off('ns:' + this.namespace + ':request:personalshare');
+        news.pubsub.off('ns:' + this.namespace + ':request:launchshare');
+        news.pubsub.off('ns:' + this.namespace + ':request:launchshare:samewindow');
+        news.pubsub.off('ns:' + this.namespace + ':overlay:toggle');
+        news.pubsub.off('ns:' + this.namespace + ':overlay:close');
     };
 
 

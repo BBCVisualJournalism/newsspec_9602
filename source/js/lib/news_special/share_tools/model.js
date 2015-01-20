@@ -362,6 +362,8 @@ define(['lib/news_special/bootstrap'], function (news) {
         ' ' + this.getHashTags() + // Hashtags string
         ' ' + this.storyPageUrl; // URL storypage
     },
+
+
     /**
     * Returns Email share request URL with appropriate callback
     * @public

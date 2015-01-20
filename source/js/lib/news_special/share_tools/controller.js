@@ -37,6 +37,8 @@ define(['lib/news_special/bootstrap', 'lib/news_special/share_tools/model', 'lib
         _initialiseModule: function () {
             var self = this; 
 
+            news.pubsub.on('sharetools:unbind', this._destroy.bind(this));
+
             news.pubsub.on('ns:' + this.namespace + ':share:message', function (target) { this._updateMessage(target); });
 
             news.pubsub.on('ns:' + this.namespace + ':share:setFacebookMessage', function (target) { this._updateFacebookMessage(target); });
@@ -55,6 +57,22 @@ define(['lib/news_special/bootstrap', 'lib/news_special/share_tools/model', 'lib
                 template.preventDefault();
                 news.pubsub.emit('ns:' + self.namespace + ':overlay:close', template);
             });
+        },
+        _destroy: function () {
+            news.pubsub.off('ns:' + this.namespace + ':module:ready');
+            news.pubsub.off('ns:' + this.namespace + ':request:personalshare');
+            news.pubsub.off('ns:' + this.namespace + ':request:launchshare');
+            news.pubsub.off('ns:' + this.namespace + ':share:message');
+            news.pubsub.off('ns:' + this.namespace + ':share:setFacebookMessage');
+            news.pubsub.off('ns:' + this.namespace + ':share:setTwitterMessage');
+            news.pubsub.off('ns:' + this.namespace + ':share:setEmailMessage');
+            news.pubsub.off('ns:' + this.namespace + ':share:call:facebook');
+            news.pubsub.off('ns:' + this.namespace + ':share:call:twitter');
+            news.pubsub.off('ns:' + this.namespace + ':share:call:email')
+            news.pubsub.off('ns:' + self.namespace + ':overlay:toggle');
+            news.pubsub.off('ns:' + self.namespace + ':overlay:close');
+
+            this.view.destroy();
         }
     }
 

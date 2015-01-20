@@ -11,8 +11,8 @@ define([
             this.userModel = options.userModel;
             this.player = this.userModel.player();
             this.startTime = Date.now();
+            
             _.bindAll(this, 'updateTicker');
-
             this.setElement(this.template());
         },
         render: function () {
