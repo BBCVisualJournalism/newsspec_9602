@@ -219,7 +219,7 @@
             var scrollInterval = setInterval(function () {
                 scrollY = self.getScrollY();
                 if ((
-                    (scrollStep >= 0 && scrollY <= scrollPosition) || 
+                    (scrollStep >= 0 && scrollY <= scrollPosition) ||
                     (scrollStep < 0 && scrollY > scrollPosition)
                 ) && !timeout) {
                     window.scrollBy(0, scrollStep);

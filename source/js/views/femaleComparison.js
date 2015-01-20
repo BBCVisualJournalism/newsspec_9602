@@ -1,11 +1,12 @@
 define([
     'lib/news_special/bootstrap',
     'backbone',
+    'lib/news_special/share_tools/controller',
     'text!templates/femaleComparison.html',
     'views/barChart',
     'models/calculator',
     'models/textFormat'
-], function (news, Backbone, htmlTemplate, BarChart, Calculator, TextFormat) {
+], function (news, Backbone, ShareTools, htmlTemplate, BarChart, Calculator, TextFormat) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -20,6 +21,7 @@ define([
         render: function () {
             this.textEl = this.$el.find('.female-comparison--text');
             this.barChartEl = this.$el.find('.female-comparison--chart');
+            this.shareToolsEl = this.$el.find('.share-tools-holder');
 
             this.updateText();
             this.addBarChart();
@@ -35,7 +37,8 @@ define([
             this.barChartEl.append(barChart.render());
         },
         updateText: function () {
-            var text = '{PLAYER_NAME} earns <strong>{AMOUNT}</strong> than the former England ladies captain Casey Stone, who is on a reported £25,000 a year.';
+            var text = '{PLAYER_NAME} earns <strong>{AMOUNT}</strong> than the former England ladies captain Casey Stone, who is on a reported £25,000 a year.',
+                shareText = '{PLAYER_NAME} earns {AMOUNT} than the former England ladies captain Casey Stone, who is on a reported £25,000 a year.';
             
             var amount = Calculator.compareWage(this.userPlayer.get('annual_wage'), this.femalePlayer.get('annual_wage'));
             var replacements = {
@@ -43,6 +46,14 @@ define([
                 '{AMOUNT}': amount
             };
             this.textEl.html(TextFormat.processText(text, replacements));
+            this.updateShareTools(TextFormat.processText(shareText, replacements));
+        },
+        updateShareTools: function (shareMessage) {
+            new ShareTools(this.shareToolsEl, {
+                message: shareMessage,
+                hashtag: 'BBCNewsGraphics',
+                template: 'dropdown'
+            }, 'female-compare');
         }
     });
 });

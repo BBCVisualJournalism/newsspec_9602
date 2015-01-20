@@ -69,8 +69,8 @@ define([
             e.preventDefault();
             var self = this;
             
-            /*  Change top player and scroll to top */ 
-            news.pubsub.emit('compareAgain', self.playerEl.val()); 
+            /*  Change top player and scroll to top */
+            news.pubsub.emit('compareAgain', self.playerEl.val());
         }
     });
 });

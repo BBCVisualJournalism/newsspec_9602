@@ -52,7 +52,7 @@ module.exports = function (grunt) {
                 'prepDeploy',
                 'replace:prep' + env + 'Deploy',
                 'copy:' + env + 'Deploy',
-                'clean:main'
+                'clean:tmpFiles'
             ],
             taskArray;
 

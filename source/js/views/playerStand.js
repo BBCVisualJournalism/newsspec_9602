@@ -9,10 +9,11 @@ define([
         initialize: function (options) {
 
             this.order = options.order;
+
+            this.allPlayers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
         },
         render: function () {
             this.$el.html(this.template());
-            this.preloadedPlayers = this.$el.find('.preload .footballer');
             this.selectedPlayerEl = this.$el.find('.the-special-one .footballer');
             this.frontRowPlayers = this.$el.find('.front-row .footballer');
             this.backRowPlayers = this.$el.find('.back-row .footballer');
@@ -47,13 +48,12 @@ define([
             var playerAlreadyInStand = playerWrapper.find('.' + newClass);
             /* Check player isnt already in the stand */
             if (playerAlreadyInStand.length > 0) {
-                this.preloadedPlayers.each(function () {
-                    var replacementFootballer = $(this).attr('class').split(' ').pop();
+                _.each(this.allPlayers, function (replacementFootballer) {
                     /* Find a player thats not in the stand */
-                    //console.log(playerWrapper.find('.' + replacementFootballer));
-                    if (playerWrapper.find('.' + replacementFootballer).length === 0) {
+                    var replacementFootballerClass = 'footballer-' + replacementFootballer;
+                    if (playerWrapper.find('.' + replacementFootballerClass).length === 0) {
                         playerAlreadyInStand.removeClass(newClass);
-                        playerAlreadyInStand.addClass(replacementFootballer);
+                        playerAlreadyInStand.addClass(replacementFootballerClass);
                         return false;
                     }
                 });

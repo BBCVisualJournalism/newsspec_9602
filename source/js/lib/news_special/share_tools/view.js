@@ -11,54 +11,39 @@
 
 /** @module nsshare-view */
 define(['lib/news_special/bootstrap', 'lib/news_special/template_engine', 'lib/news_special/share_tools/html_template_default', 'lib/news_special/share_tools/html_template_dropdown'], function (news, templateEngine, htmlTemplateDefault, htmlTemplateDropdown) {
-    /**
-    Takes a request from the DOM to share and select the correct social media
-    @function
-    @param {object} - Event object
-    @throws ValueError If the requesting object is not recognised
-    */
-    var requestShare = function (ev) {
-        ev.preventDefault();
-        ev.stopPropagation();
-        news.pubsub.emit('ns:share:call');
-        if (news.$(ev.currentTarget).hasClass('share__tool--email')) {
-            news.pubsub.emit('ns:share:call:email');
-        } else if (news.$(ev.currentTarget).hasClass('share__tool--facebook')) {
-            news.pubsub.emit('ns:share:call:facebook');
-        } else if (news.$(ev.currentTarget).hasClass('share__tool--twitter')) {
-            news.pubsub.emit('ns:share:call:twitter');
-        } else { throw new Error('ValueError: Share application not of know type i.e facebook'); }
-    };
+
     /**
     * Represents the DOM view of the personalised share module
     * @constructor
     * @this {NSShareView}
     * @param {String} target - id of target element to embed sharetool module
     */
-    var NSShareView = function (target) {
-        this.elm = news.$(target);
+    var NSShareView = function (target, namespace) {
+        this.namespace = namespace;
+
+        this.elm = target;
         this.viewReady = false;
         // Personal share request
-        news.pubsub.on('ns:request:personalshare',
+        news.pubsub.on('ns:' + this.namespace + ':request:personalshare',
             news.$.proxy(this.buildHtml, this));
-        news.pubsub.on('ns:request:launchshare',
+        news.pubsub.on('ns:' + this.namespace + ':request:launchshare',
             news.$.proxy(function (target) {
                 this.shareWindow(target, 'NSShareWindow', 500, 300, 'no');
             }, this)
         );
-        news.pubsub.on('ns:request:launchshare:samewindow',
+        news.pubsub.on('ns:' + this.namespace + ':request:launchshare:samewindow',
             news.$.proxy(function (target) {
                 window.location.href = target;
             }, this)
         );
-        news.pubsub.on('ns:overlay:toggle',
-            news.$.proxy(function () {
-                this.toggleOverlay();
+        news.pubsub.on('ns:' + this.namespace + ':overlay:toggle',
+            news.$.proxy(function (event) {
+                this.toggleOverlay(event.target);
             }, this)
         );
-        news.pubsub.on('ns:overlay:close',
-            news.$.proxy(function () {
-                this.closeOverlay();
+        news.pubsub.on('ns:' + this.namespace + ':overlay:close',
+            news.$.proxy(function (event) {
+                this.closeOverlay(event.target);
             }, this)
         );
     };
@@ -102,10 +87,10 @@ define(['lib/news_special/bootstrap', 'lib/news_special/template_engine', 'lib/n
                 })
             );
             // attach events/
-            this.elm.on('click', '.share__tool', requestShare);
+            this.elm.on('click', '.share__tool', this.requestShare.bind(this));
             // inform controller
             this.viewReady = true;
-            news.pubsub.emit('ns:module:ready');
+            news.pubsub.emit('ns:' + this.namespace + ':module:ready');
         } else {
             throw new Error('DOMError: View already rendered');
         }
@@ -158,17 +143,39 @@ define(['lib/news_special/bootstrap', 'lib/news_special/template_engine', 'lib/n
     * @public
     * @method
     */
-    NSShareView.prototype.toggleOverlay = function () {
-        this.elm.find('.share__overlay').toggle();
+    NSShareView.prototype.toggleOverlay = function (element) {
+        console.log(element);
+        $(element).closest('.share-tools-holder').find('.share__overlay').toggle();
     };
     /**
     * Closes the overlay from the dropdown template
     * @public
     * @method
     */
-    NSShareView.prototype.closeOverlay = function () {
-        this.elm.find('.share__overlay').toggle();
+    NSShareView.prototype.closeOverlay = function (element) {
+        $(element).closest('.share-tools-holder').find('.share__overlay').toggle();
     };
+
+    /**
+    Takes a request from the DOM to share and select the correct social media
+    @function
+    @param {object} - Event object
+    @throws ValueError If the requesting object is not recognised
+    */
+    NSShareView.prototype.requestShare = function (ev) {
+
+        ev.preventDefault();
+        ev.stopPropagation();
+        news.pubsub.emit('ns:' + this.namespace + ':share:call');
+        if (news.$(ev.currentTarget).hasClass('share__tool--email')) {
+            news.pubsub.emit('ns:' + this.namespace + ':share:call:email');
+        } else if (news.$(ev.currentTarget).hasClass('share__tool--facebook')) {
+            news.pubsub.emit('ns:' + this.namespace + ':share:call:facebook');
+        } else if (news.$(ev.currentTarget).hasClass('share__tool--twitter')) {
+            news.pubsub.emit('ns:' + this.namespace + ':share:call:twitter');
+        } else { throw new Error('ValueError: Share application not of know type i.e facebook'); }
+    };
+
 
     return NSShareView;
 

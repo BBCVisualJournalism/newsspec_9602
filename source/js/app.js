@@ -15,4 +15,5 @@ define([
     userForm.render();
 
     news.sendMessageToremoveLoadingImage();
+
 });

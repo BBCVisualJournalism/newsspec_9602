@@ -1,11 +1,12 @@
 define([
     'lib/news_special/bootstrap',
     'backbone',
+    'lib/news_special/share_tools/controller',
     'text!templates/avgComparisons.html',
     'views/barChart',
     'models/calculator',
     'models/textFormat'
-], function (news, Backbone, htmlTemplate, BarChart, Calculator, TextFormat) {
+], function (news, Backbone, ShareTools, htmlTemplate, BarChart, Calculator, TextFormat) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -18,6 +19,7 @@ define([
         render: function () {
             this.textEl = this.$el.find('.avg-comparisons--text');
             this.barChartEl = this.$el.find('.avg-comparisons--chart');
+            this.shareToolsEl = this.$el.find('.share-tools-holder');
 
             this.updateText();
             this.addBarChart();
@@ -34,7 +36,8 @@ define([
             this.barChartEl.append(barChart.render());
         },
         updateText: function () {
-            var text = 'You earn <strong>{COUNTRY_AMOUNT}</strong> the {COUNTRY}\'s average wage and <strong>{WORLD_AMOUNT}</strong> the world average wage.';
+            var text = 'You earn <strong>{COUNTRY_AMOUNT}</strong> the {COUNTRY}\'s average wage and <strong>{WORLD_AMOUNT}</strong> the world average wage.',
+                shareText = 'I earn {COUNTRY_AMOUNT} the {COUNTRY}\'s average wage and {WORLD_AMOUNT} the world average wage.';
             
             var countryAmount = Calculator.compareWage(this.userModel.incomePPP(), this.userCountry.get('annual_wage')),
                 worldAmount = Calculator.compareWage(this.userModel.incomePPP(), this.worldAverage.get('annual_wage'));
@@ -45,6 +48,14 @@ define([
                 '{WORLD_AMOUNT}': worldAmount
             };
             this.textEl.html(TextFormat.processText(text, replacements));
+            this.updateShareTools(TextFormat.processText(shareText, replacements));
+        },
+        updateShareTools: function (shareMessage) {
+            new ShareTools(this.shareToolsEl, {
+                message: shareMessage,
+                hashtag: 'BBCNewsGraphics',
+                template: 'dropdown'
+            }, 'avg-compare');
         }
     });
 });

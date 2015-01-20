@@ -86,7 +86,6 @@ define(['jquery'], function ($) {
             return results == null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         },
         sendScrollToHost: function (scrollPosition, scrollDuration) {
-            console.log('Sending scroll info: ' + scrollPosition + ' ' + scrollDuration)
             var talker_uid = window.location.pathname,
             message = {
                 scrollPosition: scrollPosition,

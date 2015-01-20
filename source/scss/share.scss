@@ -1,0 +1,25 @@
+.share-tools-holder{
+	margin: 20px auto;
+	width: 200px;
+
+	.ns__share-dropdown{
+		width: 200px;
+	}
+
+	.share__button {
+		width: 69px;
+		vertical-align: top;
+		display: inline-block;
+		height: 23px;
+		margin-bottom: 10px;
+		cursor: pointer;
+		background: transparent url(../img/share.png) no-repeat;
+	}
+
+	.share__text{
+		display: inline-block;
+		text-align: left;
+		font-size: 1.6em;
+		margin: 3px 0 0 15px;
+	}
+}

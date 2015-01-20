@@ -59,10 +59,11 @@ define(['lib/news_special/bootstrap'], function (news) {
     * @param {String} image - URL location of a associated share image - maps to Open Graph Protocol
     * @param {String} message - Personalised message to share via Facebook/Twitter
     */
-    var NSShareModel = function (config) {
+    var NSShareModel = function (config, namespace) {
+        this.namespace = namespace;
         var opts = config || {};
 
-        this.storyPageUrl = opts.storyPageUrl || 'http://www.bbc.co.uk';
+        this.storyPageUrl = opts.storyPageUrl || document.referrer;
         if (opts.hashtag) {
             if (typeQuery(opts.hashtag, 'object')) {
                 for (var i = opts.hashtag.length - 1; i >= 0; i--) {
@@ -94,7 +95,7 @@ define(['lib/news_special/bootstrap'], function (news) {
     NSShareModel.prototype.setHeader = function (header) {
         if (typeCheck(header, 'string')) {
             this._header = header;
-            news.pubsub.emit('ns:update:header');
+            news.pubsub.emit('ns:' + this.namespace + ':update:header');
         }
     },
     /**

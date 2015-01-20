@@ -5,7 +5,7 @@ module.exports = function (grunt) {
             env    = grunt.config.get('env'),
             config = grunt.config.get('config'),
             fs     = require('fs'),
-            vocabs = config.services.others.concat(config.services.default);
+            vocabs = [].concat(config.services.others).concat(config.services.default);
 
         fs.mkdir('tmp');
         vocabs.forEach(function (vocab) {

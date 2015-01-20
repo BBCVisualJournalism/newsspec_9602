@@ -28,6 +28,7 @@ define([
             this.updatePlayerText();
             this.loadPlayerSVG();
 
+
             return this.$el;
         },
         updatePlayerText: function () {
