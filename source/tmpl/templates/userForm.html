@@ -1,25 +1,26 @@
 <form class="user-form">
-    <h2 class="user-form--header">How do you compare?</h2>
+    <h2 class="user-form--header"><%= vocabs.form_title %></h2>
 
 
     <div class="input-section">
-        <label for="country" class="your-country">Your country:</label>
+        <label for="country" class="your-country"><%= vocabs.label_your_country %></label>
         <select name="country" class="user-form--input user-form--input__dropdown user-form--input__country" data-selected-country="GBR"></select>
     </div>
-    
-    <label for="income" class="user-form__income-label">Your pre-tax annual salary in local currency:</label>
-    <div class="input-section input-section__income">
-        <span class="user-form--currency-symbol"></span>
-        <input name="income" class="user-form--input user-form--input__income" />
+    <div class="income-section-wrapper">
+        <label for="income" class="user-form__income-label"><%= vocabs.label_income %></label>
+        <div class="input-section input-section__income">
+            <span class="user-form--currency-symbol"></span>
+            <input name="income" class="user-form--input user-form--input__income" />
+        </div>
     </div>
-    
+    <div class="input-section__no-income">
+        Sorry, there is no wage data available for your country. Continue below to compare a player to the global average salary.
+    </div>
     <div class="input-section">
-        <label for="player" class="player">Compare yourself to:</label>
-         <select name="player" class="user-form--input user-form--input__dropdown user-form--input__player">
-            <optgroup class="user-form--player__premier" label="Premier League players">
-            </optgroup>
-            <optgroup class="user-form--player__int" label="International players">
-            </optgroup>
+        <label for="player" class="player"><%= vocabs.label_player %></label>
+         <select name="player" data-selected-player="<%= vocabs.default_player %>" class="user-form--input user-form--input__dropdown user-form--input__player">
+            <optgroup class="user-form--player__premier" label="Premier League players"></optgroup>
+            <optgroup class="user-form--player__int" label="International players"></optgroup>
         </select>   
     </div>
     
@@ -27,6 +28,6 @@
         <!-- PLAYER STAND WILL BE LOADED HERE-->
     </div>
 
-    <input class="user-form--button" type="submit" value="See how you compare" />
+    <input class="user-form--button" type="submit" value="<%= vocabs.form_submit %>" />
 
 </form>

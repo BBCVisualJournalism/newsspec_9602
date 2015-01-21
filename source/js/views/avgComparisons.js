@@ -13,7 +13,7 @@ define([
         initialize: function (options) {
             this.userModel = options.userModel;
             this.userCountry = this.userModel.country();
-            this.worldAverage = this.userModel.countries.findWhere({name: 'World average '});
+            this.worldAverage = this.userModel.countries.findWhere({code: 'WRL_AVG'});
             this.setElement(this.template());
         },
         render: function () {

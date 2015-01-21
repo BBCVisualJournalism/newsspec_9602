@@ -5,8 +5,9 @@ define([
     'text!templates/femaleComparison.html',
     'views/barChart',
     'models/calculator',
-    'models/textFormat'
-], function (news, Backbone, ShareTools, htmlTemplate, BarChart, Calculator, TextFormat) {
+    'models/textFormat',
+    'vocabs'
+], function (news, Backbone, ShareTools, htmlTemplate, BarChart, Calculator, TextFormat, vocabs) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -14,7 +15,7 @@ define([
             this.userModel = options.userModel;
 
             this.userPlayer = this.userModel.player();
-            this.femalePlayer = this.userModel.players.findWhere({name: 'Casey Stoney'});
+            this.femalePlayer = this.userModel.players.findWhere({name: vocabs.player_steph_houghton});
             
             this.setElement(this.template());
         },

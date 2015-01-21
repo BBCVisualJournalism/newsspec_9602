@@ -12,8 +12,10 @@ define([
             'income': 0
         },
         initialize: function () {
-            this.countries = new CountriesCollection(countriesData);
-            this.players = new PlayersCollection(playersData);
+            this.countries = new CountriesCollection(countriesData, {parse: true});
+            this.countries.sort();
+            this.players = new PlayersCollection(playersData, {parse: true});
+            this.players.sort();
         },
         country: function () {
             return this.countries.findWhere({code: this.get('countryCode')});

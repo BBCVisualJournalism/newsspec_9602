@@ -60,18 +60,10 @@
 		border-top: 2px dotted #cedbdc;
 
 		.icon__player{
+			display: none;
 			width: 75px;
 			height: 75px;
 			margin: 13px auto;
-			svg {
-				width: 75px;
-				height: 75px;
-				clip-path: url(#circle-clip);
-
-				.player-bg{
-					fill: #f2f2f2;
-				}	
-			}
 		}
 	}
 

@@ -10,7 +10,8 @@ module.exports = function (grunt) {
         'text': './lib/vendors/require/text',
         'backbone': './lib/vendors/backbone/backbone',
         'underscore': './lib/vendors/backbone/underscore',
-        'templates': '../tmpl/templates'
+        'templates': '../tmpl/templates',
+        'vocabs': 'empty:'
     };
 
     // *************************************************************************

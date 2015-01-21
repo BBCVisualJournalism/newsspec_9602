@@ -37,7 +37,6 @@
 			for (var i = 1; i < regions.length; i++) {
 				var region = regions[i];
 				regionsArray.push({
-					'name': region[0],
 					'code': region[1],
 					'currency_symbol': region[2],
 					'ppp': region[3],

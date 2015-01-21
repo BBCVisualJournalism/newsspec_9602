@@ -5,7 +5,7 @@ module.exports = function (grunt) {
         var services = grunt.iframeScaffold.services;
 
         services.forEach(function (service) {
-
+            console.log(service);
             var html = grunt.file.read('content/' + service + '/index.html'),
                 matches = html.match(/div class="masthead__logo masthead__logo--([a-z]+)/),
                 match;
@@ -26,6 +26,7 @@ module.exports = function (grunt) {
         'default',
         'copyRequiredJs',
         'images',
+        'multi_lang_site_generator:build_all_other_sites',
         'clean:inlineCss',
         'copy_source',
         'copy_language_specific_items_from_source'

@@ -3,8 +3,11 @@ define([
     'backbone',
     'lib/vendors/bind.polyfill.js',
     'models/user',
-    'views/userForm'
-], function (news, Backbone, BindPolyfill, UserModel, UserForm) {
+    'views/userForm',
+    'vocabs'
+], function (news, Backbone, BindPolyfill, UserModel, UserForm, vocabs) {
+
+    console.log(vocabs);
 
     var mainEl = news.$('.main');
 

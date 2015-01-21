@@ -2,8 +2,9 @@ define([
     'lib/news_special/bootstrap',
     'backbone',
     'text!templates/liveTicker.html',
-    'models/calculator'
-], function (news, Backbone, htmlTemplate, Calculator) {
+    'models/calculator',
+    'models/textFormat'
+], function (news, Backbone, htmlTemplate, Calculator, TextFormat) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -26,7 +27,7 @@ define([
             setInterval(this.updateTicker, 500);
 
             this.updatePlayerText();
-            this.loadPlayerSVG();
+            this.loadPlayerCircleImage();
 
 
             return this.$el;
@@ -36,11 +37,10 @@ define([
                 processText = playerText.replace('{PLAYER_NAME}', this.player.get('name'));
             this.playerTextEl.text(processText);
         },
-        loadPlayerSVG: function () {
-            var self = this;
-
+        loadPlayerCircleImage: function () {
             var playerId = this.player.get('id');
-            self.playerIconEl.load('img/svg/footballers-' + playerId + '.svg', null);
+            this.playerIconEl.attr('src', 'img/footballers/footballers_circle-' + playerId + '.png');
+            this.playerIconEl.css('display', 'block');
         },
         updateTicker: function () {
             var now = Date.now();
@@ -52,7 +52,7 @@ define([
             var pppEarned = Calculator.amountEarned(annualSalary, this.startTime, nowTime),
                 localEarned = Calculator.pppToLocal(this.userModel.country().get('ppp'), pppEarned),
                 currencySymbol = this.userModel.country().get('currency_symbol');
-            element.text(currencySymbol + '' + localEarned.toFixed(2));
+            element.text(currencySymbol + '' + TextFormat.formatNumber(localEarned.toFixed(2)));
         }
     });
 });

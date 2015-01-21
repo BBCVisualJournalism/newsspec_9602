@@ -49,7 +49,8 @@ define([
             }, 'shirts');
         },
         loadGraphic: function () {
-            this.graphicEl.load('img/svg/tshirts-' + this.player.get('id') + '.svg', null);
+            var playerId = this.player.get('id');
+            this.graphicEl.html('<img src="img/footballers/tshirts-' + playerId + '.png" alt="T-shirt" />');
         }
     });
 });

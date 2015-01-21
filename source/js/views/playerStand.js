@@ -43,7 +43,7 @@ define([
             });
 
         },
-        loadPlayer: function (elm, playerId){
+        loadPlayer: function (elm, playerId) {
             var image = elm.find('.footballer-image');
             image.attr('src', 'img/footballers/footballers-' + playerId + '.png');
             image.show();

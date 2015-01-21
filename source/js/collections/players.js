@@ -1,8 +1,21 @@
 define([
     'backbone',
-    'models/player'
-], function (Backbone, Player) {
-    return Backbone.Collection.extend({
-        model: Player
+    'models/player',
+    'vocabs'
+], function (Backbone, Player, vocabs) {
+	return Backbone.Collection.extend({
+		model: Player,
+		parse: function (players) {
+			_.each(players, function (player) {
+				player.name = vocabs[player.name];
+				player.surname = vocabs[player.surname];
+				player.club = vocabs[player.club];
+			});
+
+			return players;
+		},
+		comparator: function (player) {
+            return player.get('club') + player.get('name');
+        }
     });
 });

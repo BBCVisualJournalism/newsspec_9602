@@ -3,8 +3,9 @@ define([
     'backbone',
     'text!templates/userForm.html',
     'views/playerStand',
-    'views/widgetsView'
-], function (news, Backbone, htmlTemplate, PlayerStandView, WidgetsView) {
+    'views/widgetsView',
+    'vocabs'
+], function (news, Backbone, htmlTemplate, PlayerStandView, WidgetsView, vocabs) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -22,7 +23,7 @@ define([
             news.pubsub.on('compareAgain', this.compareAgain);
         },
         render: function () {
-            this.$el.html(this.template());
+            this.$el.html(this.template({vocabs: vocabs}));
 
             /* INIT VARS */
             this.formEl = this.$el.find('.user-form');
@@ -30,14 +31,18 @@ define([
             this.playerEl = this.$el.find('.user-form--input__player');
             this.incomeEl = this.$el.find('.user-form--input__income');
             this.currencySymbolEl = this.$el.find('.user-form--currency-symbol');
+            this.noPPPEl = this.$el.find('.input-section__no-income');
+            this.incomeWrapperEl = this.$el.find('.income-section-wrapper');
 
             this.populateCountries();
             this.populatePlayers();
 
-            var playerOrder = [this.playerEl.val(), 12, 13, 6, 2, 17, 15, 20, 23];
+            var playerOrder = [9, 12, 13, 6, 2, 17, 15, 20, 23];
 
             this.playerStandView = new PlayerStandView({order: playerOrder});
             this.$el.find('.player-stand').html(this.playerStandView.render());
+
+            this.changePlayer();
 
             this.options.container.html(this.$el);
         },
@@ -53,16 +58,20 @@ define([
             this.countryEl.empty();
 
             this.countries.each(function (country) {
-                var selectedText = (defaultCountry === country.get('code')) ? ' selected="selected"' : '',
-                    countryToAdd = $('<option value="' + country.get('code') + '"' + selectedText + '>' + country.get('name') + '</option>');
+                if (country.get('code') !== 'WRL_AVG') {
+                    console.log(country);
+                    var selectedText = (defaultCountry === country.get('code')) ? ' selected="selected"' : '',
+                        countryToAdd = $('<option value="' + country.get('code') + '"' + selectedText + '>' + country.get('name') + '</option>');
 
-                self.countryEl.append(countryToAdd);
+                    self.countryEl.append(countryToAdd);
+                }
             });
 
             this.updateCurrencySymbol();
         },
         populatePlayers: function () {
             var self = this;
+            var defaultPlayer = vocabs[this.playerEl.data('selectedPlayer')] || vocabs.player_wayne_rooney;
 
             var premierGroup = self.playerEl.find('.user-form--player__premier'),
                 intGroup = self.playerEl.find('.user-form--player__int');
@@ -72,8 +81,10 @@ define([
 
             this.players.each(function (player) {
                 if (player.get('id') !== null) {
+                    var selectedText = (defaultPlayer === player.get('name')) ? ' selected="selected"' : '';
+
                     var groupEl = (player.get('league') === 'Premier League') ? premierGroup : intGroup;
-                    groupEl.append($('<option value="' + player.get('id') + '">' + player.get('name') + '</option>'));
+                    groupEl.append($('<option value="' + player.get('id') + '"' + selectedText + '>' + player.get('name') + ' (' + player.get('club') + ')</option>'));
                 }
             });
         },
@@ -81,10 +92,21 @@ define([
             var country = this.countries.findWhere({code: this.countryEl.val()}),
                 currencySymbol = country.get('currency_symbol');
 
-            if (currencySymbol) {
-                this.currencySymbolEl.text(country.get('currency_symbol'));
+            console.log(country.get('ppp'));
+
+            if (country.get('ppp')) {
+                this.noPPPEl.hide();
+                this.incomeWrapperEl.show();
+
+                if (currencySymbol) {
+                    this.currencySymbolEl.text(country.get('currency_symbol'));
+                } else {
+                    this.currencySymbolEl.text('');
+                }
+                
             } else {
-                this.currencySymbolEl.text('');
+                this.noPPPEl.show();
+                this.incomeWrapperEl.hide();
             }
         },
         changePlayer: function () {
@@ -107,7 +129,7 @@ define([
             } else {
                 if (this.widgetsView !== null)  {
                     this.widgetsView.destroyAll();
-                } 
+                }
 
                 this.widgetsView = new WidgetsView({
                     userModel: this.model,
