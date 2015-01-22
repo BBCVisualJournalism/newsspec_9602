@@ -7,8 +7,6 @@ define([
     'vocabs'
 ], function (news, Backbone, BindPolyfill, UserModel, UserForm, vocabs) {
 
-    console.log(vocabs);
-
     var mainEl = news.$('.main');
 
     var userModel = new UserModel();

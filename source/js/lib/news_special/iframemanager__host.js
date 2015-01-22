@@ -207,23 +207,27 @@
         scrollToAnimated: function (iframeScrollPosition, scrollDuration) {
             var self = this;
 
-            var scrollY = this.getScrollY(),
-                scrollPosition = this.elm.getBoundingClientRect().top + scrollY + iframeScrollPosition;
+            var startScrollY = this.getScrollY(),
+                scrollPosition = this.elm.getBoundingClientRect().top + startScrollY + iframeScrollPosition;
 
-            var scrollStep = (scrollPosition - scrollY) / (scrollDuration / 15);
+            var scrollStep = Math.ceil((scrollPosition - startScrollY) / (scrollDuration / 15));
 
             /* Timeout to cancel if something wierd happens  - prevent infinite loops */
             var timeout = false;
-            setTimeout(function () { timeout = true; }, scrollDuration * 2);
+            setTimeout(function () { timeout = true; }, scrollDuration * 5);
+
+            var count = 0;
 
             var scrollInterval = setInterval(function () {
-                scrollY = self.getScrollY();
+                var scrollY = self.getScrollY();
                 if ((
                     (scrollStep >= 0 && scrollY <= scrollPosition) ||
                     (scrollStep < 0 && scrollY > scrollPosition)
                 ) && !timeout) {
-                    window.scrollBy(0, scrollStep);
+                    count++;
+                    window.scrollTo(0, startScrollY + (scrollStep * count));
                 } else {
+                    window.scrollTo(0, scrollPosition);
                     clearInterval(scrollInterval);
                 }
             }, 15);

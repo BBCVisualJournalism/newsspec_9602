@@ -5,7 +5,6 @@ module.exports = function (grunt) {
         var services = grunt.iframeScaffold.services;
 
         services.forEach(function (service) {
-            console.log(service);
             var html = grunt.file.read('content/' + service + '/index.html'),
                 matches = html.match(/div class="masthead__logo masthead__logo--([a-z]+)/),
                 match;

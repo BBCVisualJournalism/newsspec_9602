@@ -36,8 +36,10 @@ define([
             this.$el.append(yearlySalaryView.render());
         },
         addAvgComparisons: function () {
-            var avgComparisonsView = new AvgComparisons({userModel: this.userModel});
-            this.$el.append(avgComparisonsView.render());
+            if (!this.userModel.get('usingWorldAvg')) {
+                var avgComparisonsView = new AvgComparisons({userModel: this.userModel});
+                this.$el.append(avgComparisonsView.render());
+            }
         },
         addShirts: function () {
             var shirtsView = new Shirts({userModel: this.userModel});
@@ -48,8 +50,8 @@ define([
             this.$el.append(femaleComparisonView.render());
         },
         addLiveTicker: function () {
-            var liveTickerView = new LiveTickerView({userModel: this.userModel});
-            this.$el.append(liveTickerView.render());
+            this.liveTickerView = new LiveTickerView({userModel: this.userModel});
+            this.$el.append(this.liveTickerView.render());
         },
         addCompareAgain: function () {
             var compareAgainView = new CompareAgainView({userModel: this.userModel});
@@ -57,6 +59,10 @@ define([
         },
         destroyAll: function () {
             news.pubsub.emit('sharetools:unbind');
+
+            this.liveTickerView.destroy();
+            delete this.liveTickerView;
+
             this.unbind();
             this.remove();
         }

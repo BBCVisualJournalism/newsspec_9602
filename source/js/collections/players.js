@@ -8,7 +8,6 @@ define([
 		parse: function (players) {
 			_.each(players, function (player) {
 				player.name = vocabs[player.name];
-				player.surname = vocabs[player.surname];
 				player.club = vocabs[player.club];
 			});
 

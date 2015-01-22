@@ -5,8 +5,9 @@ define([
     'text!templates/avgComparisons.html',
     'views/barChart',
     'models/calculator',
-    'models/textFormat'
-], function (news, Backbone, ShareTools, htmlTemplate, BarChart, Calculator, TextFormat) {
+    'models/textFormat',
+    'vocabs'
+], function (news, Backbone, ShareTools, htmlTemplate, BarChart, Calculator, TextFormat, vocabs) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -14,41 +15,63 @@ define([
             this.userModel = options.userModel;
             this.userCountry = this.userModel.country();
             this.worldAverage = this.userModel.countries.findWhere({code: 'WRL_AVG'});
-            this.setElement(this.template());
         },
         render: function () {
-            this.textEl = this.$el.find('.avg-comparisons--text');
+            var viewData = this.getViewData();
+            this.setElement(this.template(viewData));
+
             this.barChartEl = this.$el.find('.avg-comparisons--chart');
             this.shareToolsEl = this.$el.find('.share-tools-holder');
 
-            this.updateText();
+            this.updateShareTools(viewData.shareText);
             this.addBarChart();
+
             return this.$el;
         },
         addBarChart: function () {
             this.barChartEl.empty();
 
             var barChart = new BarChart({data: [
-                {label: 'You', color: '#feb258', value: this.userModel.incomePPP()},
-                {label: 'Your country\'s average', color: '#e53442', value: this.userCountry.get('annual_wage')},
-                {label: 'World Average', color: '#40408c', value: this.worldAverage.get('annual_wage')}
+                {label: vocabs.chart_you, color: '#feb258', value: this.userModel.incomePPP()},
+                {label: vocabs.chart_countrys, color: '#e53442', value: this.userCountry.get('annual_wage')},
+                {label: vocabs.chart_world, color: '#40408c', value: this.worldAverage.get('annual_wage')}
             ]});
             this.barChartEl.append(barChart.render());
         },
-        updateText: function () {
-            var text = 'You earn <strong>{COUNTRY_AMOUNT}</strong> the {COUNTRY}\'s average wage and <strong>{WORLD_AMOUNT}</strong> the world average wage.',
-                shareText = 'I earn {COUNTRY_AMOUNT} the {COUNTRY}\'s average wage and {WORLD_AMOUNT} the world average wage.';
-            
-            var countryAmount = Calculator.compareWage(this.userModel.incomePPP(), this.userCountry.get('annual_wage')),
-                worldAmount = Calculator.compareWage(this.userModel.incomePPP(), this.worldAverage.get('annual_wage'));
+        getViewData: function () {
+            var isEnglish = this.isEnglish();
 
+            var countryAmount = Calculator.compareWage(this.userModel.incomePPP(), this.userCountry.get('annual_wage'), isEnglish),
+                worldAmount = Calculator.compareWage(this.userModel.incomePPP(), this.worldAverage.get('annual_wage'), isEnglish);
+
+            var textObj = this.getText();
             var replacements = {
-                '{COUNTRY_AMOUNT}': countryAmount,
+                '{COUNTRY_VALUE}': countryAmount,
                 '{COUNTRY}': this.userCountry.get('name'),
-                '{WORLD_AMOUNT}': worldAmount
+                '{WORLD_VALUE}': worldAmount
             };
-            this.textEl.html(TextFormat.processText(text, replacements));
-            this.updateShareTools(TextFormat.processText(shareText, replacements));
+
+            return {
+                textMarkup: TextFormat.processText(textObj.text, replacements),
+                shareText: TextFormat.processText(textObj.shareText, replacements)
+            };
+
+        },
+        getText: function () {
+            var mainText = '',
+                shareText = '';
+            /* If english, use complex text */
+            if (this.isEnglish()) {
+                mainText = vocabs.avg_compare_english;
+                shareText = vocabs.avg_compare_english;
+            } else {
+                mainText = vocabs.avg_compare_languages;
+                shareText = vocabs.avg_compare_languages;
+            }
+            return {
+                text: mainText,
+                shareText: shareText
+            };
         },
         updateShareTools: function (shareMessage) {
             new ShareTools(this.shareToolsEl, {
@@ -56,6 +79,9 @@ define([
                 hashtag: 'BBCNewsGraphics',
                 template: 'dropdown'
             }, 'avg-compare');
+        },
+        isEnglish: function () {
+            return ($('.lang_english').length !== 0);
         }
     });
 });

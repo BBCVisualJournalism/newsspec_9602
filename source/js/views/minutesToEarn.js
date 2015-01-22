@@ -4,41 +4,71 @@ define([
     'lib/news_special/share_tools/controller',
     'text!templates/minutesToEarn.html',
     'models/calculator',
-    'models/textFormat'
-], function (news, Backbone, ShareTools, htmlTemplate, Calculator, TextFormat) {
+    'models/textFormat',
+    'vocabs'
+], function (news, Backbone, ShareTools, htmlTemplate, Calculator, TextFormat, vocabs) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
         initialize: function (options) {
             this.userModel = options.userModel;
             this.player = this.userModel.player();
-
-            this.setElement(this.template());
         },
         render: function () {
-            this.textEl = this.$el.find('.minutes-to-earn--text');
+            var viewData = this.getViewData();
+            this.setElement(this.template(viewData));
+
             this.pitchTextEl = this.$el.find('.minutes-to-earn--football-pitch-text');
             this.shareToolsEl = this.$el.find('.share-tools-holder');
-            this.updateText();
+
+            this.animateMinutes(viewData.minutesToEarn);
+            this.updateShareTools(viewData.shareText);
 
             return this.$el;
         },
-        updateText: function () {
-            var topText = '{PLAYER_NAME} earns <strong>{PLAYER_WAGE} per year</strong>. It would only take him <strong>{MINUTES_TO_EARN} minutes</strong> on the pitch to earn your weekly salary.',
-                shareText = '{PLAYER_NAME} earns {PLAYER_WAGE} per year. It would only take him {MINUTES_TO_EARN} minutes on the pitch to earn my weekly salary.';
-            
+        getViewData: function () {
             var minutesToEarn = Calculator.playerMinutesToEarn(this.userModel.incomePPP(), this.player.get('annual_wage'));
 
+            var textObj = this.getText(minutesToEarn);
             var replacements = {
                 '{PLAYER_NAME}': this.player.get('name'),
-                '{PLAYER_WAGE}': this.player.getRoundedWage(),
-                '{MINUTES_TO_EARN}': TextFormat.formatNumber(minutesToEarn)
+                '{ANNUAL_SALARY}': this.player.getRoundedWage(),
+                '{NUM_MINUTES}': TextFormat.formatNumber(minutesToEarn)
             };
 
-            this.textEl.html(TextFormat.processText(topText, replacements));
-            this.updateShareTools(TextFormat.processText(shareText, replacements));
+            return {
+                textMarkup: TextFormat.processText(textObj.text, replacements),
+                shareText: TextFormat.processText(textObj.shareText, replacements),
+                minutesToEarn: minutesToEarn
+            };
+        },
+        getText: function (minutesToEarn) {
+            var mainText = '',
+                shareText = '';
 
-            this.animateMinutes(minutesToEarn);
+            if (this.userModel.get('usingWorldAvg') && this.player.isManager()) {
+                mainText = vocabs.minutes_earn_world_avg_manager;
+                shareText = vocabs.minutes_earn_world_avg_manager;
+
+            } else if (this.userModel.get('usingWorldAvg')) {
+                mainText = vocabs.minutes_earn_world_avg;
+                shareText = vocabs.minutes_earn_world_avg;
+                
+            } else if (this.player.isManager()) {
+                mainText = vocabs.minutes_earn_manager;
+                shareText = vocabs.minutes_earn_manager;
+                
+            } else if (minutesToEarn <= 1) {
+                mainText = vocabs.minutes_earn_less_than_min;
+                shareText = vocabs.minutes_earn_less_than_min;
+            } else {
+                mainText = vocabs.minutes_earn;
+                shareText = vocabs.minutes_earn;
+            }
+            return {
+                text: mainText,
+                shareText: shareText
+            };
         },
         updateShareTools: function (shareMessage) {
             new ShareTools(this.shareToolsEl, {
@@ -48,10 +78,19 @@ define([
             }, 'minutes-to-earn');
 
         },
+        getMinuteText: function (minutes) {
+            if (minutes === 1) {
+                return vocabs.time_minute;
+            } else {
+                return TextFormat.processText(vocabs.time_x_minutes, {'{NUM_MINUTES}': TextFormat.formatNumber(minutes)});
+            }
+        },
         animateMinutes: function (minutes) {
             var self = this;
 
             this.pitchTextEl.hide();
+            this.pitchTextEl.text(self.getMinuteText(0));
+            
             this.pitchTextEl.fadeIn(1500, function () {
 
                 /* Speedbar determines how often the number increases */
@@ -68,9 +107,9 @@ define([
                     count++;
                     var numberValue = Math.floor(incrementValue * count);
                     if (numberValue - incrementValue < minutes) {
-                        self.pitchTextEl.text(TextFormat.formatNumber(numberValue) + ' MINUTES');
+                        self.pitchTextEl.text(self.getMinuteText(numberValue));
                     } else {
-                        self.pitchTextEl.text(TextFormat.formatNumber(minutes) + ' MINUTES');
+                        self.pitchTextEl.text(self.getMinuteText(minutes));
                         clearInterval(timeInterval);
                     }
                 }, refreshTime);

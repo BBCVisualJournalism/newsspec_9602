@@ -9,7 +9,8 @@ define([
         defaults: {
             'countryCode': null,
             'playerId': null,
-            'income': 0
+            'income': 0,
+            'usingWorldAvg': false
         },
         initialize: function () {
             this.countries = new CountriesCollection(countriesData, {parse: true});
@@ -25,7 +26,12 @@ define([
             return this.players.findWhere({id: playerId});
         },
         incomePPP: function () {
-            return this.get('income') / this.country().get('ppp');
+            if (!this.get('usingWorldAvg')) {
+                return this.get('income') / this.country().get('ppp');
+            } else {
+                return this.get('income');
+            }
+            
         },
         validate: function (attrs) {
             var errors = [];
@@ -36,7 +42,7 @@ define([
             if (!attrs.playerId) {
                 errors.push({name: 'player'});
             }
-            if (!attrs.income || !$.isNumeric(attrs.income) || attrs.income <= 0) {
+            if (!attrs.income || !$.isNumeric(attrs.income) || attrs.income < 0) {
                 errors.push({name: 'income'});
             }
 

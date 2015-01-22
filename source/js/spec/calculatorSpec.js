@@ -14,18 +14,19 @@ define(['models/calculator'],  function (Calculator) {
             expect(Calculator.userYearsToEarn(200, 5200000)).toEqual(26000);
         });
         it('should calculate the year the user wouldve had to start earning to earn the player wage', function () {
-            expect(Calculator.startYearWith(1000)).toEqual(1015);
-            expect(Calculator.startYearWith(1040)).toEqual(975);
-            expect(Calculator.startYearWith(2015)).toEqual(0);
-            expect(Calculator.startYearWith(2016)).toEqual('1 BC');
-            expect(Calculator.startYearWith(3000)).toEqual('985 BC');
+            expect(Calculator.startYearWith(1000)).toEqual({year: 1015, isBC: false});
+            expect(Calculator.startYearWith(1040)).toEqual({year: 975, isBC: false});
+            expect(Calculator.startYearWith(2015)).toEqual({year: 0, isBC: false});
+            expect(Calculator.startYearWith(2016)).toEqual({year: 1, isBC: true});
+            expect(Calculator.startYearWith(3000)).toEqual({year: 985, isBC: true});
         });
         it('should compare a the users wage with a given wage', function () {
-            expect(Calculator.compareWage(20000, 10000)).toEqual('2 times more');
-            expect(Calculator.compareWage(25000, 10000)).toEqual('2.5 times more');
-            expect(Calculator.compareWage(10000, 20000)).toEqual('50% of');
-            expect(Calculator.compareWage(15001, 15000)).toEqual('about the same as');
-            expect(Calculator.compareWage(5200000, 50000)).toEqual('104 times more');
+            expect(Calculator.compareWage(20000, 10000, true)).toEqual('2 times more');
+            expect(Calculator.compareWage(25000, 10000, true)).toEqual('2.5 times more');
+            expect(Calculator.compareWage(10000, 20000, true)).toEqual('50% of');
+            expect(Calculator.compareWage(15001, 15000, true)).toEqual('about the same as');
+            expect(Calculator.compareWage(5200000, 50000, true)).toEqual('104 times more');
+            expect(Calculator.compareWage(5200000, 50000, false)).toEqual(10400);
         });
         it('should calculate the number of shirts needed to be sold, to pay the footballers wages', function () {
             expect(Calculator.numberOfShirts(20000000, 50)).toEqual(400000);

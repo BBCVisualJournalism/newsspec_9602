@@ -14,18 +14,31 @@ define(['backbone'], function (Backbone) {
             var currentYear = new Date().getFullYear(),
                 startYear = currentYear - yearsAgo;
 
-            return (startYear >= 0) ? startYear : Math.abs(startYear) + ' BC';
+            return {
+                year: Math.abs(startYear),
+                isBC: (startYear < 0)
+            };
         },
-        compareWage: function (compareWageX, compareWageY) {
+        compareWage: function (compareWageX, compareWageY, isEnglish) {
             var comparison = compareWageX / compareWageY,
                 roundedComparison = parseFloat(comparison.toFixed(1), 10);
-            if (roundedComparison === 1) {
+
+            /* If languages return just the percent */
+            if (!isEnglish) {
+                return Math.round(comparison * 100);
+
+           /* If difference small, return about the same as */
+            } else if (roundedComparison === 1) {
                 return 'about the same as';
+
+            /* If greater than 0, return amount of times greater */
             } else if (comparison > 1) {
                 /* If number after decimal point is 0, show the whole number instead */
                 var wholeNumber = Math.round(roundedComparison);
                 roundedComparison = (wholeNumber === roundedComparison || roundedComparison > 30) ? wholeNumber : roundedComparison;
                 return roundedComparison + ' times more';
+
+            /* If less than 0, return amount of percentage */
             } else {
                 return Math.round(comparison * 100) + '% of';
             }

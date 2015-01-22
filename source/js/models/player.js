@@ -31,6 +31,10 @@ define([
                 roundedWage = Math.round(localWage / 100000) * 100000;
 
             return country.get('currency_symbol') + '' + TextFormat.formatNumber(roundedWage);
+        },
+        isManager: function () {
+            /* If Jose or Pep, then they're managers */
+            return this.get('id') === 6 || this.get('id') === 11;
         }
     });
 });

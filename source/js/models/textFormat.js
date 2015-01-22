@@ -9,6 +9,8 @@ define(['backbone'], function (Backbone) {
             for (var replacement in replacements) {
                 returnText = returnText.replace(replacement, replacements[replacement]);
             }
+            /* BB CODE: Replace {B} with <strong> tags */
+            returnText = returnText.replace(/\{B\}/gi, '<strong>').replace(/\{\/B\}/gi, '</strong>');
             return returnText;
         },
         formatNumber: function (num) {

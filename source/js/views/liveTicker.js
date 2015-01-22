@@ -24,7 +24,7 @@ define([
             this.playerTextEl = this.$el.find('.player_earned_text');
 
             this.updateTicker();
-            setInterval(this.updateTicker, 500);
+            this.updateInterval = setInterval(this.updateTicker, 500);
 
             this.updatePlayerText();
             this.loadPlayerCircleImage();
@@ -53,6 +53,11 @@ define([
                 localEarned = Calculator.pppToLocal(this.userModel.country().get('ppp'), pppEarned),
                 currencySymbol = this.userModel.country().get('currency_symbol');
             element.text(currencySymbol + '' + TextFormat.formatNumber(localEarned.toFixed(2)));
+        },
+        destroy: function () {
+            clearInterval(this.updateInterval);
+            this.unbind();
+            this.remove();
         }
     });
 });

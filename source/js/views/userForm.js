@@ -47,7 +47,7 @@ define([
             this.options.container.html(this.$el);
         },
         events: {
-            'change .user-form--input__country': 'updateCurrencySymbol',
+            'change .user-form--input__country': 'countryChange',
             'change .user-form--input__player': 'changePlayer',
             'submit .user-form': 'submit'
         },
@@ -59,7 +59,6 @@ define([
 
             this.countries.each(function (country) {
                 if (country.get('code') !== 'WRL_AVG') {
-                    console.log(country);
                     var selectedText = (defaultCountry === country.get('code')) ? ' selected="selected"' : '',
                         countryToAdd = $('<option value="' + country.get('code') + '"' + selectedText + '>' + country.get('name') + '</option>');
 
@@ -67,7 +66,7 @@ define([
                 }
             });
 
-            this.updateCurrencySymbol();
+            this.countryChange();
         },
         populatePlayers: function () {
             var self = this;
@@ -88,11 +87,9 @@ define([
                 }
             });
         },
-        updateCurrencySymbol: function () {
+        countryChange: function () {
             var country = this.countries.findWhere({code: this.countryEl.val()}),
                 currencySymbol = country.get('currency_symbol');
-
-            console.log(country.get('ppp'));
 
             if (country.get('ppp')) {
                 this.noPPPEl.hide();
@@ -112,21 +109,33 @@ define([
         changePlayer: function () {
             this.playerStandView.updatePlayer(this.playerEl.val());
         },
+        getUserInput: function () {
+            var country = this.countries.findWhere({code: this.countryEl.val()}),
+                worldAvg = this.countries.findWhere({code: 'WRL_AVG'}),
+                incomeInputVal = this.incomeEl.val();
+
+            /* If the we don't have wage data for the users country, or they enter a value less than 1, use the world avg */
+            var isWorldAverage = (incomeInputVal < 1 || !country.get('ppp')),
+                income = (!isWorldAverage) ? incomeInputVal : worldAvg.get('annual_wage');
+
+            income = parseFloat(income, 10);
+
+            return {
+                'countryCode': this.countryEl.val(),
+                'income': income,
+                'playerId': parseInt(this.playerEl.val(), 10),
+                'usingWorldAvg': isWorldAverage
+            };
+        },
         submit: function (e) {
-            
             e.preventDefault();
             this.resetValidationErrors();
 
-            var userInput = {
-                'countryCode': this.countryEl.val(),
-                'income': this.incomeEl.val(),
-                'playerId': this.playerEl.val()
-            };
-
-            this.model.set(userInput, {validate : true});
+            this.model.set(this.getUserInput(), {validate : true});
             if (this.model.validationError) {
                 this.showValidationErrors(this.model.validationError);
             } else {
+                /* Remove previous view from memory */
                 if (this.widgetsView !== null)  {
                     this.widgetsView.destroyAll();
                 }
@@ -137,7 +146,9 @@ define([
                 });
                 this.widgetsView.render();
 
-                news.pubsub.emit('window:scrollTo', [$('.results-widgets').offset().top - 20, 600]);
+                _.defer(function () {
+                    news.pubsub.emit('window:scrollTo', [$('.results-widgets').offset().top - 20, 600]);
+                });
             }
             return false;
         },
