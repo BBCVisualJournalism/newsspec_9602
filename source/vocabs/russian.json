@@ -283,7 +283,7 @@
     "country_WRL_AVG": "",
     "decimal_separator": ",",
     "thousand_separator": "0",
-    "default_country": "Russia",
+    "default_country": "country_RUS",
     "default_currency": "Russia",
     "default_player": "player_christiano_ronaldo",
     "player_jose_mourinho": "Жозе Моуринью",
@@ -336,7 +336,7 @@
     "shortname_etoo": "Это'О",
     "shortname_jose": "Жозе",
     "shortname_pep": "Пеп",
-    "": "главный тренер",
+    "": "Извините, для вашей страны нет данных по зарплатам. Можете сравнить заработки определенного игрока со среднемировой зарплатой",
     "form_title": "Как вы выглядите в сравнении...",
     "label_your_country": "В вашей стране:",
     "label_income": "Годовая зарплата до налогообложения в местной валюте:",
@@ -377,5 +377,12 @@
     "chart_world": "Средняя в мире",
     "chart_countrys": "Средняя в вашей стране",
     "shirt_player": "{PLAYER_NAME} зарабатывает в год эквивалент стоимости {NUM_SHIRTS} футболок клуба {CLUB_NAME} с напечатанной фамилией '{PLAYER_SURNAME}' на спине футболки.",
-    "shirt_manager": "Годовая зарплата {PLAYER_NAME} эквивалентна стоимости {NUM_SHIRTS} тренировочных костюмов клуба {CLUB_NAME}."
+    "shirt_manager": "Годовая зарплата {PLAYER_NAME} эквивалентна стоимости {NUM_SHIRTS} тренировочных костюмов клуба {CLUB_NAME}.",
+    "female_compare_steph": "{PLAYER_NAME} зарабатывает в {TIMES_FEMALE_PLAYER} раз больше, чем капитан женской сборной Англии по футболу Стефани Хаутон, чья годовая зарплата - 50 000 фунтов.",
+    "female_compare_alex": "{PLAYER_NAME} зарабатывает в {TIMES_FEMALE_PLAYER} раз больше, чем Алекс Морган, одна из наиболее высокооплачиваемых игроков в женском футболе США, чья зарплата - $282 000 в год",
+    "ticker_since_on_page": "За то время, которое вы провели на этой странице:",
+    "ticker_you_earned": "Вы заработали:",
+    "ticker_country_earned": "Средняя зарплата ({COUNTRY_NAME})",
+    "ticker_player_earned": "{PLAYER_NAME} заработал:",
+    "label_select_manager": "главный тренер"
 }

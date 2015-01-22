@@ -283,7 +283,7 @@
     "country_WRL_AVG": "",
     "decimal_separator": ".",
     "thousand_separator": "",
-    "default_country": "Egypt",
+    "default_country": "country_EGY",
     "default_currency": "Egypt",
     "default_player": "player_christiano_ronaldo",
     "player_jose_mourinho": "جوزيه مورينيو",
@@ -336,7 +336,7 @@
     "shortname_etoo": "إيتو",
     "shortname_jose": "جوزيه",
     "shortname_pep": "بيب",
-    "": "مدير فني",
+    "": "للأسف، لا توجد معلومات عن الرواتب في بلدك. استمر أدناه لمقارنة لاعب مع متوسط الراتب العالمي",
     "form_title": "كيف تقارن؟",
     "label_your_country": "بلدك",
     "label_income": "راتبك بالعملة المحلية قبل الضرائب",
@@ -377,5 +377,12 @@
     "chart_world": "متوسط عالمي",
     "chart_countrys": "متوسط بلدك",
     "shirt_player": "يعادل راتب {PLAYER_NAME} السنوي توازي تكلفة {NUM_SHIRTS} {CLUB_NAME} من مبيعات قمصان{PLAYER_SURNAME} والتي تحمل اسمه",
-    "shirt_manager": "راتب {PLAYER_NAME} السنوي تساوي تكلفة {NUM_SHIRTS} {CLUB_NAME} من بدلات التدريب."
+    "shirt_manager": "راتب {PLAYER_NAME} السنوي تساوي تكلفة {NUM_SHIRTS} {CLUB_NAME} من بدلات التدريب.",
+    "female_compare_steph": "{PLAYER_NAME} يحصل على {TIMES_FEMALE_PLAYER} مرة أكثر مما تتقضاه قائدة منتخب انجلترا ستيفاني هوتون التي قيل إنها تتقاضى راتبا قدره 50 ألف جنيه استرليني سنويا",
+    "female_compare_alex": "{PLAYER_NAME} يكسب {TIMES_FEMALE_PLAYER}مرة أكثر من أليكس مورغان، التي تتقاضي واحدا من أعلى رواتب لاعبات كرة القدم، والتي تحصل على راتب سنوي يصل الى 282000 دولار",
+    "ticker_since_on_page": "منذ دخلت هذه الصفحة",
+    "ticker_you_earned": "كسبت",
+    "ticker_country_earned": "متوسط الرواتب ({COUNTRY_NAME}):",
+    "ticker_player_earned": "{PLAYER_NAME} كسب:",
+    "label_select_manager": "مدير فني"
 }

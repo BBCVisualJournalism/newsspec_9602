@@ -35,6 +35,9 @@ define([
         isManager: function () {
             /* If Jose or Pep, then they're managers */
             return this.get('id') === 6 || this.get('id') === 11;
+        },
+        isInternational: function () {
+            return (this.get('league') !== 'Premier League');
         }
     });
 });

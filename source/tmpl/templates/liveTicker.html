@@ -1,18 +1,18 @@
 <div class="live-ticker">
-	<h4 class="live-ticker--title">Since you've been on this page</h4>
+	<h4 class="live-ticker--title"><%= vocabs.ticker_since_on_page %></h4>
 	<div class="live-ticker--section live-ticker--section__yourself">
 		<div class="icon__yourself"></div>
-		You have earned:<br/>
+		<%= vocabs.ticker_you_earned %><br/>
 		<span class="earned earned__yourself"></span>
 	</div>
 	<div class="live-ticker--section live-ticker--section__national-avg">
 		<div class="icon__national-avg"></div>
-		UK average salary:<br/>
+		<%= country_earned_label %><br/>
 		<span class="earned earned__national-avg"></span>
 	</div>
 	<div class="live-ticker--section live-ticker--section__player">
 		<img class="icon__player" alt="Player icon"></img>
-		<span class="player_earned_text">Player has earned</span><br/>
+		<span class="player_earned_text"><%= player_earned_label %></span><br/>
 		<span class="earned earned__player"></span>
 	</div>
 </div>

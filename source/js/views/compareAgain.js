@@ -2,8 +2,9 @@ define([
     'lib/news_special/bootstrap',
     'backbone',
     'text!templates/compareAgain.html',
-    'views/playerStand'
-], function (news, Backbone, htmlTemplate, PlayerStandView) {
+    'views/playerStand',
+    'vocabs'
+], function (news, Backbone, htmlTemplate, PlayerStandView, vocabs) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -16,7 +17,7 @@ define([
             _.bindAll(this, 'submit', 'changePlayer');
         },
         render: function () {
-            this.$el.html(this.template());
+            this.$el.html(this.template({vocabs: vocabs}));
 
             /* INIT VARS */
             this.playerEl = this.$el.find('.compare-again--input__player');
@@ -44,8 +45,12 @@ define([
 
             this.players.each(function (player) {
                 if (player.get('id') !== null) {
+                    console.log(vocabs);
+                    var managerText = player.isManager() ? vocabs.label_select_manager + ' - ' : '',
+                        clubText =  ' (' + managerText + player.get('club') + ')';
+
                     var groupEl = (player.get('league') === 'Premier League') ? premierGroup : intGroup;
-                    groupEl.append($('<option value="' + player.get('id') + '">' + player.get('name') + '</option>'));
+                    groupEl.append($('<option value="' + player.get('id') + '">' + player.get('name') + clubText + '</option>'));
                 }
             });
         },

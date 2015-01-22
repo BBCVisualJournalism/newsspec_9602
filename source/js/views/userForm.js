@@ -54,12 +54,14 @@ define([
         populateCountries: function () {
             var self = this;
 
-            var defaultCountry = this.countryEl.data('selectedCountry') || 'UK';
+            var defaultCountryKey = this.countryEl.data('selectedCountry') || 'country_GBR',
+                defaultCountryName = vocabs[defaultCountryKey];
+
             this.countryEl.empty();
 
             this.countries.each(function (country) {
                 if (country.get('code') !== 'WRL_AVG') {
-                    var selectedText = (defaultCountry === country.get('code')) ? ' selected="selected"' : '',
+                    var selectedText = (defaultCountryName === country.get('name')) ? ' selected="selected"' : '',
                         countryToAdd = $('<option value="' + country.get('code') + '"' + selectedText + '>' + country.get('name') + '</option>');
 
                     self.countryEl.append(countryToAdd);
@@ -82,8 +84,11 @@ define([
                 if (player.get('id') !== null) {
                     var selectedText = (defaultPlayer === player.get('name')) ? ' selected="selected"' : '';
 
-                    var groupEl = (player.get('league') === 'Premier League') ? premierGroup : intGroup;
-                    groupEl.append($('<option value="' + player.get('id') + '"' + selectedText + '>' + player.get('name') + ' (' + player.get('club') + ')</option>'));
+                    var managerText = player.isManager() ? vocabs.label_select_manager + ' - ' : '',
+                        clubText =  ' (' + managerText + player.get('club') + ')';
+
+                    var groupEl = (player.isInternational()) ? intGroup : premierGroup;
+                    groupEl.append($('<option value="' + player.get('id') + '"' + selectedText + '>' + player.get('name') + clubText + '</option>'));
                 }
             });
         },

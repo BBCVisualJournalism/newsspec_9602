@@ -1,4 +1,4 @@
-define(['backbone'], function (Backbone) {
+define(['backbone', 'vocabs'], function (Backbone, vocabs) {
     return Backbone.Model.extend({
         initialize: function () {
             throw new Error('This model should not be initialised, as all methods are class methods.');
@@ -14,11 +14,10 @@ define(['backbone'], function (Backbone) {
             return returnText;
         },
         formatNumber: function (num) {
-            if (true) {
-                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-            } else {
-                return num;
-            }
+            var formattedNumber = num.toString();
+            formattedNumber = formattedNumber.replace('.', vocabs.decimal_separator);
+            formattedNumber = formattedNumber.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + vocabs.thousand_separator);
+            return formattedNumber;
         }
     });
 });

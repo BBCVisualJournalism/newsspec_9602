@@ -33,15 +33,22 @@ define(['backbone'], function (Backbone) {
 
             /* If greater than 0, return amount of times greater */
             } else if (comparison > 1) {
-                /* If number after decimal point is 0, show the whole number instead */
-                var wholeNumber = Math.round(roundedComparison);
-                roundedComparison = (wholeNumber === roundedComparison || roundedComparison > 30) ? wholeNumber : roundedComparison;
-                return roundedComparison + ' times more';
+                return this.timesMore(compareWageX, compareWageY) + ' times';
 
             /* If less than 0, return amount of percentage */
             } else {
                 return Math.round(comparison * 100) + '% of';
             }
+        },
+        timesMore: function (compareWageX, compareWageY) {
+            var comparison = compareWageX / compareWageY,
+                timesMore = parseFloat(comparison.toFixed(1), 10);
+ 
+            /* If number after decimal point is 0, show the whole number instead */
+            var wholeNumber = Math.round(timesMore);
+            timesMore = (wholeNumber === timesMore || timesMore > 30) ? wholeNumber : timesMore;
+
+            return timesMore;
         },
         numberOfShirts: function (playerYearlyWages, costOfShirt) {
             return Math.round(playerYearlyWages / costOfShirt);

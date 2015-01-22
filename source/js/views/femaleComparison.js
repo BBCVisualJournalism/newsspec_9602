@@ -15,17 +15,20 @@ define([
             this.userModel = options.userModel;
 
             this.userPlayer = this.userModel.player();
-            this.femalePlayer = this.userModel.players.findWhere({name: vocabs.player_steph_houghton});
-            
-            this.setElement(this.template());
+
+            var femalePlayerName = (this.userPlayer.isInternational()) ? vocabs.player_alex_morgan : vocabs.player_steph_houghton;
+            this.femalePlayer = this.userModel.players.findWhere({name: femalePlayerName});
         },
         render: function () {
-            this.textEl = this.$el.find('.female-comparison--text');
+            var viewData = this.getViewData();
+            this.setElement(this.template(viewData));
+
             this.barChartEl = this.$el.find('.female-comparison--chart');
             this.shareToolsEl = this.$el.find('.share-tools-holder');
 
-            this.updateText();
             this.addBarChart();
+            this.updateShareTools(viewData.shareText);
+
             return this.$el;
         },
         addBarChart: function () {
@@ -37,17 +40,35 @@ define([
             ]});
             this.barChartEl.append(barChart.render());
         },
-        updateText: function () {
-            var text = '{PLAYER_NAME} earns <strong>{AMOUNT}</strong> than the former England ladies captain Casey Stone, who is on a reported £25,000 a year.',
-                shareText = '{PLAYER_NAME} earns {AMOUNT} than the former England ladies captain Casey Stone, who is on a reported £25,000 a year.';
-            
-            var amount = Calculator.compareWage(this.userPlayer.get('annual_wage'), this.femalePlayer.get('annual_wage'));
+        getViewData: function () {
+            var timesMore = Calculator.timesMore(this.userPlayer.get('annual_wage'), this.femalePlayer.get('annual_wage'));
+
+            var textObj = this.getText();
             var replacements = {
                 '{PLAYER_NAME}': this.userPlayer.get('name'),
-                '{AMOUNT}': amount
+                '{TIMES_FEMALE_PLAYER}': timesMore
             };
-            this.textEl.html(TextFormat.processText(text, replacements));
-            this.updateShareTools(TextFormat.processText(shareText, replacements));
+            return {
+                textMarkup: TextFormat.processText(textObj.text, replacements),
+                shareText: TextFormat.processText(textObj.shareText, replacements)
+            };
+        },
+        getText: function () {
+            var mainText = '',
+                shareText = '';
+
+            if (this.userPlayer.isInternational()) {
+                mainText = vocabs.female_compare_alex;
+                shareText = vocabs.female_compare_alex;
+
+            } else {
+                mainText = vocabs.female_compare_steph;
+                shareText = vocabs.female_compare_steph;
+            }
+            return {
+                text: mainText,
+                shareText: shareText
+            };
         },
         updateShareTools: function (shareMessage) {
             new ShareTools(this.shareToolsEl, {

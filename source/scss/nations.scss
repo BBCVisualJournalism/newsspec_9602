@@ -1,3 +1,22 @@
 .lang_english .share-tools-holder{
 	display: block;
 }
+
+.lang_russian{
+	.compare-again .compare-again--button{
+		max-width: 360px;
+	}
+	.user-form .user-form--button{
+		max-width: 360px;
+	}
+}
+
+.lang_arabic{
+	.bar-chart{
+		direction: ltr;
+	}
+
+	.user-form .user-form--input__dropdown, .compare-again .compare-again--input__dropdown{
+		background-position: center left;
+	}
+}

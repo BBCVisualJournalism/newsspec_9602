@@ -283,7 +283,7 @@
     "country_WRL_AVG": "",
     "decimal_separator": ".",
     "thousand_separator": ",",
-    "default_country": "Nigeria",
+    "default_country": "country_NGA",
     "default_currency": "Nigeria",
     "default_player": "player_leo_messi",
     "player_jose_mourinho": "Jose Mourinho",
@@ -336,7 +336,7 @@
     "shortname_etoo": "Eto'o",
     "shortname_jose": "Jose",
     "shortname_pep": "Pep",
-    "": "Manaja",
+    "": "Ka yi hakuri babu bayanai kan albashi a kasar ka. Duba kasa domin kwatanta wani dan wasa da matsakaicin albashi a duniya",
     "form_title": "Yaya za ka kwatanta?",
     "label_your_country": "Kasarka:",
     "label_income": "Albashi a naira banda haraji:",
@@ -377,5 +377,12 @@
     "chart_world": "Matsakaicin albashi a duniya",
     "chart_countrys": "Matsakaicin albashi a kasarka",
     "shirt_player": "{PLAYER_NAME} albashinsa a shekarar ya yi daidai da adadin {NUM_SHIRTS} {CLUB_NAME} makammancin riguna  '{PLAYER_SURNAME}' da aka rubuta a jiki.",
-    "shirt_manager": "{PLAYER_NAME} albashinsa shekara ya yi daidai da farashin {NUM_SHIRTS} {CLUB_NAME} kayan motsa jiki."
+    "shirt_manager": "{PLAYER_NAME} albashinsa shekara ya yi daidai da farashin {NUM_SHIRTS} {CLUB_NAME} kayan motsa jiki.",
+    "female_compare_steph": "{PLAYER_NAME}  na karbar albashi{TIMES_FEMALE_PLAYER} MATA} fiye da kyaftin din kwallo mata na Ingila Steph Houghton wacce ke karbar &pound;50,000 a duk shekara.",
+    "female_compare_alex": "{PLAYER_NAME} na karbar albashi {TIMES_FEMALE_PLAYER} fiye da Alex Morgan daya daga cikin wanda ya fi karbar albashi a gasar kwallon Amurka, wanda ke karbar $282,000 a duk shekara.",
+    "ticker_since_on_page": "Tun lokacin da ka ziyarci wannan shafin:",
+    "ticker_you_earned": "Da ka samu:",
+    "ticker_country_earned": "Matsakaicin albashi ({COUNTRY_NAME}):",
+    "ticker_player_earned": "{PLAYER_NAME} ya karbi albashi:",
+    "label_select_manager": "Manaja"
 }

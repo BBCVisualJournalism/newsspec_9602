@@ -50,8 +50,10 @@ define([
             this.$el.append(femaleComparisonView.render());
         },
         addLiveTicker: function () {
-            this.liveTickerView = new LiveTickerView({userModel: this.userModel});
-            this.$el.append(this.liveTickerView.render());
+            if (!this.userModel.get('usingWorldAvg')) {
+                this.liveTickerView = new LiveTickerView({userModel: this.userModel});
+                this.$el.append(this.liveTickerView.render());
+            }
         },
         addCompareAgain: function () {
             var compareAgainView = new CompareAgainView({userModel: this.userModel});

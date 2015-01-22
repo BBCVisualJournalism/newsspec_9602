@@ -1,10 +1,10 @@
 <form class="compare-again">
     <div class="input-section">
-        <label for="comparePlayerAgain" class="player">Compare yourself with:</label>
+        <label for="comparePlayerAgain" class="player"><%= vocabs.label_player %></label>
          <select name="comparePlayerAgain" class="compare-again--input compare-again--input__dropdown compare-again--input__player">
-            <optgroup class="compare-again--player__premier" label="Premier League players">
+            <optgroup class="compare-again--player__premier" label="<%= vocabs.option_group_premier %>">
             </optgroup>
-            <optgroup class="compare-again--player__int" label="International players">
+            <optgroup class="compare-again--player__int" label="<%= vocabs.option_group_int %>">
             </optgroup>
         </select>   
     </div>
@@ -13,6 +13,6 @@
         <!-- PLAYER STAND WILL BE LOADED HERE-->
     </div>
 
-    <input class="compare-again--button" type="submit" value="See how you compare" />
+    <input class="compare-again--button" type="submit" value="<%= vocabs.form_submit %>" />
 
 </form>

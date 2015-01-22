@@ -3,8 +3,9 @@ define([
     'backbone',
     'text!templates/liveTicker.html',
     'models/calculator',
-    'models/textFormat'
-], function (news, Backbone, htmlTemplate, Calculator, TextFormat) {
+    'models/textFormat',
+    'vocabs'
+], function (news, Backbone, htmlTemplate, Calculator, TextFormat, vocabs) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -14,28 +15,34 @@ define([
             this.startTime = Date.now();
             
             _.bindAll(this, 'updateTicker');
-            this.setElement(this.template());
         },
         render: function () {
+            var viewData = this.getViewData();
+            this.setElement(this.template(viewData));
+
             this.yourselfEl = this.$el.find('.earned__yourself');
             this.nationalAvgEl = this.$el.find('.earned__national-avg');
             this.playerAvgEl = this.$el.find('.earned__player');
             this.playerIconEl = this.$el.find('.icon__player');
-            this.playerTextEl = this.$el.find('.player_earned_text');
 
             this.updateTicker();
             this.updateInterval = setInterval(this.updateTicker, 500);
 
-            this.updatePlayerText();
             this.loadPlayerCircleImage();
-
 
             return this.$el;
         },
-        updatePlayerText: function () {
-            var playerText = '{PLAYER_NAME} has earned',
-                processText = playerText.replace('{PLAYER_NAME}', this.player.get('name'));
-            this.playerTextEl.text(processText);
+        getViewData: function () {
+            var replacements = {
+                '{PLAYER_NAME}': this.player.get('name'),
+                '{COUNTRY_NAME}': this.userModel.country().get('name')
+            };
+
+            return {
+                country_earned_label: TextFormat.processText(vocabs.ticker_country_earned, replacements),
+                player_earned_label: TextFormat.processText(vocabs.ticker_player_earned, replacements),
+                vocabs: vocabs
+            };
         },
         loadPlayerCircleImage: function () {
             var playerId = this.player.get('id');
