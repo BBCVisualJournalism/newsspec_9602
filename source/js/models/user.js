@@ -7,7 +7,7 @@ define([
 ], function (Backbone, CountriesCollection, PlayersCollection, countriesData, playersData) {
     return Backbone.Model.extend({
         defaults: {
-            'countryCode': null,
+            'country': null,
             'playerId': null,
             'income': 0,
             'usingWorldAvg': false
@@ -19,7 +19,7 @@ define([
             this.players.sort();
         },
         country: function () {
-            return this.countries.findWhere({code: this.get('countryCode')});
+            return this.get('country');
         },
         player: function () {
             var playerId = parseInt(this.get('playerId'), 10);
@@ -36,7 +36,7 @@ define([
         validate: function (attrs) {
             var errors = [];
 
-            if (!attrs.countryCode) {
+            if (attrs.country.get('name').toLowerCase() !== attrs.countryInput.toLowerCase()) {
                 errors.push({name: 'country'});
             }
             if (!attrs.playerId) {

@@ -60,11 +60,12 @@ define([
             };
         },
         updateShareTools: function (shareMessage) {
-            new ShareTools(this.shareToolsEl, {
-                message: shareMessage,
-                hashtag: 'BBCNewsGraphics',
-                template: 'dropdown'
-            }, 'shirts');
+            // new ShareTools(this.shareToolsEl, {
+            //     message: shareMessage,
+            //     hashtag: 'BBCNewsGraphics',
+            //     template: 'dropdown'
+            // }, 'shirts');
+            this.shareToolsEl.hide();
         },
         loadGraphic: function () {
             var playerId = this.player.get('id');

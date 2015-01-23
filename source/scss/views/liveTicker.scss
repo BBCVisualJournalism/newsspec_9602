@@ -1,13 +1,12 @@
 .live-ticker{
 	color: #404040;
-	margin: 20px 20px;
+	margin: 20px 20px 0;
 	overflow: hidden;
 	border-top: 1px solid #d5d6d7;
 	text-align: center;
 
 	.live-ticker--title{
 		font-weight: normal;
-		font-family: Arial;
 		font-size: 1.6em;
 		line-height: 2em;
 	}
@@ -15,41 +14,41 @@
 	.live-ticker--section{
 		float: left;
 		font-weight: normal;
-		font-family: Arial;
 		font-size: 1.6em;
 		line-height: 1.25em;
 
 		.earned{
 			font-weight: normal;
-			font-family: Arial;
 			font-size: 1.5em;
 			line-height: 1.5em;
+			margin-top: 10px;
+			display: inline-block;
 		}
 	}
 
 	.live-ticker--section__yourself, .live-ticker--section__national-avg {
 		width: 50%;
-		height: 125px;
 		padding: 0 20px;
 	}
 
 	.live-ticker--section__yourself{
-		border-right: 2px dotted #cedbdc;
 
 		.icon__yourself{
 			background: url(../img/sprite.png) 0 0;
-			width: 25px;
-			height: 25px;
-			margin: 13px auto;
+			width: 80px;
+			height: 78px;
+			margin: 0 auto 10px;
 		}
 	}
 
 	.live-ticker--section__national-avg{
+		border-left: 2px dotted #cedbdc;
+
 		.icon__national-avg{
-			background: url(../img/sprite.png) 25px 0;
-			width: 25px;
-			height: 25px;
-			margin: 13px auto;
+			background: url(../img/sprite.png) 79px 0;
+			width: 78px;
+			height: 78px;
+			margin: 0 auto 10px;
 		}
 	}
 
@@ -63,31 +62,32 @@
 			display: none;
 			width: 75px;
 			height: 75px;
-			margin: 13px auto;
+			margin: 20px auto 10px;
 		}
 	}
 
-	@include respondMinMax(550px, false){
+	@include respondMinMax(580px, false){
 		.live-ticker--section__yourself, .live-ticker--section__national-avg, .live-ticker--section__player{
 			clear: none;
 			width: 33%;
-			height: 150px;
+			height: 185px;
 			border-right: 2px dotted #cedbdc;
+			border-left: 0;
 		}
 		.live-ticker--section__player{
 			border: 0;
 			margin-top: 0;
 
 			.icon__player{
-				margin: 0 auto;
+				margin: 0 auto 10px;
 			}
 
 		}
 		.live-ticker--section__yourself .icon__yourself{
-			margin: 24px auto;
+			margin: 0 auto 10px;
 		}
 		.live-ticker--section__national-avg .icon__national-avg{
-			margin: 24px auto;
+			margin: 0 auto 10px;
 		}
 	}
 

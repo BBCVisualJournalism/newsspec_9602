@@ -1,11 +1,12 @@
 define([
     'lib/news_special/bootstrap',
     'backbone',
+    'lib/vendors/jquery.autocomplete',
     'text!templates/userForm.html',
     'views/playerStand',
     'views/widgetsView',
     'vocabs'
-], function (news, Backbone, htmlTemplate, PlayerStandView, WidgetsView, vocabs) {
+], function (news, Backbone, AutoComplete, htmlTemplate, PlayerStandView, WidgetsView, vocabs) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -26,6 +27,7 @@ define([
             this.$el.html(this.template({vocabs: vocabs}));
 
             /* INIT VARS */
+            this.selectedCountry = null;
             this.formEl = this.$el.find('.user-form');
             this.countryEl = this.$el.find('.user-form--input__country');
             this.playerEl = this.$el.find('.user-form--input__player');
@@ -47,28 +49,33 @@ define([
             this.options.container.html(this.$el);
         },
         events: {
-            'change .user-form--input__country': 'countryChange',
             'change .user-form--input__player': 'changePlayer',
-            'submit .user-form': 'submit'
+            'submit .user-form': 'submit',
+            'click .user-form--input__country': 'selectCountryText'
         },
         populateCountries: function () {
             var self = this;
-
-            var defaultCountryKey = this.countryEl.data('selectedCountry') || 'country_GBR',
-                defaultCountryName = vocabs[defaultCountryKey];
-
-            this.countryEl.empty();
-
+            var searchSuggestionArray = [];
             this.countries.each(function (country) {
                 if (country.get('code') !== 'WRL_AVG') {
-                    var selectedText = (defaultCountryName === country.get('name')) ? ' selected="selected"' : '',
-                        countryToAdd = $('<option value="' + country.get('code') + '"' + selectedText + '>' + country.get('name') + '</option>');
+                    var suggestion = {
+                        value: country.get('name'),
+                        country: country
+                    };
+                    searchSuggestionArray.push(suggestion);
 
-                    self.countryEl.append(countryToAdd);
+                    if (country.get('name') === vocabs[vocabs.default_country]) {
+                        self.countryChange({country: country});
+                    }
                 }
             });
 
-            this.countryChange();
+            this.countryEl.autocomplete({
+                lookup: searchSuggestionArray,
+                autoSelectFirst: true,
+                lookupLimit: 10,
+                onSelect: self.countryChange.bind(this)
+            });
         },
         populatePlayers: function () {
             var self = this;
@@ -92,16 +99,18 @@ define([
                 }
             });
         },
-        countryChange: function () {
-            var country = this.countries.findWhere({code: this.countryEl.val()}),
-                currencySymbol = country.get('currency_symbol');
+        countryChange: function (selectedCountry) {
+            this.selectedCountry = selectedCountry.country;
+            this.countryEl.val(this.selectedCountry.get('name'));
 
-            if (country.get('ppp')) {
+            var currencySymbol = this.selectedCountry.get('currency_symbol');
+
+            if (this.selectedCountry.get('ppp')) {
                 this.noPPPEl.hide();
                 this.incomeWrapperEl.show();
 
                 if (currencySymbol) {
-                    this.currencySymbolEl.text(country.get('currency_symbol'));
+                    this.currencySymbolEl.text(this.selectedCountry.get('currency_symbol'));
                 } else {
                     this.currencySymbolEl.text('');
                 }
@@ -115,18 +124,18 @@ define([
             this.playerStandView.updatePlayer(this.playerEl.val());
         },
         getUserInput: function () {
-            var country = this.countries.findWhere({code: this.countryEl.val()}),
-                worldAvg = this.countries.findWhere({code: 'WRL_AVG'}),
+            var worldAvg = this.countries.findWhere({code: 'WRL_AVG'}),
                 incomeInputVal = this.incomeEl.val();
 
             /* If the we don't have wage data for the users country, or they enter a value less than 1, use the world avg */
-            var isWorldAverage = (incomeInputVal < 1 || !country.get('ppp')),
+            var isWorldAverage = (incomeInputVal < 1 || !this.selectedCountry.get('ppp')),
                 income = (!isWorldAverage) ? incomeInputVal : worldAvg.get('annual_wage');
 
             income = parseFloat(income, 10);
 
             return {
-                'countryCode': this.countryEl.val(),
+                'country': this.selectedCountry,
+                'countryInput': this.countryEl.val(),
                 'income': income,
                 'playerId': parseInt(this.playerEl.val(), 10),
                 'usingWorldAvg': isWorldAverage
@@ -171,6 +180,9 @@ define([
         compareAgain: function (player) {
             this.playerEl.val(player).change();
             this.formEl.submit();
+        },
+        selectCountryText: function () {
+
         }
     });
 });

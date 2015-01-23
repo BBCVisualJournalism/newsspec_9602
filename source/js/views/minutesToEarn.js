@@ -48,22 +48,22 @@ define([
 
             if (this.userModel.get('usingWorldAvg') && this.player.isManager()) {
                 mainText = vocabs.minutes_earn_world_avg_manager;
-                shareText = vocabs.minutes_earn_world_avg_manager;
+                shareText = vocabs.share_minutes_earn_world_Avg;
 
             } else if (this.userModel.get('usingWorldAvg')) {
                 mainText = vocabs.minutes_earn_world_avg;
-                shareText = vocabs.minutes_earn_world_avg;
+                shareText = vocabs.share_minutes_earn_world_Avg;
                 
             } else if (this.player.isManager()) {
                 mainText = vocabs.minutes_earn_manager;
-                shareText = vocabs.minutes_earn_manager;
+                shareText = vocabs.share_minutes_earn;
                 
             } else if (minutesToEarn <= 1) {
                 mainText = vocabs.minutes_earn_less_than_min;
-                shareText = vocabs.minutes_earn_less_than_min;
+                shareText = vocabs.share_minutes_earn_less_than_min;
             } else {
                 mainText = vocabs.minutes_earn;
-                shareText = vocabs.minutes_earn;
+                shareText = vocabs.share_minutes_earn;
             }
             return {
                 text: mainText,

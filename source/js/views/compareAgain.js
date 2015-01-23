@@ -45,7 +45,6 @@ define([
 
             this.players.each(function (player) {
                 if (player.get('id') !== null) {
-                    console.log(vocabs);
                     var managerText = player.isManager() ? vocabs.label_select_manager + ' - ' : '',
                         clubText =  ' (' + managerText + player.get('club') + ')';
 

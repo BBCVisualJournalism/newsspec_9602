@@ -1,6 +1,7 @@
 define([
     'lib/news_special/bootstrap',
     'backbone',
+    'views/worldAvgMessage',
     'views/minutesToEarn',
     'views/yearlySalary',
     'views/avgComparisons',
@@ -8,7 +9,7 @@ define([
     'views/femaleComparison',
     'views/liveTicker',
     'views/compareAgain'
-], function (news, Backbone, MinutesToEarn, YearlySalaryView, AvgComparisons, Shirts, FemaleComparison, LiveTickerView, CompareAgainView) {
+], function (news, Backbone, WorldAvgMessage, MinutesToEarn, YearlySalaryView, AvgComparisons, Shirts, FemaleComparison, LiveTickerView, CompareAgainView) {
     return Backbone.View.extend({
         initialize: function (options) {
             this.container = options.container;
@@ -17,6 +18,7 @@ define([
         render: function () {
             this.container.empty();
 
+            this.addWorldAvgMessage();
             this.addMinutesToEarn();
             this.addYearlySalary();
             this.addAvgComparisons();
@@ -26,6 +28,12 @@ define([
             this.addCompareAgain();
 
             this.container.html(this.$el);
+        },
+        addWorldAvgMessage: function () {
+            if (this.userModel.get('usingWorldAvg')) {
+                var worldAvgMessage = new WorldAvgMessage();
+                this.$el.append(worldAvgMessage.render());
+            }
         },
         addMinutesToEarn: function () {
             var minutesToEarn = new MinutesToEarn({userModel: this.userModel});
@@ -61,10 +69,10 @@ define([
         },
         destroyAll: function () {
             news.pubsub.emit('sharetools:unbind');
-
-            this.liveTickerView.destroy();
-            delete this.liveTickerView;
-
+            if (this.liveTickerView) {
+                this.liveTickerView.destroy();
+                delete this.liveTickerView;
+            }
             this.unbind();
             this.remove();
         }

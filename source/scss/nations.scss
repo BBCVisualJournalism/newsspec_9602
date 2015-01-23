@@ -3,6 +3,8 @@
 }
 
 .lang_russian{
+	font-family: Helmet, Freesans, Helvetica, Arial, sans-serif;
+	
 	.compare-again .compare-again--button{
 		max-width: 360px;
 	}
@@ -12,6 +14,9 @@
 }
 
 .lang_arabic{
+	font-size: 12px;
+	font-family: BBCNassim, arial, verdana, sans-serif;
+
 	.bar-chart{
 		direction: ltr;
 	}

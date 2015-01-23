@@ -2,7 +2,7 @@ define(function () {
 	return '<div class="share ns__share-dropdown">' +
                 '<div class="share__button" title="<%=header %>">' +
 				'</div>' +
-				'<span class="share__text">share this result</span>' +
+				'<span class="share__text">this result</span>' +
 		  	  	'<span class="share__overlay">' +
 			  	  	'<p><%= header %></p>' +
 			  	  	'<ul>' +

@@ -56,17 +56,17 @@ define([
             if (this.userModel.get('usingWorldAvg')) {
                 topText = vocabs.yearly_salary_gobal_avg_top;
                 bottomText = vocabs.yearly_salary_gobal_avg_bottom;
-                shareText = vocabs.yearly_salary_gobal_avg_top;
+                shareText = vocabs.share_yearly_world_avg;
 
             } else if (startYear.isBC) {
                 topText = vocabs.yearly_salary_top;
                 bottomText = vocabs.yearly_salary_bottom_bc;
-                shareText = vocabs.yearly_salary_top;
+                shareText = vocabs.share_yearly_salary;
                 
             } else {
                 topText = vocabs.yearly_salary_top;
                 bottomText = vocabs.yearly_salary_bottom;
-                shareText = vocabs.yearly_salary_top;
+                shareText = vocabs.share_yearly_salary;
             }
 
             return {

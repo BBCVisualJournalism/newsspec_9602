@@ -59,11 +59,11 @@ define([
 
             if (this.userPlayer.isInternational()) {
                 mainText = vocabs.female_compare_alex;
-                shareText = vocabs.female_compare_alex;
+                shareText = vocabs.share_female_alex;
 
             } else {
                 mainText = vocabs.female_compare_steph;
-                shareText = vocabs.female_compare_steph;
+                shareText = vocabs.share_female_steph;
             }
             return {
                 text: mainText,

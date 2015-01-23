@@ -59,14 +59,12 @@ define([
         },
         getText: function () {
             var mainText = '',
-                shareText = '';
+                shareText = vocabs.share_avg_compare;
             /* If english, use complex text */
             if (this.isEnglish()) {
                 mainText = vocabs.avg_compare_english;
-                shareText = vocabs.avg_compare_english;
             } else {
                 mainText = vocabs.avg_compare_languages;
-                shareText = vocabs.avg_compare_languages;
             }
             return {
                 text: mainText,

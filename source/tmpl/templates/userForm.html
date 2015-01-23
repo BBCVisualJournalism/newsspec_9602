@@ -4,7 +4,7 @@
 
     <div class="input-section">
         <label for="country" class="your-country"><%= vocabs.label_your_country %></label>
-        <select name="country" class="user-form--input user-form--input__dropdown user-form--input__country" data-selected-country="<%= vocabs.default_country %>"></select>
+        <input type="text" class="user-form--input user-form--input__country" name="country" value="<%= vocabs[vocabs.default_country] %>"/>
     </div>
     <div class="income-section-wrapper">
         <label for="income" class="user-form__income-label"><%= vocabs.label_income %></label>
@@ -14,13 +14,13 @@
         </div>
     </div>
     <div class="input-section__no-income">
-        Sorry, there is no wage data available for your country. Continue below to compare a player to the global average salary.
+        <%= vocabs.no_wage_data_notice %>
     </div>
     <div class="input-section">
         <label for="player" class="player"><%= vocabs.label_player %></label>
          <select name="player" data-selected-player="<%= vocabs.default_player %>" class="user-form--input user-form--input__dropdown user-form--input__player">
-            <optgroup class="user-form--player__premier" label="<%= vocabs.option_group_premier %>"></optgroup>
-            <optgroup class="user-form--player__int" label="<%= vocabs.option_group_int %>"></optgroup>
+            <optgroup class="user-form--player__premier" label="<%- vocabs.option_group_premier %>"></optgroup>
+            <optgroup class="user-form--player__int" label="<%- vocabs.option_group_int %>"></optgroup>
         </select>   
     </div>
     
@@ -28,6 +28,6 @@
         <!-- PLAYER STAND WILL BE LOADED HERE-->
     </div>
 
-    <input class="user-form--button" type="submit" value="<%= vocabs.form_submit %>" />
+    <input class="user-form--button" type="submit" value="<%- vocabs.form_submit %>" />
 
 </form>

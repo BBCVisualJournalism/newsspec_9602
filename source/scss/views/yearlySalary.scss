@@ -14,18 +14,18 @@
 		}
 
 		.timeline--date{
-			font: bold 22px Arial;
 			color: #262C7E;
+			font-weight: bold;
+			font-size: 2.2em;
 			text-align: center;
 		}
 	}
 
 	.yearly-salary--text{
 		font-weight: normal;
-		font-family: Arial;
 		font-size: 1.6em;
 		line-height: 1.2em;
-		padding: 0 15px;
+		padding: 6px 25px;
 	}
 
 }
