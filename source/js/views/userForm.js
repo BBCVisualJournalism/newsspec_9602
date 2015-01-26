@@ -127,11 +127,16 @@ define([
             var worldAvg = this.countries.findWhere({code: 'WRL_AVG'}),
                 incomeInputVal = this.incomeEl.val();
 
-            /* If the we don't have wage data for the users country, or they enter a value less than 1, use the world avg */
-            var isWorldAverage = (incomeInputVal < 1 || !this.selectedCountry.get('ppp')),
-                income = (!isWorldAverage) ? incomeInputVal : worldAvg.get('annual_wage');
+            /* Remove commas and spaces from user input */
+            var income = incomeInputVal.replace(/[, ]/g, ''),
+                isWorldAverage = true;
 
-            income = parseFloat(income, 10);
+            if (income !== '') {
+                /* If the we don't have wage data for the users country, or they enter a value less than 1, use the world avg */
+                isWorldAverage = (income < 1 || !this.selectedCountry.get('ppp'));
+            }
+
+            income = (!isWorldAverage) ? income : worldAvg.get('annual_wage');
 
             return {
                 'country': this.selectedCountry,

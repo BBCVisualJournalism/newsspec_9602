@@ -30,7 +30,13 @@ define([
                 localWage = Calculator.pppToLocal(country.get('ppp'), this.get('annual_wage')),
                 roundedWage = Math.round(localWage / 100000) * 100000;
 
-            return country.get('currency_symbol') + '' + TextFormat.formatNumber(roundedWage);
+            if (!TextFormat.isRtl()) {
+                return country.get('currency_symbol') + '' + TextFormat.formatNumber(roundedWage);
+            } else {
+                return TextFormat.formatNumber(roundedWage) + '' + country.get('currency_symbol');
+            }
+
+            
         },
         isManager: function () {
             /* If Jose or Pep, then they're managers */

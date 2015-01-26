@@ -1,10 +1,14 @@
-.lang_english .share-tools-holder{
-	display: block;
+.lang_english{
+	.share-tools-holder{
+		display: block;
+	}
+	.minutes-to-earn .minutes-to-earn--football-pitch{
+		margin: auto;
+	}
 }
-
 .lang_russian{
 	font-family: Helmet, Freesans, Helvetica, Arial, sans-serif;
-	
+
 	.compare-again .compare-again--button{
 		max-width: 360px;
 	}

@@ -14,6 +14,7 @@ define([
         initialize: function (options) {
             this.container = options.container;
             this.userModel = options.userModel;
+            this.userCountry = options.userModel.country();
         },
         render: function () {
             this.container.empty();
@@ -30,7 +31,7 @@ define([
             this.container.html(this.$el);
         },
         addWorldAvgMessage: function () {
-            if (this.userModel.get('usingWorldAvg')) {
+            if (this.userModel.get('usingWorldAvg') && this.userCountry.get('ppp')) {
                 var worldAvgMessage = new WorldAvgMessage();
                 this.$el.append(worldAvgMessage.render());
             }
@@ -44,7 +45,7 @@ define([
             this.$el.append(yearlySalaryView.render());
         },
         addAvgComparisons: function () {
-            if (!this.userModel.get('usingWorldAvg')) {
+            if (!this.userModel.get('usingWorldAvg') && this.userCountry.get('annual_wage')) {
                 var avgComparisonsView = new AvgComparisons({userModel: this.userModel});
                 this.$el.append(avgComparisonsView.render());
             }
@@ -54,11 +55,13 @@ define([
             this.$el.append(shirtsView.render());
         },
         addFemaleComparison: function () {
-            var femaleComparisonView = new FemaleComparison({userModel: this.userModel});
-            this.$el.append(femaleComparisonView.render());
+            if (!this.userModel.player().isManager()) {
+                var femaleComparisonView = new FemaleComparison({userModel: this.userModel});
+                this.$el.append(femaleComparisonView.render());
+            }
         },
         addLiveTicker: function () {
-            if (!this.userModel.get('usingWorldAvg')) {
+            if (!this.userModel.get('usingWorldAvg') && this.userCountry.get('annual_wage')) {
                 this.liveTickerView = new LiveTickerView({userModel: this.userModel});
                 this.$el.append(this.liveTickerView.render());
             }

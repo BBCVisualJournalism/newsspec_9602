@@ -79,41 +79,43 @@ define([
 
         },
         getMinuteText: function (minutes) {
-            if (minutes === 1) {
-                return vocabs.time_minute;
-            } else {
-                return TextFormat.processText(vocabs.time_x_minutes, {'{NUM_MINUTES}': TextFormat.formatNumber(minutes)});
-            }
+            // if (minutes === 1) {
+            //     return vocabs.time_minute;
+            // } else {
+            return TextFormat.processText(vocabs.time_x_minutes, {'{NUM_MINUTES}': TextFormat.formatNumber(minutes)});
+            // }
         },
         animateMinutes: function (minutes) {
             var self = this;
-
             this.pitchTextEl.hide();
-            this.pitchTextEl.text(self.getMinuteText(0));
-            
-            this.pitchTextEl.fadeIn(1500, function () {
 
-                /* Speedbar determines how often the number increases */
-                var speedVar = (minutes < 50) ? minutes : 50;
+            /* Only animate if we have minutes to show */
+            if (minutes >= 2) {
+                this.pitchTextEl.text(self.getMinuteText(0));
+                this.pitchTextEl.fadeIn(1500, function () {
 
-                var numberRollTime = 2000,
-                    fadeInTime = this.statAnimationTime - numberRollTime;
+                    /* Speedbar determines how often the number increases */
+                    var speedVar = (minutes < 50) ? minutes : 50;
 
-                var count = 0,
-                    refreshTime = numberRollTime / speedVar,
-                    incrementValue = minutes / speedVar;
-                
-                var timeInterval = setInterval(function () {
-                    count++;
-                    var numberValue = Math.floor(incrementValue * count);
-                    if (numberValue - incrementValue < minutes) {
-                        self.pitchTextEl.text(self.getMinuteText(numberValue));
-                    } else {
-                        self.pitchTextEl.text(self.getMinuteText(minutes));
-                        clearInterval(timeInterval);
-                    }
-                }, refreshTime);
-            });
+                    var numberRollTime = 2000,
+                        fadeInTime = this.statAnimationTime - numberRollTime;
+
+                    var count = 0,
+                        refreshTime = numberRollTime / speedVar,
+                        incrementValue = minutes / speedVar;
+                    
+                    var timeInterval = setInterval(function () {
+                        count++;
+                        var numberValue = Math.floor(incrementValue * count);
+                        if (numberValue - incrementValue < minutes) {
+                            self.pitchTextEl.text(self.getMinuteText(numberValue));
+                        } else {
+                            self.pitchTextEl.text(self.getMinuteText(minutes));
+                            clearInterval(timeInterval);
+                        }
+                    }, refreshTime);
+                });
+            }
         }
     });
 });

@@ -7,7 +7,7 @@
 		font-weight: normal;
 		font-size: 1.6em;
 		line-height: 1.2em;
-		padding: 6px 25px;
+		padding: 6px 5px;
 		max-width: 600px;
 		margin: 0 auto 28px;
 	}
@@ -15,12 +15,13 @@
 	.minutes-to-earn--football-pitch{
 		max-width: 298px;
 		height: 205px;
-		margin: auto;
+		margin: auto auto 36px;
 		position: relative;
 		background: url(../img/football_pitch.png) no-repeat;
 		background-size: contain;
 
 		.minutes-to-earn--football-pitch-text{
+			display: none;
 			text-align: center;
 			font-size: 2.8em;
 			font-weight: bold;

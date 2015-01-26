@@ -14,10 +14,15 @@ define(['backbone', 'vocabs'], function (Backbone, vocabs) {
             return returnText;
         },
         formatNumber: function (num) {
+            var thousandSeparator = vocabs.thousand_separator.replace('{SPACE}', ' ');
+
             var formattedNumber = num.toString();
             formattedNumber = formattedNumber.replace('.', vocabs.decimal_separator);
-            formattedNumber = formattedNumber.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + vocabs.thousand_separator);
+            formattedNumber = formattedNumber.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + thousandSeparator);
             return formattedNumber;
+        },
+        isRtl: function () {
+            return $('.lang_arabic, .lang_persian').length > 0;
         }
     });
 });
