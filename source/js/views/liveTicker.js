@@ -46,7 +46,7 @@ define([
         },
         loadPlayerCircleImage: function () {
             var playerId = this.player.get('id');
-            this.playerIconEl.attr('src', 'img/footballers/footballers_circle-' + playerId + '.png');
+            this.playerIconEl.attr('src', TextFormat.staticURL + '/footballers/footballers_circle-' + playerId + '.png');
             this.playerIconEl.css('display', 'block');
         },
         updateTicker: function () {

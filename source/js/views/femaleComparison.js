@@ -73,7 +73,7 @@ define([
         updateShareTools: function (shareMessage) {
             new ShareTools(this.shareToolsEl, {
                 message: shareMessage,
-                hashtag: 'BBCNewsGraphics',
+                hashtag: 'BBCFootballWages',
                 template: 'dropdown'
             }, 'female-compare');
         }

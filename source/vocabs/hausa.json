@@ -338,7 +338,7 @@
     "shortname_pep": "Pep",
     "option_group_premier": "'Yan wasan gasar Premier",
     "option_group_int": "'Yan wasa kasa da kasa",
-    "": "[DO NOT TRANSLATE]",
+    "": "Kai da Ronaldo: Yaya albashinka idan aka kwatanta da na manyan 'yan kwallo?",
     "form_title": "Yaya za ka kwatanta?",
     "label_your_country": "Kasarka:",
     "label_income": "Albashi a naira banda haraji:",
@@ -393,5 +393,7 @@
     "share_female_steph": "[DO NOT TRANSLATE]",
     "share_female_alex": "[DO NOT TRANSLATE]",
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
-    "share_yearly_world_avg": "[DO NOT TRANSLATE]"
+    "share_yearly_world_avg": "[DO NOT TRANSLATE]",
+    "avg_compare_bottom": "",
+    "notice_disclaimer": "Duk bayanan da ku ka saka zai ci gaba da kasance a komfutar amma ba za a adana shi ba kuma BBC ba za ta aika wa kowa ba."
 }

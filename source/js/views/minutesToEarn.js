@@ -54,10 +54,6 @@ define([
                 mainText = vocabs.minutes_earn_world_avg;
                 shareText = vocabs.share_minutes_earn_world_Avg;
                 
-            } else if (this.player.isManager()) {
-                mainText = vocabs.minutes_earn_manager;
-                shareText = vocabs.share_minutes_earn;
-                
             } else if (minutesToEarn <= 1) {
                 mainText = vocabs.minutes_earn_less_than_min;
                 shareText = vocabs.share_minutes_earn_less_than_min;
@@ -73,7 +69,7 @@ define([
         updateShareTools: function (shareMessage) {
             new ShareTools(this.shareToolsEl, {
                 message: shareMessage,
-                hashtag: 'BBCNewsGraphics',
+                hashtag: 'BBCFootballWages',
                 template: 'dropdown'
             }, 'minutes-to-earn');
 

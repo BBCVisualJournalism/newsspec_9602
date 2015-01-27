@@ -40,23 +40,6 @@
 		background:#fff url(../img/dropdown.png) center right no-repeat;
 	}
 
-	.input-section__income{
-		width: 100%;
-		direction: ltr;
-		display:table;
-
-		.user-form--currency-symbol{
-			display:table-cell;
-			font-size: 1.6em;
-			text-align: center;
-			width: 30px;
-		}
-		.user-form--input__income{
-			display:table-cell;
-			width:100%
-		}
-	}
-
 	.input-section {
 		max-width:300px;
 		margin:auto;
@@ -71,6 +54,36 @@
 		color: #414141;
 		border-top: 2px solid #E6E6E6;
 		padding: 10px 0 20px;
+	}
+
+	.input-section__disclaimer{
+		display: none;
+		max-width: 300px;
+		margin: auto;
+		font-size: 1.4em;
+		font-style: italic;
+		color: #414141;
+		padding-bottom: 7px;
+	}	
+
+	.income-section-wrapper{
+		.input-section__income{
+			width: 100%;
+			direction: ltr;
+			display:table;
+			padding-bottom: 5px;
+
+			.user-form--currency-symbol{
+				display:table-cell;
+				font-size: 1.6em;
+				text-align: center;
+				width: 45px;
+			}
+			.user-form--input__income{
+				display:table-cell;
+				width:100%
+			}
+		}
 	}
 
 	label{

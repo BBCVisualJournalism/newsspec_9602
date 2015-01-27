@@ -34,12 +34,13 @@ define([
             this.incomeEl = this.$el.find('.user-form--input__income');
             this.currencySymbolEl = this.$el.find('.user-form--currency-symbol');
             this.noPPPEl = this.$el.find('.input-section__no-income');
+            this.disclaimerEl = this.$el.find('.input-section__disclaimer');
             this.incomeWrapperEl = this.$el.find('.income-section-wrapper');
 
             this.populateCountries();
             this.populatePlayers();
 
-            var playerOrder = [9, 12, 13, 6, 2, 17, 15, 20, 23];
+            var playerOrder = [13, 12, 15, 22, 9, 2, 17, 20, 6];
 
             this.playerStandView = new PlayerStandView({order: playerOrder});
             this.$el.find('.player-stand').html(this.playerStandView.render());
@@ -65,7 +66,7 @@ define([
                     searchSuggestionArray.push(suggestion);
 
                     if (country.get('name') === vocabs[vocabs.default_country]) {
-                        self.countryChange({country: country});
+                        self.countryChange({country: country, initialLoad: true});
                     }
                 }
             });
@@ -107,6 +108,7 @@ define([
 
             if (this.selectedCountry.get('ppp')) {
                 this.noPPPEl.hide();
+                this.disclaimerEl.show();
                 this.incomeWrapperEl.show();
 
                 if (currencySymbol) {
@@ -117,7 +119,13 @@ define([
                 
             } else {
                 this.noPPPEl.show();
+                this.disclaimerEl.hide();
                 this.incomeWrapperEl.hide();
+            }
+
+            /* If this wasn't called by the page load, iStats the users country */
+            if (!selectedCountry.initialLoad) {
+                news.pubsub.emit('istats', ['country-change', 'newsspec-interaction', this.selectedCountry.get('code')]);
             }
         },
         changePlayer: function () {
@@ -127,16 +135,17 @@ define([
             var worldAvg = this.countries.findWhere({code: 'WRL_AVG'}),
                 incomeInputVal = this.incomeEl.val();
 
-            /* Remove commas and spaces from user input */
-            var income = incomeInputVal.replace(/[, ]/g, ''),
-                isWorldAverage = true;
+            /* Check if second to last character is a comma or fullstop - to signify a decimal point, replace decimal point with {DEC} */
+            var income = incomeInputVal.replace(/(.*)[,\.](\d{2})\b/g, '$1{DEC}$2');
+            /* Remove commas and spaces from user input, then add decimal point back in*/
+            income = income.replace(/[, \.]/g, '').replace('{DEC}', '.');
 
-            if (income !== '') {
-                /* If the we don't have wage data for the users country, or they enter a value less than 1, use the world avg */
-                isWorldAverage = (income < 1 || !this.selectedCountry.get('ppp'));
-            }
-
+            var isWorldAverage = (!this.selectedCountry.get('ppp') || ((income < 1) && $.isNumeric(income)));
             income = (!isWorldAverage) ? income : worldAvg.get('annual_wage');
+
+            if (!isWorldAverage) {
+                this.incomeEl.val(income);
+            }
 
             return {
                 'country': this.selectedCountry,
@@ -147,7 +156,6 @@ define([
             };
         },
         submit: function (e) {
-            e.preventDefault();
             this.resetValidationErrors();
 
             this.model.set(this.getUserInput(), {validate : true});
@@ -168,6 +176,10 @@ define([
                 _.defer(function () {
                     news.pubsub.emit('window:scrollTo', [$('.results-widgets').offset().top - 20, 600]);
                 });
+
+                if (!e.compareAgain) {
+                    news.pubsub.emit('istats', ['compare-player', 'newsspec-interaction', this.model.player().get('id')]);
+                }
             }
             return false;
         },
@@ -184,7 +196,7 @@ define([
         },
         compareAgain: function (player) {
             this.playerEl.val(player).change();
-            this.formEl.submit();
+            this.submit({compareAgain: true});
         },
         selectCountryText: function () {
 

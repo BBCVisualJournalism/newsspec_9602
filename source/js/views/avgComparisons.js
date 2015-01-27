@@ -42,39 +42,46 @@ define([
             var isEnglish = this.isEnglish();
 
             var countryAmount = Calculator.compareWage(this.userModel.incomePPP(), this.userCountry.get('annual_wage'), isEnglish),
-                worldAmount = Calculator.compareWage(this.userModel.incomePPP(), this.worldAverage.get('annual_wage'), isEnglish);
+                worldAmount = Calculator.compareWage(this.userModel.incomePPP(), this.worldAverage.get('annual_wage'), isEnglish),
+                countryAvgWage = Math.round(Calculator.pppToLocal(this.userCountry.get('ppp'), this.userCountry.get('annual_wage')));
 
             var textObj = this.getText();
             var replacements = {
                 '{COUNTRY_VALUE}': countryAmount,
                 '{COUNTRY}': this.userCountry.get('name'),
-                '{WORLD_VALUE}': worldAmount
+                '{WORLD_VALUE}': worldAmount,
+                '{CURRENCY_SYMBOL}': this.userCountry.get('currency_symbol'),
+                '{COUNTRY_ANNUAL_AVG_WAGE}': TextFormat.formatNumber(countryAvgWage)
             };
 
             return {
-                textMarkup: TextFormat.processText(textObj.text, replacements),
+                topTextMarkup: TextFormat.processText(textObj.topText, replacements),
+                bottomTextMarkup: TextFormat.processText(textObj.bottomText, replacements),
                 shareText: TextFormat.processText(textObj.shareText, replacements)
             };
 
         },
         getText: function () {
-            var mainText = '',
+            var topText = '',
+                bottomText = vocabs.avg_compare_bottom,
                 shareText = vocabs.share_avg_compare;
+
             /* If english, use complex text */
             if (this.isEnglish()) {
-                mainText = vocabs.avg_compare_english;
+                topText = vocabs.avg_compare_english;
             } else {
-                mainText = vocabs.avg_compare_languages;
+                topText = vocabs.avg_compare_languages;
             }
             return {
-                text: mainText,
+                topText: topText,
+                bottomText: bottomText,
                 shareText: shareText
             };
         },
         updateShareTools: function (shareMessage) {
             new ShareTools(this.shareToolsEl, {
                 message: shareMessage,
-                hashtag: 'BBCNewsGraphics',
+                hashtag: 'BBCFootballWages',
                 template: 'dropdown'
             }, 'avg-compare');
         },

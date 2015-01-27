@@ -10,12 +10,16 @@
         <label for="income" class="user-form__income-label"><%= vocabs.label_income %></label>
         <div class="input-section input-section__income">
             <span class="user-form--currency-symbol"></span>
-            <input name="income" class="user-form--input user-form--input__income" />
+            <input name="income" maxlength="14" class="user-form--input user-form--input__income" />
+        </div>
+        <div class="input-section__disclaimer">
+            <%= vocabs.notice_disclaimer %>
         </div>
     </div>
     <div class="input-section__no-income">
         <%= vocabs.no_wage_data_notice %>
     </div>
+
     <div class="input-section">
         <label for="player" class="player"><%= vocabs.label_player %></label>
          <select name="player" data-selected-player="<%= vocabs.default_player %>" class="user-form--input user-form--input__dropdown user-form--input__player">

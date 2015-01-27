@@ -54,7 +54,7 @@ define([
             });
         },
         getPlayerOrder: function () {
-            var playerOrder = [16, 14, 11, 7, 24, 1, 5, 18, 22];
+            var playerOrder = [16, 14, 11, 7, 24, 1, 5, 18, 23];
 
             /* If user has selected the player that is shown, randomly choose a diffrent one */
             if (this.userModel.player().get('id') === playerOrder[0]) {
@@ -74,7 +74,9 @@ define([
             var self = this;
             
             /*  Change top player and scroll to top */
-            news.pubsub.emit('compareAgain', self.playerEl.val());
+            var playerId = self.playerEl.val();
+            news.pubsub.emit('compareAgain', playerId);
+            news.pubsub.emit('istats', ['compare-again', 'newsspec-interaction', playerId]);
         }
     });
 });

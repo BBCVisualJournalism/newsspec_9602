@@ -145,11 +145,12 @@ define(['lib/news_special/bootstrap', 'lib/news_special/template_engine', 'lib/n
     */
     NSShareView.prototype.toggleOverlay = function (element) {
         $(element).closest('.share-tools-holder').find('.share__overlay').toggle();
+        news.pubsub.emit('istats', ['share-clicked', 'newsspec-interaction', this.namespace]);
     };
     /**
     * Closes the overlay from the dropdown template
     * @public
-    * @method
+    * @methodd
     */
     NSShareView.prototype.closeOverlay = function (element) {
         $(element).closest('.share-tools-holder').find('.share__overlay').toggle();

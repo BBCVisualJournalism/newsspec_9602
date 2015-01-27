@@ -69,7 +69,7 @@ define([
         },
         loadGraphic: function () {
             var playerId = this.player.get('id');
-            this.graphicEl.html('<img src="img/footballers/tshirts-' + playerId + '.png" alt="T-shirt" />');
+            this.graphicEl.html('<img src="' + TextFormat.staticURL + '/footballers/tshirts-' + playerId + '.png" alt="T-shirt" />');
         }
     });
 });

@@ -1,8 +1,9 @@
 define([
     'lib/news_special/bootstrap',
     'backbone',
-    'text!templates/playerStand.html'
-], function (news, Backbone, htmlTemplate) {
+    'text!templates/playerStand.html',
+    'models/textFormat'
+], function (news, Backbone, htmlTemplate, TextFormat) {
     return Backbone.View.extend({
         template: _.template(htmlTemplate),
 
@@ -45,7 +46,7 @@ define([
         },
         loadPlayer: function (elm, playerId) {
             var image = elm.find('.footballer-image');
-            image.attr('src', 'img/footballers/footballers-' + playerId + '.png');
+            image.attr('src', TextFormat.staticURL + '/footballers/footballers-' + playerId + '.png');
             image.show();
         },
         updatePlayer: function (selectedPlayer) {
