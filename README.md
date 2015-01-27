@@ -2,6 +2,10 @@
 
 Global data project- footballers wages
 
+##Updating the data
+
+Instuctions on updating the data can be found [here](https://github.com/BBCVisualJournalism/newsspec_9602/tree/master/data-translate).
+
 ## Getting started
 
 Set up the project

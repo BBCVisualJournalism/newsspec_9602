@@ -12,4 +12,14 @@ The excel-parse node module requires python and a couple of python modules. To i
 brew install python
 pip install argparse
 pip install xlrd
+npm install
 ````
+
+#Running the script
+Once you've setup the dependencies, cd into the data directory. Then run the following command
+
+````
+node translate.js ~/Desktop/football.xlsx
+````
+
+Replacing ```~/Desktop/football.xlsx``` with the path to your excel spreadsheet.
