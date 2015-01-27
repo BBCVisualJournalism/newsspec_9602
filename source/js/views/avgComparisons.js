@@ -43,7 +43,8 @@ define([
 
             var countryAmount = Calculator.compareWage(this.userModel.incomePPP(), this.userCountry.get('annual_wage'), isEnglish),
                 worldAmount = Calculator.compareWage(this.userModel.incomePPP(), this.worldAverage.get('annual_wage'), isEnglish),
-                countryAvgWage = Math.round(Calculator.pppToLocal(this.userCountry.get('ppp'), this.userCountry.get('annual_wage')));
+                countryAvgWage = Math.round(Calculator.pppToLocal(this.userCountry.get('ppp'), this.userCountry.get('annual_wage'))),
+                countryAvgWageRounder = Math.round(countryAvgWage / 100) * 100;
 
             var textObj = this.getText();
             var replacements = {
@@ -51,7 +52,7 @@ define([
                 '{COUNTRY}': this.userCountry.get('name'),
                 '{WORLD_VALUE}': worldAmount,
                 '{CURRENCY_SYMBOL}': this.userCountry.get('currency_symbol'),
-                '{COUNTRY_ANNUAL_AVG_WAGE}': TextFormat.formatNumber(countryAvgWage)
+                '{COUNTRY_ANNUAL_AVG_WAGE}': TextFormat.formatNumber(countryAvgWageRounder)
             };
 
             return {
