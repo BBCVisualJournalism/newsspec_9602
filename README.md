@@ -2,9 +2,6 @@
 
 Global data project- footballers wages
 
-#BEFORE MAKING LIVE
- * Build custom backbone and underscore to reduce file size.
- * CDNify the SVGs
 ## Getting started
 
 Set up the project
