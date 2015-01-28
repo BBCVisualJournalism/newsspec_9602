@@ -338,7 +338,7 @@
     "shortname_pep": "Pep",
     "option_group_premier": "English Premier League",
     "option_group_int": "Internationals",
-    "": "You v Ronaldo: How many minutes does it take a top footballer to earn your weekly wage?",
+    "": "It would take me {YEARS} years to earn as much as {PLAYER_NAME} earns in a year. How about you?",
     "form_title": "How do you compare?",
     "label_your_country": "Your country:",
     "label_income": "Pre-tax annual salary in local currency:",
@@ -386,6 +386,7 @@
     "team_liverpool": "Liverpool",
     "team_everton": "Everton",
     "label_select_manager": "manager",
+    "notice_disclaimer": "Any details you enter will stay on your own computer and will not be collected, stored or shared by the BBC.",
     "share_minutes_earn": "It would take {PLAYER_NAME} {NUM_MINUTES} minutes to earn my weekly salary. How about yours?",
     "share_minutes_earn_less_than_min": "It would take {PLAYER_NAME} less than a minute to earn my weekly salary. How about yours?",
     "share_yearly_salary": "It would take me {YEARS} years to earn as much as {PLAYER_NAME} earns in a year. How about you?",
@@ -394,6 +395,5 @@
     "share_female_alex": "{PLAYER_NAME} earns {TIMES_FEMALE_PLAYER} times more than US female soccer star Alex Morgan.",
     "share_minutes_earn_world_Avg": "{PLAYER_NAME} needs {NUM_MINUTES} minutes  to earn the global average weekly wage. How about your salary?",
     "share_yearly_world_avg": "You v {PLAYER_NAME}: how does your pay compare to the world's top footballers?",
-    "avg_compare_bottom": "According to the International Labour Organisation, the average worker in your country earns around {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} per year.",
-    "notice_disclaimer": "Any details you enter will stay on your own computer and will not be collected, stored or shared by the BBC."
+    "avg_compare_bottom": "According to the International Labour Organisation, the average worker in your country earns around {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} per year."
 }

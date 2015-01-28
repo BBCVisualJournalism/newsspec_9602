@@ -41,7 +41,7 @@ define([
             this.barChartEl.append(barChart.render());
         },
         getViewData: function () {
-            var timesMore = Calculator.timesMore(this.userPlayer.get('annual_wage'), this.femalePlayer.get('annual_wage'));
+            var timesMore = (Calculator.timesMore(this.userPlayer.get('annual_wage'), this.femalePlayer.get('annual_wage')) - 1);
 
             var textObj = this.getText();
             var replacements = {

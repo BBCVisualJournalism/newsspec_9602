@@ -338,7 +338,7 @@
     "shortname_pep": "بيب",
     "option_group_premier": "الدوري الإنجليزي الممتاز",
     "option_group_int": "لاعبون دوليون",
-    "": "أنت مقابل رونالدو: كم دقيقة يحتاج لاعب لامع لكسب أجرك الأسبوعي؟",
+    "": "",
     "form_title": "كيف تقارن دخلك السنوي؟",
     "label_your_country": "بلدك",
     "label_income": "مجموع راتبك السنوي بالعملة المحلية قبل الضرائب",
@@ -386,6 +386,7 @@
     "team_liverpool": "ليفربول",
     "team_everton": "أيفرتون",
     "label_select_manager": "مدير فني",
+    "notice_disclaimer": "أي تفاصيل تدخلها ستبقى على جهازك ولن يتم جمعها أو خزنها أو مشاركتها من قبل بي بي سي.",
     "share_minutes_earn": "[DO NOT TRANSLATE]",
     "share_minutes_earn_less_than_min": "[DO NOT TRANSLATE]",
     "share_yearly_salary": "[DO NOT TRANSLATE]",
@@ -394,6 +395,5 @@
     "share_female_alex": "[DO NOT TRANSLATE]",
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
     "share_yearly_world_avg": "[DO NOT TRANSLATE]",
-    "avg_compare_bottom": "وفقا لمنظمة العمل الدولية، يبلغ متوسط الأجر في بلدك حوالى {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} سنوياً.",
-    "notice_disclaimer": "أي تفاصيل تدخلها ستبقى على جهازك ولن يتم جمعها أو خزنها أو مشاركتها من قبل بي بي سي."
+    "avg_compare_bottom": "وفقا لمنظمة العمل الدولية، يبلغ متوسط الأجر في بلدك حوالى {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} سنوياً."
 }

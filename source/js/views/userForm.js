@@ -42,7 +42,7 @@ define([
 
             var playerOrder = [13, 12, 15, 22, 9, 2, 17, 20, 6];
 
-            this.playerStandView = new PlayerStandView({order: playerOrder});
+            this.playerStandView = new PlayerStandView({order: playerOrder, userModel: this.model});
             this.$el.find('.player-stand').html(this.playerStandView.render());
 
             this.changePlayer();

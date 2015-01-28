@@ -56,13 +56,13 @@
     "shortname_pep": "Pep",
     "option_group_premier": "'Yan wasan gasar Premier",
     "option_group_int": "'Yan wasa kasa da kasa",
-    "": "Kai da Ronaldo: Yaya albashinka idan aka kwatanta da na manyan 'yan kwallo?",
+    "": "",
     "form_title": "Yaya za ka kwatanta?",
     "label_your_country": "Kasarka:",
     "label_income": "Albashi a naira banda haraji:",
     "label_player": "Kwatanta kanka da :",
     "form_submit": "Kwatanta da dan wasa",
-    "minutes_earn": "{PLAYER_NAME} da kuma {ANNUAL_SALARY} a shekara. Zai shafe {NUM_MINUTES} a cikin fili kafin ya karbi wannan albashin a kowanne mako.",
+    "minutes_earn": "{PLAYER_NAME} da karbar {ANNUAL_SALARY} a shekara. Zai shafe {NUM_MINUTES} a cikin fili kafin ya karbi wannan albashin a kowanne mako.",
     "minutes_earn_less_than_min": "{PLAYER_NAME}  na karbar albashin {ANNUAL_SALARY} a kowacce shekara. Zai shafe kasa da minti daya a cikin fili domin ya samu albashinka na mako.",
     "yearly_salary_top": "A naira&#44; za a shafe {YEARS} domin karbar albashin{PLAYER_NAME}a duk shekara.",
     "yearly_salary_bottom": "Idan ka soma a shekarar  {START_YEAR} sai a shekara nawa za ka kamo shi.",
@@ -113,5 +113,5 @@
     "share_female_alex": "[DO NOT TRANSLATE]",
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
     "share_yearly_world_avg": "[DO NOT TRANSLATE]",
-    "avg_compare_bottom": ""
+    "avg_compare_bottom": "A cewar kungiyar kwadago ta duniya&#44; matsakaicin albashi a kasarka zai kasance {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} a kowacce shekara"
 }

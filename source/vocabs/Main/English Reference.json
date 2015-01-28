@@ -56,7 +56,7 @@
     "shortname_pep": "Pep",
     "option_group_premier": "English Premier League",
     "option_group_int": "Internationals",
-    "": "You v Ronaldo: How many minutes does it take a top footballer to earn your weekly wage?",
+    "": "It would take me {YEARS} years to earn as much as {PLAYER_NAME} earns in a year. How about you?",
     "form_title": "How do you compare?",
     "label_your_country": "Your country:",
     "label_income": "Pre-tax annual salary in local currency:",

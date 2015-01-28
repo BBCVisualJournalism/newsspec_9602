@@ -10,6 +10,7 @@ define([
         initialize: function (options) {
 
             this.order = options.order;
+            this.players = options.userModel.players;
 
             this.allPlayers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
         },
@@ -46,7 +47,9 @@ define([
         },
         loadPlayer: function (elm, playerId) {
             var image = elm.find('.footballer-image');
+            var player = this.players.get(playerId);
             image.attr('src', TextFormat.staticURL + '/footballers/footballers-' + playerId + '.png');
+            image.attr('alt', 'Illustration of ' + player.get('name'));
             image.show();
         },
         updatePlayer: function (selectedPlayer) {
