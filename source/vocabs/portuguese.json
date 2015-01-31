@@ -395,5 +395,7 @@
     "share_female_alex": "[DO NOT TRANSLATE]",
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
     "share_yearly_world_avg": "[DO NOT TRANSLATE]",
-    "avg_compare_bottom": "Segundo a Organização Internacional do Trabalho (OIT), o salário médio anual de um trabalhador em seu país é de {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE}."
+    "avg_compare_bottom": "Segundo dados da Organização Internacional do Trabalho (OIT), o salário médio anual de um trabalhador em seu país é de {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE}.",
+    "player_wilfried_bony": "Samuel Eto'o",
+    "shortname_wilfried": "Eto'o"
 }

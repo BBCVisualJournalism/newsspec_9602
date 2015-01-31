@@ -286,7 +286,7 @@
     "thousand_separator": ".",
     "default_country": "country_COL",
     "default_player": "player_james_rodriguez",
-    "player_jose_mourinho": "Jose Mourinho",
+    "player_jose_mourinho": "José Mourinho",
     "player_eden_hazard": "Eden Hazard",
     "player_wayne_rooney": "Wayne Rooney",
     "player_angel_di_maria": "Ángel Di María",
@@ -395,5 +395,7 @@
     "share_female_alex": "[DO NOT TRANSLATE]",
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
     "share_yearly_world_avg": "[DO NOT TRANSLATE]",
-    "avg_compare_bottom": "Según la Organización Internacional del Trabajo, un trabajador en tu país gana en promedio alrededor <br>de {B} {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} al año{/B}."
+    "avg_compare_bottom": "Según datos de la Organización Internacional del Trabajo, un trabajador en tu país gana en promedio alrededor <br>de {B} {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} al año{/B}.",
+    "player_wilfried_bony": "Samuel Eto'o",
+    "shortname_wilfried": "Eto'o"
 }

@@ -395,5 +395,7 @@
     "share_female_alex": "[DO NOT TRANSLATE]",
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
     "share_yearly_world_avg": "[DO NOT TRANSLATE]",
-    "avg_compare_bottom": "По данным Международной организации труда, среднестатистический работник в вашей стране зарабатывает около {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} в год."
+    "avg_compare_bottom": "По данным Международной организации труда, среднестатистический работник в вашей стране зарабатывает около {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} в год.",
+    "player_wilfried_bony": "Самуэль Это'О",
+    "shortname_wilfried": "Это'О"
 }

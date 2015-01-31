@@ -395,5 +395,7 @@
     "share_female_alex": "[DO NOT TRANSLATE]",
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
     "share_yearly_world_avg": "[DO NOT TRANSLATE]",
-    "avg_compare_bottom": "وفقا لمنظمة العمل الدولية، يبلغ متوسط الأجر في بلدك حوالى {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} سنوياً."
+    "avg_compare_bottom": "وفقا لمنظمة العمل الدولية، يبلغ متوسط الأجر في بلدك حوالى {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} سنوياً.",
+    "player_wilfried_bony": "صامويل إيتو",
+    "shortname_wilfried": "إيتو"
 }

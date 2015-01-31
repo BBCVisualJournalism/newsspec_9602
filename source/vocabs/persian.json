@@ -395,5 +395,7 @@
     "share_female_alex": "[DO NOT TRANSLATE]",
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
     "share_yearly_world_avg": "[DO NOT TRANSLATE]",
-    "avg_compare_bottom": "طبق آمار سازمان جهانی کار، یک فرد شاغل در کشور شما به طور میانگین حدود {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE}<br>در سال دریافت می کند."
+    "avg_compare_bottom": "طبق آمار سازمان جهانی کار، یک فرد شاغل در کشور شما به طور میانگین حدود {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE}<br>در سال دریافت می کند.",
+    "player_wilfried_bony": "ساموئل اتوئو",
+    "shortname_wilfried": "اتوئو"
 }

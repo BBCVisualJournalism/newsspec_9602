@@ -395,5 +395,7 @@
     "share_female_alex": "{PLAYER_NAME} earns {TIMES_FEMALE_PLAYER} times more than US female soccer star Alex Morgan.",
     "share_minutes_earn_world_Avg": "{PLAYER_NAME} needs {NUM_MINUTES} minutes  to earn the global average weekly wage. How about your salary?",
     "share_yearly_world_avg": "You v {PLAYER_NAME}: how does your pay compare to the world's top footballers?",
-    "avg_compare_bottom": "According to the International Labour Organisation, the average worker in your country earns around {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} per year."
+    "avg_compare_bottom": "Based on data from the International Labour Organisation, the average worker in your country earns around {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} per year.",
+    "player_wilfried_bony": "Wilfried Bony",
+    "shortname_wilfried": "Wilfried"
 }
