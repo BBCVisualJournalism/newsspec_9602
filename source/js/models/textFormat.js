@@ -24,6 +24,7 @@ define(['backbone', 'vocabs'], function (Backbone, vocabs) {
         isRtl: function () {
             return $('.lang_arabic, .lang_persian').length > 0;
         },
-        staticURL: 'http://news.bbcimg.co.uk/news/special/2015/newsspec_9602/content/english/img'
+        // staticURL: 'http://news.bbcimg.co.uk/news/special/2015/newsspec_9602/content/english/img'
+        staticURL: 'img'
     });
 });
