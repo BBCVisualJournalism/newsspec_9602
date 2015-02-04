@@ -34,7 +34,7 @@ define([
                 '{PLAYER_NAME}': this.player.get('name'),
                 '{CLUB_NAME}': this.player.get('club'),
                 '{NUM_SHIRTS}': TextFormat.formatNumber(shirtCount),
-                '{PLAYER_SURNAME}': this.player.get('surname')
+                '{PLAYER_SURNAME}': vocabs['shortname_' + this.player.get('surname').replace(' ', '_').toLowerCase()]
             };
 
             return {

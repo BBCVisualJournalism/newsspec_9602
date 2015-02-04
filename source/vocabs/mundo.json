@@ -364,8 +364,8 @@
     "chart_you": "Tú",
     "chart_world": "Promedio mundial",
     "chart_countrys": "Promedio de tu país",
-    "minutes_earn_world_avg": "{PLAYER_NAME} gana {B}{ANNUAL_SALARY}{/B} al año. Le llevaría sólo {B}{NUM_MINUTES}{/B} minutos en la cancha para ganar el salario semanal promedio del mundo.",
-    "minutes_earn_world_avg_manager": "{PLAYER_NAME} gana {B}{ANNUAL_SALARY}{/B} al año. Él tendría que pasar {B}{NUM_MINUTES}{/B} minutos en el banquillo para ganar el salario semanal promedio del mundo.",
+    "minutes_earn_world_avg": "{PLAYER_NAME} gana {B}{ANNUAL_SALARY}{/B} al año. Le llevaría {B}{NUM_MINUTES}{/B} minutos en la cancha para ganar el salario semanal promedio del mundo. El salario promedio global es alrededor de {B}US$19.000 (PPP) al año{/B}, con tipos de cambios ajustados especialmente para poder comparar entre países.",
+    "minutes_earn_world_avg_manager": "{PLAYER_NAME} gana {B}{ANNUAL_SALARY}{/B} al año. Él tendría que pasar {B}{NUM_MINUTES}{/B} minutos en el banquillo para ganar el salario semanal promedio del mundo. El salario promedio global es alrededor de {B}US$19.000 (PPP) al año{/B}, con tipos de cambios ajustados especialmente para poder <br>comparar entre países.",
     "yearly_salary_gobal_avg_top": "Para alguien que gana el salario promedio global le tomaría {B}{YEARS} años{/B} para ganar el salario anual de {PLAYER_NAME}.",
     "yearly_salary_gobal_avg_bottom": "Si ellos hubieran comenzado en el año {START_YEAR}, estarían cerca de terminar.",
     "minutes_earn_manager": "{PLAYER_NAME} gana {ANNUAL_SALARY} al año. A él le llevaría {NUM_MINUTES} minutos en el banquillo para ganar tu salario semanal.",
@@ -396,6 +396,8 @@
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
     "share_yearly_world_avg": "[DO NOT TRANSLATE]",
     "avg_compare_bottom": "Según datos de la Organización Internacional del Trabajo, un trabajador en tu país gana en promedio alrededor <br>de {B} {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} al año{/B}.",
-    "player_wilfried_bony": "Samuel Eto'o",
-    "shortname_wilfried": "Eto'o"
+    "player_wilfried_bony": "Wilfried Bony",
+    "shortname_wilfried": "Wilfried",
+    "shortname_neymar": "Neymar Jr",
+    "shortname_di_maria": "Di María"
 }

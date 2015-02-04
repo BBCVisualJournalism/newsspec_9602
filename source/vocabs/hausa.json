@@ -364,8 +364,8 @@
     "chart_you": "Kai",
     "chart_world": "Matsakaicin albashi a duniya",
     "chart_countrys": "Matsakaicin albashi a kasarka",
-    "minutes_earn_world_avg": "{PLAYER_NAME} ya karbi albashi {ANNUAL_SALARY} kowacce shekara. Zai shafe akalla {NUM_MINUTES} mintuna a cikin  fili domin samun matsakaicin albashi na mako-mako.",
-    "minutes_earn_world_avg_manager": "{PLAYER_NAME} na karbar albashi{ANNUAL_SALARY} kowacce shekara. Zai dauki shi mintuna {NUM_MINUTES} a cikin fili kafin ya samu matsakaicin albashi na mako-mako.",
+    "minutes_earn_world_avg": "{PLAYER_NAME} ya karbi albashi{B}{ANNUAL_SALARY}{/B} kowacce shekara. Zai shafe akalla {B}{NUM_MINUTES} mintuna {/B} domin samun matsakaicin albashi na mako-mako. Albashi matsakaici a duniya ya kasance kusan {B} $19,000 (PPP) a duk shekara {/B}, an yi tsarin musayar kudi na musamman domin ba da damar kwatantawa da kudin wasu kasashe.",
+    "minutes_earn_world_avg_manager": "{PLAYER_NAME} na karbar albashi {B}{ANNUAL_SALARY}{/B} kowacce shekara. Zai dauki shi {B}{NUM_MINUTES} mintuna {/B} ya samu matsakaicin albashi na mako-mako.Albashi matsakaici a duniya ya kasance kusan {B} $19,000 (PPP) a duk shekara {/B}, an yi tsarin musayar kudi na musamman domin ba da damar kwatantawa da kudin wasu kasashe.",
     "yearly_salary_gobal_avg_top": "Wanda ke karbar matsakaicin albashi a duniya zai shafe {YEARS}shekaru  domin samun albashin {PLAYER_NAME} kowacce shekara.",
     "yearly_salary_gobal_avg_bottom": "Idan suka soma a shekarar {START_YEAR}, da tuni sun kamalla.",
     "minutes_earn_manager": "{PLAYER_NAME}  albashi {ANNUAL_SALARY} a kowacce shekara. Zai shafe {NUM_MINUTES} a fili domin karbar albashinka duk mako.",
@@ -396,6 +396,8 @@
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
     "share_yearly_world_avg": "[DO NOT TRANSLATE]",
     "avg_compare_bottom": "A cewar kungiyar kwadago ta duniya, matsakaicin albashi a kasarka zai kasance {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} a kowacce shekara",
-    "player_wilfried_bony": "Samuel Eto'o",
-    "shortname_wilfried": "Eto'o"
+    "player_wilfried_bony": "Wilfred Bony",
+    "shortname_wilfried": "Wilfried",
+    "shortname_neymar": "Neymar Jr",
+    "shortname_di_maria": "Di Maria"
 }

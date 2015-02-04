@@ -10,7 +10,7 @@
         <label for="income" class="user-form__income-label"><%= vocabs.label_income %></label>
         <div class="input-section input-section__income">
             <span class="user-form--currency-symbol"></span>
-            <input name="income" maxlength="14" class="user-form--input user-form--input__income" />
+            <input name="income" type="number" min="1" max="10000000000000" class="user-form--input user-form--input__income" />
         </div>
         <div class="input-section__disclaimer">
             <%= vocabs.notice_disclaimer %>

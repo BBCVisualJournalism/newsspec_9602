@@ -364,8 +364,8 @@
     "chart_you": "Вы",
     "chart_world": "Средняя в мире",
     "chart_countrys": "Средняя в вашей стране",
-    "minutes_earn_world_avg": "{PLAYER_NAME} зарабатывает {B}{ANNUAL_SALARY}{/B} в год. Ему понадобится {B}{NUM_MINUTES}{/B} мин., чтобы заработать среднемировую недельную зарплату.",
-    "minutes_earn_world_avg_manager": "{PLAYER_NAME} зарабатывает {B}{ANNUAL_SALARY}{/B} в год. Ему понадобиться провести на скамейке запасных {B}{NUM_MINUTES}{/B} мин. для того, чтобы заработать среднемировую недельную зарплату.",
+    "minutes_earn_world_avg": "{PLAYER_NAME} зарабатывает {B}{ANNUAL_SALARY}{/B} в год. Ему понадобится {B}{NUM_MINUTES}{/B} мин., чтобы заработать среднемировую недельную зарплату. Средняя зарплата в мире составляет около $19 тысяч в год с учетом паритета покупательной способности.",
+    "minutes_earn_world_avg_manager": "{PLAYER_NAME} зарабатывает {B}{ANNUAL_SALARY}{/B} в год. Ему понадобится {B}{NUM_MINUTES}{/B} мин. для того, чтобы заработать среднемировую недельную зарплату. Средняя зарплата в мире составляет около $19 тысяч в год с учетом паритета покупательной способности.",
     "yearly_salary_gobal_avg_top": "Тому, чья годовая зарплата равна средней по миру, понадобится {B}{YEARS} лет{/B}, чтобы заработать столько, сколько за год получает {PLAYER_NAME}.",
     "yearly_salary_gobal_avg_bottom": "Если бы они начали в {START_YEAR} году, они бы уже почти достигли требуемой цифры.",
     "minutes_earn_manager": "{PLAYER_NAME} зарабатывает {ANNUAL_SALARY} в год. Ему понадобится провести {NUM_MINUTES} мин. на тренерской скамье, чтобы заработать столько, сколько вы зарабатываете за неделю.",
@@ -396,6 +396,8 @@
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
     "share_yearly_world_avg": "[DO NOT TRANSLATE]",
     "avg_compare_bottom": "По данным Международной организации труда, среднестатистический работник в вашей стране зарабатывает около {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} в год.",
-    "player_wilfried_bony": "Самуэль Это'О",
-    "shortname_wilfried": "Это'О"
+    "player_wilfried_bony": "Вильфрид Бони",
+    "shortname_wilfried": "Вильфрид",
+    "shortname_neymar": "Неймар",
+    "shortname_di_maria": "Ди Мария"
 }

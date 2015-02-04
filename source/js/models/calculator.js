@@ -15,7 +15,7 @@ define(['backbone'], function (Backbone) {
                 startYear = currentYear - yearsAgo;
 
             return {
-                year: Math.abs(startYear),
+                year: Math.floor(Math.abs(startYear)),
                 isBC: (startYear < 0)
             };
         },

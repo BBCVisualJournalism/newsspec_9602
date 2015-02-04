@@ -46,6 +46,21 @@ Sub TestSheet()
         Sheets("testing").Select
         Range("B12:B12").Offset(0, i).Select
         Selection.PasteSpecial Paste:=xlPasteValues
+        
+        Sheets("model").Range("C27:C27").Copy
+        Sheets("testing").Select
+        Range("B13:B13").Offset(0, i).Select
+        Selection.PasteSpecial Paste:=xlPasteValues
+        
+        Sheets("model").Range("B27:B27").Copy
+        Sheets("testing").Select
+        Range("B14:B14").Offset(0, i).Select
+        Selection.PasteSpecial Paste:=xlPasteValues
+        
+        Sheets("model").Range("D28:D28").Copy
+        Sheets("testing").Select
+        Range("B15:B15").Offset(0, i).Select
+        Selection.PasteSpecial Paste:=xlPasteValues
 
     Next i
     Application.ScreenUpdating = True

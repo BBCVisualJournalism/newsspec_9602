@@ -364,8 +364,8 @@
     "chart_you": "أنت",
     "chart_world": "متوسط عالمي",
     "chart_countrys": "متوسط بلدك",
-    "minutes_earn_world_avg": "{PLAYER_NAME} يكسب {ANNUAL_SALARY} سنويا. سيستغرق ذلك منه {NUM_MINUTES} دقيقة ليحصل على متوسط الدخل العالمي",
-    "minutes_earn_world_avg_manager": "{PLAYER_NAME} يكسب {ANNUAL_SALARY} سنويا. سيستغرق ذلك منه {NUM_MINUTES} دقيقة في دكة الاحتياط ليحصل على متوسط الدخل العالمي.",
+    "minutes_earn_world_avg": "{PLAYER_NAME} يكسب {ANNUAL_SALARY} سنويا. سيستغرق ذلك منه {NUM_MINUTES} دقيقة ليحصل على متوسط الدخل العالمي الاسبوعي. ويبلغ متوسط الدخل في العالم نحو 19000 دولار تقريبا (تعادل القوة الشرائية) في السنة سعر صرف معدل خصيصا لإتاحة المقارنة بين البلدان.",
+    "minutes_earn_world_avg_manager": "{PLAYER_NAME} يكسب {ANNUAL_SALARY}  سنويا. سيستغرق ذلك منه {NUM_MINUTES} دقيقة الاحتياط ليحصل على متوسط الدخل العالمي. ويبلغ متوسط الدخل في العالم نحو 19000 دولار تقريبا (تعادل القوة الشرائية) في السنة سعر صرف معدل خصيصا لإتاحة المقارنة بين البلدان.",
     "yearly_salary_gobal_avg_top": "سيستغرق من يحصل على متوسط الدخل العالمي {YEARS} عاما ليكسب{PLAYER_NAME}الرتاب السنوي للاعب.",
     "yearly_salary_gobal_avg_bottom": "إذا كانوا قد بدأوا في العام {START_YEAR}, فانهم كانوا سينجزون الأمر بحلول",
     "minutes_earn_manager": "{PLAYER_NAME} يكسب{ANNUAL_SALARY} سنويا. سيستغرقه ذلك {NUM_MINUTES} دقيقة في العمل ليكسب دخلك الاسبوعي",
@@ -396,6 +396,8 @@
     "share_minutes_earn_world_Avg": "[DO NOT TRANSLATE]",
     "share_yearly_world_avg": "[DO NOT TRANSLATE]",
     "avg_compare_bottom": "وفقا لمنظمة العمل الدولية، يبلغ متوسط الأجر في بلدك حوالى {CURRENCY_SYMBOL}{COUNTRY_ANNUAL_AVG_WAGE} سنوياً.",
-    "player_wilfried_bony": "صامويل إيتو",
-    "shortname_wilfried": "إيتو"
+    "player_wilfried_bony": "ويلفريد بوني",
+    "shortname_wilfried": "ويلفريد",
+    "shortname_neymar": "نيمار جي آر",
+    "shortname_di_maria": "دي ماريا"
 }
