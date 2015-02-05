@@ -79,6 +79,7 @@ define([
             new ShareTools(this.shareToolsEl, {
                 message: shareMessage,
                 hashtag: 'BBCFootballWages',
+                image: 'http://news.bbcimg.co.uk/media/images/80750000/gif/_80750012__promo624x351.gif',
                 template: 'dropdown'
             }, 'yearly-salary');
         },

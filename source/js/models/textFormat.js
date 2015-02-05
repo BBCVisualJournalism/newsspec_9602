@@ -11,6 +11,7 @@ define(['backbone', 'vocabs'], function (Backbone, vocabs) {
             }
             /* BB CODE: Replace {B} with <strong> tags */
             returnText = returnText.replace(/\{B\}/gi, '<strong>').replace(/\{\/B\}/gi, '</strong>');
+            returnText = returnText.replace('﷼', '<span style="font-family: Arial">﷼</span>');
             return returnText;
         },
         formatNumber: function (num) {

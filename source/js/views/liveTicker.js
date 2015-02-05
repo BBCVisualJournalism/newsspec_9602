@@ -60,7 +60,7 @@ define([
             var pppEarned = Calculator.amountEarned(annualSalary, this.startTime, nowTime),
                 localEarned = Calculator.pppToLocal(this.userModel.country().get('ppp'), pppEarned),
                 currencySymbol = this.userModel.country().get('currency_symbol');
-            element.text(currencySymbol + '' + TextFormat.formatNumber(localEarned.toFixed(2)));
+            element.html(TextFormat.processText(currencySymbol + '' + TextFormat.formatNumber(localEarned.toFixed(2))), []);
         },
         destroy: function () {
             clearInterval(this.updateInterval);
